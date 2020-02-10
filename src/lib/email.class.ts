@@ -1,5 +1,5 @@
-import { StringConstructor, StringConstructorError } from 'src/constructors'
-import { MinLengthError } from 'src/errors'
+import { StringConstructor, StringConstructorError } from '../constructors'
+import { MinLengthError } from '../errors'
 
 export const Email = StringConstructor(
   {

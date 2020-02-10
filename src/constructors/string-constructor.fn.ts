@@ -1,6 +1,6 @@
-import { ValueObjectConstructor, ValueObject } from 'src/models'
+import { ValueObjectConstructor, ValueObject } from '../models'
 import { Either, tryCatch, left } from 'fp-ts/lib/Either'
-import { MinLengthError, MaxLengthError, PatternError, NonRawTypeError, RawTypeError } from 'src/errors'
+import { MinLengthError, MaxLengthError, PatternError, NonRawTypeError, RawTypeError } from '../errors'
 import { simpleValueObject, createConstructor } from '../utils'
 
 export const StringConstructor = <E extends Error = StringConstructorError>(

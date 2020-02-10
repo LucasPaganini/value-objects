@@ -1,5 +1,5 @@
-import { StringConstructor, StringConstructorError } from 'src/constructors'
-import { PatternError } from 'src/errors'
+import { StringConstructor, StringConstructorError } from '../constructors'
+import { PatternError } from '../errors'
 
 export const ShortString = StringConstructor(
   {

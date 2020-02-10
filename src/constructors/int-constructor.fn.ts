@@ -1,6 +1,6 @@
 import { ValueObjectConstructor, ValueObject } from '../models'
 import { Either, tryCatch, left } from 'fp-ts/lib/Either'
-import { MaxLengthError, NonRawTypeError, RawTypeError, MinSizeError, NotIntegerError, MaxSizeError } from 'src/errors'
+import { MaxLengthError, NonRawTypeError, RawTypeError, MinSizeError, NotIntegerError, MaxSizeError } from '../errors'
 import { simpleValueObject, createConstructor } from '../utils'
 
 export const IntConstructor = <E extends Error = IntConstructorError>(

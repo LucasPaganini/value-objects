@@ -1,6 +1,6 @@
 import { ValueObjectConstructor, ValueObject } from '../models'
 import { Either, tryCatch, left } from 'fp-ts/lib/Either'
-import { MaxLengthError, NonRawTypeError, RawTypeError, MinSizeError, MaxSizeError } from 'src/errors'
+import { MaxLengthError, NonRawTypeError, RawTypeError, MinSizeError, MaxSizeError } from '../errors'
 import { simpleValueObject, createConstructor } from '../utils'
 
 
