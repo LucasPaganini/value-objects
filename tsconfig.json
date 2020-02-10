@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es2018",
+    "lib": ["es2018"],
+    "types": ["node"],
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "dist-tsc",
+    "declaration": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "src/**/*.spec.ts", "src/e2e/**/*"]
+}
