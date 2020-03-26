@@ -1,7 +1,7 @@
-import { StringConstructor, StringConstructorError } from '../constructors'
+import { VOString, StringConstructorError } from '../constructors'
 import { MinLengthError } from '../errors'
 
-export const BrazilianPhone = StringConstructor(
+export const BrazilianPhone = VOString(
   {
     trim: true,
     maxLength: 64,
@@ -9,4 +9,3 @@ export const BrazilianPhone = StringConstructor(
   },
   err => err as Exclude<StringConstructorError, MinLengthError>,
 )
-
