@@ -3,7 +3,7 @@ import { Either, tryCatch, left } from 'fp-ts/lib/Either'
 import { MinLengthError, MaxLengthError, PatternError, NonRawTypeError, RawTypeError } from '../errors'
 import { simpleValueObject, createConstructor } from '../utils'
 
-export const VOString = <E extends Error = StringConstructorError>(
+export const StringConstructor = <E extends Error = StringConstructorError>(
   config: StringConstructorConfig = {},
   mapError: (err: StringConstructorError) => E = err => err as any,
 ): ValueObjectConstructor<E, string> => {

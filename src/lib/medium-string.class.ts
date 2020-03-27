@@ -1,7 +1,7 @@
-import { VOString, StringConstructorError } from '../constructors'
+import { StringConstructor, StringConstructorError } from '../constructors'
 import { PatternError } from '../errors'
 
-export const MediumString = VOString(
+export const MediumString = StringConstructor(
   {
     trim: true,
     maxLength: 4096, // 2 ** 12

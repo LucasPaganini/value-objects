@@ -36,7 +36,7 @@ const Schema22 = createSchema({
 
 const ServiceIDs = VOArray(ID, { minLength: 1, maxLength: 20 })()
 
-const User = VOSchema({
+const User = ObjectConstructor({
   id: ID,
   email: Email,
   hashedPassword: HashedString,

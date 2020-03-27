@@ -1,6 +1,6 @@
-import { VOString } from '../constructors'
+import { StringConstructor } from '../constructors'
 
-export const ID = VOString({
+export const ID = StringConstructor({
   trim: true,
   maxLength: 256,
   minLength: 6,

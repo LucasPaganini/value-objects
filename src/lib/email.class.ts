@@ -1,7 +1,7 @@
-import { VOString, StringConstructorError } from '../constructors'
+import { StringConstructor, StringConstructorError } from '../constructors'
 import { MinLengthError } from '../errors'
 
-export const Email = VOString(
+export const Email = StringConstructor(
   {
     trim: true,
     maxLength: 256,

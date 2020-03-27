@@ -1,7 +1,7 @@
-import { VOString, StringConstructorError } from '../constructors'
+import { StringConstructor, StringConstructorError } from '../constructors'
 import { PatternError } from '../errors'
 
-export const LongString = VOString(
+export const LongString = StringConstructor(
   {
     trim: true,
     maxLength: 65536, // 2 ** 16
