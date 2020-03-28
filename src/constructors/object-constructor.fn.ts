@@ -14,11 +14,17 @@ type ObjectConstructorSchema<O> = {
 }
 
 type ObjectConstructorSchemaValueObjects<O extends ObjectConstructorSchema<O>> = {
-  [P in keyof O]: UnpackedEitherRight<ReturnType<O[P]['fromAny']>>
+  [P in keyof O]: UnpackedEitherRight<FirstParameter<O[P]['fromRaw']>>
 }
 
+type FirstParameter<F extends (...args: any[]) => any> = F extends (a: infer A) => any
+  ? A
+  : F extends (a: infer A, b: any) => any
+  ? A
+  : never
+
 type RawObjectConstructorSchema<O extends ObjectConstructorSchema<O>> = {
-  [P in keyof O]: RawValueObject<UnpackedEitherRight<ReturnType<O[P]['fromAny']>>>
+  [P in keyof O]: FirstParameter<O[P]['fromRaw']>
 }
 
 type ObjectConstructorReturn<E extends Error, O extends ObjectConstructorSchema<O>> = ValueObjectConstructor<

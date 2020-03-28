@@ -1,46 +1,26 @@
-import { Email } from './lib'
+import { ObjectConstructor } from './constructors'
+import { ArrayConstructor } from './constructors/array-constructor.fn'
+import { Email, Integer, ID } from './lib'
+import { ValueObject } from './models'
+import { Either, Right } from 'fp-ts/lib/Either'
 
-const Schema = createSchema({
-  worktype: lazyMapRequiredOrInvalid(IDFactory.fromAny, e.requiredBodyWorktype, e.invalidBodyWorktype),
-  code: lazyMapRequiredOrInvalid(IntegerFactory.fromAny, e.requiredBodyCode, e.invalidBodyCode),
-  isFieldTicket: lazyMapRequiredOrInvalid(
-    BooleanFactory.fromAny,
-    e.requiredBodyIsFieldTicket,
-    e.invalidBodyIsFieldTicket,
-  ),
-  description: lazyMapRequiredOrInvalid(
-    MediumStringFactory.fromAny,
-    e.requiredBodyDescription,
-    e.invalidBodyDescription,
-  ),
-  details: lazyMapRequiredOrInvalid(MediumStringFactory.fromAny, e.requiredBodyDetails, e.invalidBodyDetails),
-})
-
-const data = Schema.fromAny(body)
-
-const lazyMapRequiredOrInvalid = <ValueObject, RequiredError extends HTTPError, InvalidError extends HTTPError>(
-  fn: (value: any) => Either<string, ValueObject>,
-  requiredError: RequiredError,
-  invalidError: InvalidError,
-) => (value: any): Either<RequiredError | InvalidError, ValueObject> =>
-  mapLeft(error => (isRequiredError(error) ? requiredError : invalidError))(fn(value))
-
-const Schema22 = createSchema({
-  worktype: ID.fromAny,
-  code: raw =>
-    mapInvalid(
-      IntegerFactory.fromAny(raw),
-      invalidError,
-    )(isUndefined(raw) ? right(none) : mapLeft(() => invalidError, IntegerFactory.fromAny(raw))),
-})
-
-const ServiceIDs = VOArray(ID, { minLength: 1, maxLength: 20 })()
-
+const IDs = ArrayConstructor(ID)
 const User = ObjectConstructor({
   id: ID,
   email: Email,
-  hashedPassword: HashedString,
-  serviceIDs: ServiceIDs,
+  serviceIDs: IDs,
+  messageCount: Integer,
 })
 
-User.fromAny({})
+IDs.fromRaw([''])
+
+const user = User({ id: '', email: '', serviceIDs: [''], messageCount: 3 })
+
+var aaa: UnpackedEitherRight<ReturnType<typeof IDs['fromAny']>>
+type AAA = RawValueObject<UnpackedEitherRight<ReturnType<typeof IDs['fromAny']>>>
+type RawValueObject<VO extends ValueObject<any>> = VO extends ValueObject<infer Raw> ? Raw : never
+type UnpackedEitherRight<E extends Either<any, any>> = E extends Right<infer R> ? R : never
+
+type TEST = RawValueObject<UnpackedEitherRight<Either<Error, ValueObject<Array<string>>>>>
+
+user.serviceIDs

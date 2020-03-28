@@ -1,15 +1,19 @@
-import { Either, isRight, Right } from 'fp-ts/lib/Either'
+import { Either, Right } from 'fp-ts/lib/Either'
+import { Option, isSome } from 'fp-ts/lib/Option'
 import { Email, ID } from '../lib'
-import { ValueObjectConstructor, ValueObject } from '../models'
+import {
+  RawValueFromValueObjectConstructor as VOCRaw,
+  ValueObject,
+  ValueObjectConstructor,
+  VOCInstance,
+} from '../models'
 
-export const ArrayConstructor = <E extends Error, VO extends ValueObjectConstructor<any, any>>(
-  valueObjectConstructor: VO,
-  config: ArrayConstructorConfig = {},
-): ValueObjectConstructor<E, ArrayRaw<VO>, ValueObject<ArrayRaw<VO>> & { elements: Array<VO> }> => ({} as any)
+export const VOOptional = <E extends Error, VOC extends ValueObjectConstructor<any, any>, D = undefined>(
+  valueObjectConstructor: VOC,
+  defaultValue: D | undefined = undefined,
+): ValueObjectConstructor<E, VOCRaw<VOC> | D, ValueObject<VOCRaw<VOC> | D> & Option<VOCInstance<VOC>>> => ({} as any)
 
-type ArrayRaw<VO extends ValueObjectConstructor<any, any>> = Array<
-  RawValueObject<UnpackedEitherRight<ReturnType<VO['fromAny']>>>
->
+type Raw<VOC extends ValueObjectConstructor<any, any>> = RawValueObject<UnpackedEitherRight<ReturnType<VOC['fromAny']>>>
 
 export interface ArrayConstructorConfig {}
 
@@ -31,7 +35,10 @@ type ObjectConstructorReturn<E extends Error, O extends ObjectConstructorSchema<
   ValueObject<RawObjectConstructorSchema<O>> & ObjectConstructorSchemaValueObjects<O>
 >
 
-const Emails = ArrayConstructor(Email)
+const Emailss = VOOptional(Email)
+const ee = Emailss(undefined)
+if (isSome(ee)) ee.value
+
 const IDs = ArrayConstructor(ID)
 const eee = Emails([''])
 IDs([''])

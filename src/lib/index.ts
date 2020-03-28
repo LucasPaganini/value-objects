@@ -1,5 +1,7 @@
 export * from './brazilian-phone.class'
 export * from './email.class'
+export * from './id.class'
+export * from './integer.class'
 // export * from './list.class'
 export * from './long-string.class'
 export * from './medium-string.class'
