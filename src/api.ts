@@ -1,8 +1,15 @@
-import { ObjectConstructor } from './constructors'
-import { ArrayConstructor } from './constructors/array-constructor.fn'
-import { Email, Integer, ID } from './lib'
-import { ValueObject } from './models'
 import { Either, Right } from 'fp-ts/lib/Either'
+import { ObjectConstructor, VOOptional } from './constructors'
+import { ArrayConstructor } from './constructors/array-constructor.fn'
+import { Email, ID, Integer, LongString } from './lib'
+import { ValueObject } from './models'
+
+const Message = VOOptional(
+  ObjectConstructor({
+    id: ID,
+    text: LongString,
+  }),
+)
 
 const IDs = ArrayConstructor(ID)
 const User = ObjectConstructor({
@@ -10,11 +17,20 @@ const User = ObjectConstructor({
   email: Email,
   serviceIDs: IDs,
   messageCount: Integer,
+  lastMessage: VOOptional(
+    ObjectConstructor({
+      id: ID,
+      text: LongString,
+    }),
+  ),
 })
 
-IDs.fromRaw([''])
+Message.fromRaw(undefined)
 
-const user = User({ id: '', email: '', serviceIDs: [''], messageCount: 3 })
+IDs.fromRaw([''])
+Message({ id: '', text: '' }).valueOf()?.text
+
+const user = User({ id: '', email: '', serviceIDs: [''], messageCount: 3, lastMessage: '' })
 
 var aaa: UnpackedEitherRight<ReturnType<typeof IDs['fromAny']>>
 type AAA = RawValueObject<UnpackedEitherRight<ReturnType<typeof IDs['fromAny']>>>
@@ -24,3 +40,6 @@ type UnpackedEitherRight<E extends Either<any, any>> = E extends Right<infer R> 
 type TEST = RawValueObject<UnpackedEitherRight<Either<Error, ValueObject<Array<string>>>>>
 
 user.serviceIDs
+
+type ObjectProps<O> = O extends { [s: string]: infer T } ? T : never
+type DDD = ObjectProps<{ a: string; b: number }>
