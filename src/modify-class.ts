@@ -24,15 +24,8 @@ class ID implements ValueObject<number> {
 
 type VOArrayInstance<VOC extends ValueObjectContructor> = ValueObject<Array<VOCRaw<VOC>>> & Array<InstanceType<VOC>>
 
-class VOArrayClass<VO extends ValueObject<any>> extends Array<VO> {
-  valueOf(): Array<VORaw<VO>> {
-    return this.map(vo => vo.valueOf())
-  }
-}
-
-interface VOArrayConstructor<VOC extends ValueObjectContructor>
-  extends ValueObjectContructor<Array<VOCRaw<VOC>>, Array<VOCRawInit<VOC>>> {
-  new (r: Array<VOCRawInit<VOC>>): VOArrayClass<InstanceType<VOC>>
+interface VOArrayConstructor<VOC extends ValueObjectContructor> {
+  new (r: Array<VOCRawInit<VOC>>): ValueObject<Array<VOCRaw<VOC>>> & Array<InstanceType<VOC>>
 }
 
 const VOArray = <VOC extends ValueObjectContructor>(voc: VOC): VOArrayConstructor<VOC> => {
@@ -69,4 +62,4 @@ const User = VOObject({
 const ids = new IDs([])
 ids.map(x => x.valueOf())
 
-new User({ id: '', ids: [''] }).ids
+new User({ id: '', ids: [''] }).valueOf()
