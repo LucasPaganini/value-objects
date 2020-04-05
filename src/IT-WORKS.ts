@@ -1,24 +1,24 @@
-interface ValueObject<Raw> {
+interface NativeValueObject<Raw> {
   valueOf(): Raw
 }
 
-interface ValueObject2<Raw> extends ValueObject<Raw> {
+interface ValueObject<Raw> extends NativeValueObject<Raw> {
   toRaw(): Raw
 }
 
 interface ValueObjectContructor<Raw = any, RawInit = Raw> {
-  new (r: RawInit): ValueObject<Raw>
+  new (r: RawInit): NativeValueObject<Raw>
 }
 
-type VORaw<VO extends ValueObject<any>> = VO extends ValueObject2<any>
+type VORaw<VO extends NativeValueObject<any>> = VO extends ValueObject<any>
   ? ReturnType<VO['toRaw']>
-  : VO extends ValueObject<infer R>
+  : VO extends NativeValueObject<infer R>
   ? R
   : never
 type VOCRawInit<VOC extends ValueObjectContructor> = VOC extends ValueObjectContructor<any, infer T> ? T : never
 type VOCRaw<VOC extends ValueObjectContructor> = VOC extends ValueObjectContructor ? VORaw<InstanceType<VOC>> : never
 
-class ID implements ValueObject<number> {
+class ID implements NativeValueObject<number> {
   constructor(private _value: string) {}
 
   valueOf() {
@@ -30,7 +30,7 @@ class ID implements ValueObject<number> {
   }
 }
 
-interface VOArrayInstance<VO extends ValueObject<any>> extends Array<VO> {
+interface VOArrayInstance<VO extends NativeValueObject<any>> extends Array<VO> {
   valueOf(): Array<VORaw<VO>>
 }
 
@@ -51,21 +51,21 @@ type VOObjectRawSchema<O extends VOObjectSchema<O>> = {
 }
 type VOObjectPropsSchema<O extends VOObjectSchema<O>> = { [P in keyof O]: InstanceType<O[P]> }
 
-interface VOObjectInstance<O extends VOObjectSchema<O>> extends ValueObject2<O> {
+interface VOObjectInstance<O extends VOObjectSchema<O>> extends ValueObject<O> {
   props: VOObjectPropsSchema<O>
   valueOf(): VOObjectRawSchema<O>
   toRaw(): VOObjectRawSchema<O>
 }
 
 interface VOObjectConstructor<O extends VOObjectSchema<O>> {
-  new (r: VOObjectRawInitSchema<O>): ValueObject2<VOObjectRawSchema<O>> & { [P in keyof O]: InstanceType<O[P]> }
+  new (r: VOObjectRawInitSchema<O>): ValueObject<VOObjectRawSchema<O>> & { [P in keyof O]: InstanceType<O[P]> }
 }
 
 const VOObject = <O extends VOObjectSchema<O>>(o: O): VOObjectConstructor<O> => {
   return {} as any
 }
 
-interface VOOptionalInstance<VO extends ValueObject<any>> {
+interface VOOptionalInstance<VO extends NativeValueObject<any>> {
   value?: VO
   valueOf(): VORaw<VO> | undefined
 }
@@ -124,6 +124,8 @@ uu.toRaw().o.id
 u.valueOf().o.id
 u.valueOf().idss
 
+uu.hasCar()
+
 type VOObjectRawSchema__<O extends VOObjectSchema<O>> = {
   [P in keyof O]: O[P] extends ValueObjectContructor ? VOCRaw<O[P]> : never
 }
@@ -133,4 +135,53 @@ type HHH = InstanceType<GGG>
 type FFF = HHH['toRaw']
 type ZZZ = ReturnType<FFF>
 
-Object.assign
+interface VOStringInstance {
+  valueOf(): string
+}
+
+interface VOStringConstructor {
+  new (r: string): VOStringInstance
+}
+
+interface VOStringOptions {
+  trim?: boolean
+  minLength?: number
+  maxLength?: number
+  pattern?: RegExp
+}
+
+const VOString = (options: VOStringOptions): VOStringConstructor => {
+  return {} as any
+}
+
+const SSS = VOString({ minLength: 0, maxLength: 255 })
+class ShortString extends SSS {}
+
+type SetableValue = string | number | boolean
+
+interface VOSetInstance<T extends SetableValue> {
+  valueOf(): T
+}
+
+type VOSetRaw<T extends SetableValue> =
+  | (T extends number ? number : never)
+  | (T extends string ? string : never)
+  | (T extends boolean ? boolean : never)
+
+interface VOSetConstructor<T extends SetableValue> {
+  new (r: VOSetRaw<T>): VOSetInstance<T>
+}
+
+const VOSet = <T extends SetableValue>(validValues: Array<T>): VOSetConstructor<T> => {
+  return {} as any
+}
+
+const AccountType = VOSet(['Admin', 'Regular', 123])
+new AccountType('123').valueOf()
+
+const VOInteger = () => {
+  return {} as any
+}
+const VOFloat = () => {
+  return {} as any
+}
