@@ -30,6 +30,11 @@ class ID implements NativeValueObject<number> {
   }
 }
 
+export interface VOArrayOptions {
+  minLength?: number
+  maxLength?: number
+}
+
 interface VOArrayInstance<VO extends NativeValueObject<any>> extends Array<VO> {
   valueOf(): Array<VORaw<VO>>
 }
@@ -38,7 +43,10 @@ interface VOArrayConstructor<VOC extends ValueObjectContructor> {
   new (r: Array<VOCRawInit<VOC>>): VOArrayInstance<InstanceType<VOC>>
 }
 
-const VOArray = <VOC extends ValueObjectContructor>(voc: VOC): VOArrayConstructor<VOC> => {
+const VOArray = <VOC extends ValueObjectContructor>(
+  voc: VOC,
+  options: VOArrayOptions = {},
+): VOArrayConstructor<VOC> => {
   return {} as any
 }
 
