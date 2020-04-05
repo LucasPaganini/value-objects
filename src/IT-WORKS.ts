@@ -42,8 +42,7 @@ type VOObjectRawSchema<O extends VOObjectSchema<O>> = {
   [P in keyof O]: O[P] extends ValueObjectContructor ? VOCRaw<O[P]> : never
 }
 
-interface VOObjectConstructor<O extends VOObjectSchema<O>>
-  extends ValueObjectContructor<VOObjectRawSchema<O>, VOObjectRawInitSchema<O>> {
+interface VOObjectConstructor<O extends VOObjectSchema<O>> {
   new (r: VOObjectRawInitSchema<O>): ValueObject<VOObjectRawSchema<O>> & { [P in keyof O]: InstanceType<O[P]> }
 }
 
@@ -67,14 +66,36 @@ const VOOptional = <VOC extends ValueObjectContructor>(voc: VOC): VOOptionalCons
 const IDs = VOArray(ID)
 const _IDs = VOArray(IDs)
 
+class __IDs extends IDs {
+  test() {
+    return true
+  }
+  kkkk() {
+    return ''
+  }
+}
+
+const _OPID = VOOptional(ID)
+class OPID extends _OPID {
+  rhduahrua() {
+    return 1
+  }
+}
+
 const User = VOObject({
   id: ID,
-  ids: IDs,
+  ids: __IDs,
   idss: _IDs,
   o: VOObject({ id: ID }),
-  car: VOOptional(ID),
+  car: OPID,
 })
+
+class _User extends User {
+  hasCar(): boolean {
+    return this.car.value !== undefined
+  }
+}
 
 const ids = new IDs([])
 
-new User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: undefined }).id
+new User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: '' }).valueOf().o
