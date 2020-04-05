@@ -22,20 +22,17 @@ class ID implements ValueObject<number> {
   }
 }
 
-type VOArrayInstance<VOC extends ValueObjectContructor> = ValueObject<Array<VOCRaw<VOC>>> & Array<InstanceType<VOC>>
+interface VOArrayInstance<VO extends ValueObject<any>> extends Array<VO> {
+  valueOf(): Array<VORaw<VO>>
+}
 
 interface VOArrayConstructor<VOC extends ValueObjectContructor> {
-  new (r: Array<VOCRawInit<VOC>>): ValueObject<Array<VOCRaw<VOC>>> & Array<InstanceType<VOC>>
+  new (r: Array<VOCRawInit<VOC>>): VOArrayInstance<InstanceType<VOC>>
 }
 
 const VOArray = <VOC extends ValueObjectContructor>(voc: VOC): VOArrayConstructor<VOC> => {
   return {} as any
 }
-
-const IDs = VOArray(ID)
-const _IDs = VOArray(IDs)
-
-new _IDs([['']]).map(x => x.map(y => y.valueOf()))
 
 type VOObjectSchema<O> = { [P in keyof O]: ValueObjectContructor }
 type VOObjectRawInitSchema<O extends VOObjectSchema<O>> = {
@@ -54,12 +51,30 @@ const VOObject = <O extends VOObjectSchema<O>>(o: O): VOObjectConstructor<O> => 
   return {} as any
 }
 
+interface VOOptionalInstance<VO extends ValueObject<any>> {
+  value?: VO
+  valueOf(): VORaw<VO> | undefined
+}
+
+interface VOOptionalConstructor<VOC extends ValueObjectContructor> {
+  new (r: VOCRawInit<VOC> | undefined): VOOptionalInstance<InstanceType<VOC>>
+}
+
+const VOOptional = <VOC extends ValueObjectContructor>(voc: VOC): VOOptionalConstructor<VOC> => {
+  return {} as any
+}
+
+const IDs = VOArray(ID)
+const _IDs = VOArray(IDs)
+
 const User = VOObject({
   id: ID,
   ids: IDs,
+  idss: _IDs,
+  o: VOObject({ id: ID }),
+  car: VOOptional(ID),
 })
 
 const ids = new IDs([])
-ids.map(x => x.valueOf())
 
-new User({ id: '', ids: [''] }).valueOf()
+new User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: undefined }).id
