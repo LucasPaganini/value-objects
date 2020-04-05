@@ -2,11 +2,19 @@ interface ValueObject<Raw> {
   valueOf(): Raw
 }
 
+interface ValueObject2<Raw> extends ValueObject<Raw> {
+  toRaw(): Raw
+}
+
 interface ValueObjectContructor<Raw = any, RawInit = Raw> {
   new (r: RawInit): ValueObject<Raw>
 }
 
-type VORaw<VO extends ValueObject<any>> = VO extends ValueObject<infer R> ? R : never
+type VORaw<VO extends ValueObject<any>> = VO extends ValueObject2<any>
+  ? ReturnType<VO['toRaw']>
+  : VO extends ValueObject<infer R>
+  ? R
+  : never
 type VOCRawInit<VOC extends ValueObjectContructor> = VOC extends ValueObjectContructor<any, infer T> ? T : never
 type VOCRaw<VOC extends ValueObjectContructor> = VOC extends ValueObjectContructor ? VORaw<InstanceType<VOC>> : never
 
@@ -43,13 +51,14 @@ type VOObjectRawSchema<O extends VOObjectSchema<O>> = {
 }
 type VOObjectPropsSchema<O extends VOObjectSchema<O>> = { [P in keyof O]: InstanceType<O[P]> }
 
-interface VOObjectInstance<O extends VOObjectSchema<O>> {
+interface VOObjectInstance<O extends VOObjectSchema<O>> extends ValueObject2<O> {
   props: VOObjectPropsSchema<O>
   valueOf(): VOObjectRawSchema<O>
+  toRaw(): VOObjectRawSchema<O>
 }
 
 interface VOObjectConstructor<O extends VOObjectSchema<O>> {
-  new (r: VOObjectRawInitSchema<O>): VOObjectInstance<O>
+  new (r: VOObjectRawInitSchema<O>): ValueObject2<VOObjectRawSchema<O>> & { [P in keyof O]: InstanceType<O[P]> }
 }
 
 const VOObject = <O extends VOObjectSchema<O>>(o: O): VOObjectConstructor<O> => {
@@ -100,7 +109,7 @@ const User = VOObject(sss)
 
 class _User extends User {
   hasCar(): boolean {
-    return this.props.car.value !== undefined
+    return this.car.value !== undefined
   }
 }
 
@@ -109,8 +118,11 @@ const ids = new IDs([])
 const u = new User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: '' })
 const uu = new _User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: '' })
 
+u.toRaw().o.id
+uu.toRaw().o.id
+
 u.valueOf().o.id
-uu.valueOf().o.id
+u.valueOf().idss
 
 type VOObjectRawSchema__<O extends VOObjectSchema<O>> = {
   [P in keyof O]: O[P] extends ValueObjectContructor ? VOCRaw<O[P]> : never
@@ -118,6 +130,7 @@ type VOObjectRawSchema__<O extends VOObjectSchema<O>> = {
 
 type GGG = typeof sss['o']
 type HHH = InstanceType<GGG>
-type FFF = HHH['valueOf']
+type FFF = HHH['toRaw']
+type ZZZ = ReturnType<FFF>
 
 Object.assign
