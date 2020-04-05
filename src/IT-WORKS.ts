@@ -1,3 +1,5 @@
+import { Either, right, left } from 'fp-ts/lib/Either'
+
 interface NativeValueObject<Raw> {
   valueOf(): Raw
 }
@@ -33,6 +35,7 @@ class ID implements NativeValueObject<number> {
 export interface VOArrayOptions {
   minLength?: number
   maxLength?: number
+  maxErrors?: number
 }
 
 interface VOArrayInstance<VO extends NativeValueObject<any>> extends Array<VO> {
@@ -69,7 +72,11 @@ interface VOObjectConstructor<O extends VOObjectSchema<O>> {
   new (r: VOObjectRawInitSchema<O>): ValueObject<VOObjectRawSchema<O>> & { [P in keyof O]: InstanceType<O[P]> }
 }
 
-const VOObject = <O extends VOObjectSchema<O>>(o: O): VOObjectConstructor<O> => {
+export interface VOObjectOptions {
+  maxErrors?: number
+}
+
+const VOObject = <O extends VOObjectSchema<O>>(o: O, options: VOObjectOptions = {}): VOObjectConstructor<O> => {
   return {} as any
 }
 
@@ -235,3 +242,37 @@ const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
 }
 
 const Percentage = VOFloat({ min: 0, max: 100, precision: 2, precisionTrim: 'round' })
+
+const makeFromAny = <VOC extends ValueObjectContructor>(VO: VOC) => (
+  data: any,
+): Either<Array<Error>, InstanceType<VOC>> => {
+  try {
+    return right(new VO(data) as any)
+  } catch (err) {
+    if (err instanceof Error) return left([err])
+    if (err instanceof Array && err.every(e => e instanceof Error)) return left(err)
+    return left([Error()])
+  }
+}
+
+const getData = makeFromAny(_User)
+getData(324)
+
+const makeIsRaw = <VOC extends ValueObjectContructor>(VO: VOC) => (v: any): v is VOCRaw<VOC> => {
+  try {
+    new VO(v)
+    return true
+  } catch {
+    return false
+  }
+}
+
+const isRawAccountType = makeIsRaw(AccountType)
+
+const makeIs = <VOC extends ValueObjectContructor>(VO: VOC) => (v: any): v is InstanceType<VOC> => v instanceof VO
+
+const toRaw = <VO extends NativeValueObject<any>>(vo: VO): VO extends NativeValueObject<infer Raw> ? Raw : never =>
+  vo.valueOf()
+
+const hhh = new ID('')
+const ooo = toRaw(hhh)
