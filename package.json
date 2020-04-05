@@ -23,7 +23,7 @@
     "jasmine": "^3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
     "rimraf": "^3.0.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "fp-ts": "^2.4.3"
