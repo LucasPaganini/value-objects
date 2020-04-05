@@ -150,7 +150,7 @@ interface VOStringOptions {
   pattern?: RegExp
 }
 
-const VOString = (options: VOStringOptions): VOStringConstructor => {
+const VOString = (options: VOStringOptions = {}): VOStringConstructor => {
   return {} as any
 }
 
@@ -179,9 +179,46 @@ const VOSet = <T extends SetableValue>(validValues: Array<T>): VOSetConstructor<
 const AccountType = VOSet(['Admin', 'Regular', 123])
 new AccountType('123').valueOf()
 
-const VOInteger = () => {
+interface VOIntegerInstance {
+  valueOf(): number
+}
+
+interface VOIntegerConstructor {
+  new (r: number): VOIntegerInstance
+}
+
+interface VOIntegerOptions {
+  min?: number
+  max?: number
+}
+
+const VOInteger = (options: VOIntegerOptions = {}): VOIntegerConstructor => {
   return {} as any
 }
-const VOFloat = () => {
+
+class Age extends VOInteger({ min: 0, max: 150 }) {
+  toMonths() {
+    this.valueOf() * 12
+  }
+}
+
+interface VOFloatInstance {
+  valueOf(): number
+}
+
+interface VOFloatConstructor {
+  new (r: number): VOFloatInstance
+}
+
+interface VOFloatOptions {
+  min?: number
+  max?: number
+  precision?: number
+  precisionTrim?: 'floor' | 'ceil' | 'round'
+}
+
+const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
   return {} as any
 }
+
+const Percentage = VOFloat({ min: 0, max: 100, precision: 2, precisionTrim: 'round' })
