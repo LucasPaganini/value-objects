@@ -41,9 +41,15 @@ type VOObjectRawInitSchema<O extends VOObjectSchema<O>> = {
 type VOObjectRawSchema<O extends VOObjectSchema<O>> = {
   [P in keyof O]: O[P] extends ValueObjectContructor ? VOCRaw<O[P]> : never
 }
+type VOObjectPropsSchema<O extends VOObjectSchema<O>> = { [P in keyof O]: InstanceType<O[P]> }
+
+interface VOObjectInstance<O extends VOObjectSchema<O>> {
+  props: VOObjectPropsSchema<O>
+  valueOf(): VOObjectRawSchema<O>
+}
 
 interface VOObjectConstructor<O extends VOObjectSchema<O>> {
-  new (r: VOObjectRawInitSchema<O>): ValueObject<VOObjectRawSchema<O>> & { [P in keyof O]: InstanceType<O[P]> }
+  new (r: VOObjectRawInitSchema<O>): VOObjectInstance<O>
 }
 
 const VOObject = <O extends VOObjectSchema<O>>(o: O): VOObjectConstructor<O> => {
@@ -82,20 +88,36 @@ class OPID extends _OPID {
   }
 }
 
-const User = VOObject({
+const sss = {
   id: ID,
   ids: __IDs,
   idss: _IDs,
   o: VOObject({ id: ID }),
   car: OPID,
-})
+}
+
+const User = VOObject(sss)
 
 class _User extends User {
   hasCar(): boolean {
-    return this.car.value !== undefined
+    return this.props.car.value !== undefined
   }
 }
 
 const ids = new IDs([])
 
-new User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: '' }).valueOf().o
+const u = new User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: '' })
+const uu = new _User({ id: '', ids: [''], idss: [['']], o: { id: '' }, car: '' })
+
+u.valueOf().o.id
+uu.valueOf().o.id
+
+type VOObjectRawSchema__<O extends VOObjectSchema<O>> = {
+  [P in keyof O]: O[P] extends ValueObjectContructor ? VOCRaw<O[P]> : never
+}
+
+type GGG = typeof sss['o']
+type HHH = InstanceType<GGG>
+type FFF = HHH['valueOf']
+
+Object.assign
