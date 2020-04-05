@@ -65,16 +65,21 @@ const VOObject = <O extends VOObjectSchema<O>>(o: O): VOObjectConstructor<O> => 
   return {} as any
 }
 
-interface VOOptionalInstance<VO extends NativeValueObject<any>> {
-  value?: VO
-  valueOf(): VORaw<VO> | undefined
+type Noneable = undefined | null
+
+interface VOOptionalInstance<VO extends NativeValueObject<any>, None extends Noneable> {
+  value: VO | None
+  valueOf(): VORaw<VO> | None
 }
 
-interface VOOptionalConstructor<VOC extends ValueObjectContructor> {
-  new (r: VOCRawInit<VOC> | undefined): VOOptionalInstance<InstanceType<VOC>>
+interface VOOptionalConstructor<VOC extends ValueObjectContructor, None extends Noneable> {
+  new (r: VOCRawInit<VOC> | None): VOOptionalInstance<InstanceType<VOC>, None>
 }
 
-const VOOptional = <VOC extends ValueObjectContructor>(voc: VOC): VOOptionalConstructor<VOC> => {
+const VOOptional = <VOC extends ValueObjectContructor, None extends Noneable = undefined>(
+  voc: VOC,
+  nones?: Array<None>,
+): VOOptionalConstructor<VOC, None> => {
   return {} as any
 }
 
@@ -90,7 +95,7 @@ class __IDs extends IDs {
   }
 }
 
-const _OPID = VOOptional(ID)
+const _OPID = VOOptional(ID, [null, undefined])
 class OPID extends _OPID {
   rhduahrua() {
     return 1
