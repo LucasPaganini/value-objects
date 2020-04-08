@@ -1,4 +1,5 @@
 export * from './array'
+export * from './errors'
 export * from './float'
 export * from './functions'
 export * from './integer'
