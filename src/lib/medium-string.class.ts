@@ -1,10 +1,4 @@
-import { StringConstructor, StringConstructorError } from '../constructors'
-import { PatternError } from '../errors'
+import { VOString } from '../core'
 
-export const MediumString = StringConstructor(
-  {
-    trim: true,
-    maxLength: 4096, // 2 ** 12
-  },
-  err => err as Exclude<StringConstructorError, PatternError>,
-)
+const maxLength = 4096 // 12 bits
+export const MediumString = VOString({ trim: true, maxLength })

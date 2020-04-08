@@ -1,6 +1,0 @@
-export * from './float-constructor.fn'
-export * from './int-constructor.fn'
-export * from './object-constructor.fn'
-export * from './optional'
-export * from './set-constructor.fn'
-export * from './string-constructor.fn'

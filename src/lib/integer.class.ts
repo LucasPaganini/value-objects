@@ -1,3 +1,3 @@
-import { IntConstructor } from '../constructors'
+import { VOInteger } from '../core'
 
-export const Integer = IntConstructor({ min: 0 })
+export const Integer = VOInteger({ min: 0 })
