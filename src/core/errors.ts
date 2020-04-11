@@ -26,16 +26,16 @@ export class MinSizeError extends Error {
   }
 }
 
-export class NotFoundError extends Error {
+export class NotInSetError extends Error {
   public readonly message = 'Value not found in set'
-  constructor() {
+  constructor(public readonly set: Array<string>, public readonly value: string, public readonly prop?: string) {
     super()
   }
 }
 
 export class NotIntegerError extends Error {
   public readonly message = 'Not an integer'
-  constructor(public readonly value: number) {
+  constructor(public readonly value: number, public readonly prop?: string) {
     super()
   }
 }
@@ -49,7 +49,7 @@ export class PatternError extends Error {
 
 export class RawTypeError extends TypeError {
   public readonly message = 'Wrong raw value type'
-  constructor(public readonly expected: string, public readonly actual: string) {
+  constructor(public readonly expected: string, public readonly actual: string, public readonly prop?: string) {
     super()
   }
 }
@@ -57,6 +57,13 @@ export class RawTypeError extends TypeError {
 export class UnknownError extends Error {
   public readonly message = 'Unknown error'
   constructor() {
+    super()
+  }
+}
+
+export class LogicError extends Error {
+  public readonly message = 'Invalid logic'
+  constructor(public readonly expected: string) {
     super()
   }
 }
