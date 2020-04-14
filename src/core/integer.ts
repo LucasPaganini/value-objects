@@ -1,4 +1,4 @@
-import { MaxSizeError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
+import { MaxSizeError, MinSizeError, NotIntegerError, RawTypeError, LogicError } from './errors'
 
 export interface VOIntegerOptions {
   min?: number
@@ -21,6 +21,9 @@ export const VOInteger = (options: VOIntegerOptions = {}): VOIntegerConstructor 
   if (options.max !== undefined) {
     if (typeof options.max !== 'number') throw new RawTypeError('number', typeof options.max, 'options.max')
     if (!Number.isInteger(options.max)) throw new NotIntegerError(options.max, 'options.max')
+  }
+  if (options.min !== undefined && options.max !== undefined) {
+    if (options.min > options.max) throw new LogicError('options.min should not be bigger than options.max')
   }
 
   return class {
