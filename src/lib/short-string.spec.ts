@@ -1,11 +1,17 @@
-import { toRaw } from '../core'
-import { ShortString } from './short-string.class'
+import { ShortString } from './short-string'
 
 describe('ShortString', () => {
   it('Should trim the value', () => {
-    const actuals = ['   ', ' abc ', ' a b c '].map(v => new ShortString(v)).map(toRaw)
-    const expecteds = ['', 'abc', 'a b c']
-    for (let i = 0; i < actuals.length; i++) expect(actuals[i]).toBe(expecteds[i])
+    const tests = [
+      { raw: '   ', expected: '' },
+      { raw: ' abc ', expected: 'abc' },
+      { raw: ' a b c ', expected: 'a b c' },
+    ]
+
+    for (const { raw, expected } of tests) {
+      const instance = new ShortString(raw)
+      expect(instance.valueOf()).toBe(expected)
+    }
   })
 
   it('Should wrap the string', () => {
@@ -14,16 +20,23 @@ describe('ShortString', () => {
     expect(actual).toBe(expected)
   })
 
-  it('Should reject long strings', () => {
-    const actuals = [0, 50, 200, 256, 257, 500, 1000, 2000]
-    const expecteds = [true, true, true, true, false, false, false, false]
+  it('Should reject strings longer than 256', () => {
+    const tests = [
+      { length: 0, ok: true },
+      { length: 50, ok: true },
+      { length: 200, ok: true },
+      { length: 256, ok: true },
+      { length: 257, ok: false },
+      { length: 500, ok: false },
+      { length: 1000, ok: false },
+      { length: 2000, ok: false },
+    ]
 
-    for (let i = 0; i < actuals.length; i++) {
-      const str = ''.padEnd(actuals[i], 'abc')
+    for (const { length, ok } of tests) {
+      const str = ''.padEnd(length, 'abc')
       const fn = () => new ShortString(str)
 
-      const expectedToThrow = !expecteds[i]
-      if (expectedToThrow) expect(fn).toThrowError('Too long')
+      if (!ok) expect(fn).toThrowError('Too long')
       else expect(fn).not.toThrow()
     }
   })

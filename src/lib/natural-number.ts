@@ -1,3 +1,3 @@
 import { VOInteger } from '../core'
 
-export const NaturalNumber = VOInteger({ min: 0 })
+export class NaturalNumber extends VOInteger({ min: 0 }) {}
