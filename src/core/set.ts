@@ -19,15 +19,14 @@ const isSetable = (v: any): v is Setable => ['number', 'string', 'boolean'].incl
 const expectedSetableTypes = (set: Array<Setable>): Array<'number' | 'string' | 'boolean'> =>
   Array.from(new Set(set.map(v => <'number' | 'string' | 'boolean'>typeof v)))
 
-export const VOSet = <T extends Setable>(validValues: Array<T>): VOSetConstructor<T> => {
-  for (const [i, v] of Object.entries(validValues)) {
-    if (!isSetable(v)) throw new RawTypeError('number | string | boolean', typeof v, `validValues[${i}]`)
-  }
+export const VOSet = <T extends Setable>(setValues: Array<T>): VOSetConstructor<T> => {
+  for (const [i, v] of Object.entries(setValues))
+    if (!isSetable(v)) throw new RawTypeError('number | string | boolean', typeof v, `setValues[${i}]`)
 
-  const set = new Set(validValues)
+  const set = new Set(setValues)
   const stringSet = Array.from(set).map(x => x.toString())
   const isInSet = (v: any): v is T => set.has(v)
-  const expectedTypes = expectedSetableTypes(validValues)
+  const expectedTypes = expectedSetableTypes(setValues)
 
   return class {
     protected _value: T
