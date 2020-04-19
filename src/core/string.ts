@@ -54,6 +54,7 @@ export const VOString = (options: VOStringOptions = {}): VOStringConstructor => 
     protected _value: string
 
     constructor(raw: string) {
+      if (typeof raw !== 'string') throw new RawTypeError('string', typeof raw, 'raw')
       if (trim) raw = raw.trim()
       if (options.minLength !== undefined && raw.length < options.minLength)
         throw new MinLengthError(options.minLength, raw.length)

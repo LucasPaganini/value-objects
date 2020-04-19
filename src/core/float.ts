@@ -26,11 +26,9 @@ const isPrecisionTrim = makeIsInSet(PRECISION_TRIM_SET)
 export const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
   if (options.min !== undefined) {
     if (typeof options.min !== 'number') throw new RawTypeError('number', typeof options.min, 'options.min')
-    if (!Number.isInteger(options.min)) throw new NotIntegerError(options.min, 'options.min')
   }
   if (options.max !== undefined) {
     if (typeof options.max !== 'number') throw new RawTypeError('number', typeof options.max, 'options.max')
-    if (!Number.isInteger(options.max)) throw new NotIntegerError(options.max, 'options.max')
   }
   if (options.min !== undefined && options.max !== undefined) {
     if (options.min > options.max) throw new LogicError('options.min should not be bigger than options.max')
@@ -53,6 +51,7 @@ export const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
     protected _value: number
 
     constructor(raw: number) {
+      if (typeof raw !== 'number') throw new RawTypeError('number', typeof raw, 'raw')
       if (options.precision !== undefined) raw = Math[precisionTrim](raw * precisionPower) / precisionPower
       if (options.min !== undefined && raw < options.min) throw new MinSizeError(options.min, raw)
       if (options.max !== undefined && raw > options.max) throw new MaxSizeError(options.max, raw)
