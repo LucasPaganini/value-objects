@@ -55,7 +55,6 @@ export const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
       if (options.precision !== undefined) raw = Math[precisionTrim](raw * precisionPower) / precisionPower
       if (options.min !== undefined && raw < options.min) throw new MinSizeError(options.min, raw)
       if (options.max !== undefined && raw > options.max) throw new MaxSizeError(options.max, raw)
-      if (!Number.isInteger(raw)) throw new NotIntegerError(raw)
       this._value = raw
     }
 
