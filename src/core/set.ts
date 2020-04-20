@@ -24,7 +24,7 @@ export const VOSet = <T extends Setable>(setValues: Array<T>): VOSetConstructor<
     if (!isSetable(v)) throw new RawTypeError('number | string | boolean', typeof v, `setValues[${i}]`)
 
   const set = new Set(setValues)
-  const stringSet = Array.from(set).map(x => x.toString())
+  const stringfiedSet = Array.from(set).map(x => x.toString())
   const isInSet = (v: any): v is T => set.has(v)
   const expectedTypes = expectedSetableTypes(setValues)
 
@@ -33,7 +33,7 @@ export const VOSet = <T extends Setable>(setValues: Array<T>): VOSetConstructor<
 
     constructor(raw: VOSetRaw<T>) {
       if (!expectedTypes.includes(typeof raw as any)) throw new RawTypeError(expectedTypes.join(' | '), typeof raw)
-      if (!isInSet(raw)) throw new NotInSetError(stringSet, raw.toString(), '')
+      if (!isInSet(raw)) throw new NotInSetError(stringfiedSet, raw.toString(), '')
       this._value = raw
     }
 
