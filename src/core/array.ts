@@ -1,7 +1,7 @@
 import { isLeft } from 'fp-ts/lib/Either'
+import { LogicError, MaxLengthError, MinLengthError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
 import { makeFromRaw } from './functions'
 import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
-import { RawTypeError, NotIntegerError, MinSizeError, LogicError, MinLengthError, MaxLengthError } from './errors'
 
 export interface VOArrayOptions {
   minLength?: number
@@ -9,7 +9,8 @@ export interface VOArrayOptions {
   maxErrors?: number
 }
 
-export interface VOArrayInstance<VO extends NativeValueObject<any>> extends Array<VO> {
+export interface VOArrayInstance<VO extends NativeValueObject<any>> {
+  toArray(): Array<VO>
   valueOf(): Array<VORaw<VO>>
 }
 
@@ -46,7 +47,9 @@ export const VOArray = <VOC extends ValueObjectContructor>(
 
   const maxErrors = options.maxErrors ?? 1
 
-  return class extends Array<InstanceType<VOC>> {
+  return class {
+    private _valueObjects: Array<InstanceType<VOC>> = []
+
     constructor(raw: Array<VOCRawInit<VOC>>) {
       if (!Array.isArray(raw)) {
         const err = Error(`Invalid raw value`)
@@ -61,7 +64,6 @@ export const VOArray = <VOC extends ValueObjectContructor>(
         throw new MaxLengthError(options.maxLength, raw.length)
 
       const errors: Array<Error> = []
-      const valueObjects: Array<InstanceType<VOC>> = []
       const fromRaw = makeFromRaw(VO)
 
       for (const [_i, _raw] of Object.entries(raw)) {
@@ -75,18 +77,19 @@ export const VOArray = <VOC extends ValueObjectContructor>(
           errors.push(...errorsWithIndex)
           if (errors.length >= maxErrors) throw errors
         } else {
-          valueObjects.push(either.right)
+          this._valueObjects.push(either.right)
         }
       }
 
-      if (raw.length !== valueObjects.length) throw Error(`Unknown error`)
-
-      super()
-      for (const vo of valueObjects) this.push(vo)
+      if (raw.length !== this._valueObjects.length) throw Error(`Unknown error`)
     }
 
     valueOf(): Array<VORaw<InstanceType<VOC>>> {
-      return [...this].map(vo => vo.valueOf())
+      return this._valueObjects.map(vo => vo.valueOf())
+    }
+
+    toArray(): Array<InstanceType<VOC>> {
+      return (<Array<InstanceType<VOC>>>[]).concat(this._valueObjects)
     }
   }
 }

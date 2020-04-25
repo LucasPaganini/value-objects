@@ -7,7 +7,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "ES6",
+    "target": "ES5",
     "lib": ["ES2020"],
     "baseUrl": ".",
     "rootDir": "src",

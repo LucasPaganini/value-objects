@@ -19,22 +19,18 @@ describe('VOArray', () => {
     expect(instance.valueOf()).toEqual([456, 456])
   })
 
-  it('Should instantiate an array of instantiated inner classes', () => {
+  it('toArray() should return an array of instantiated inner classes', () => {
     class Base {
       constructor(raw: 123) {}
       valueOf(): 456 {
         return 456
       }
     }
-    class Test extends VOArray(Base) {
-      test() {
-        return 'test'
-      }
-    }
+    class Test extends VOArray(Base) {}
 
     const instance = new Test([123, 123])
-    expect(instance instanceof Array).toBe(true)
-    for (const element of instance) expect(element instanceof Base).toBe(true)
+    expect(instance.toArray() instanceof Array).toBe(true)
+    for (const element of instance.toArray()) expect(element instanceof Base).toBe(true)
   })
 
   it("Should call each inner class' valueOf() when it's valueOf() is called", () => {
