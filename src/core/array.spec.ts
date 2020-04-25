@@ -151,7 +151,7 @@ describe('VOArray', () => {
   })
 
   it('Should be able to set a max errors and throw when the limit is reached or when there are no more values to instantiate', () => {
-    const tests = lengthTests.map(t => t.size).filter(size => size <= 5000)
+    const tests = Array.from(new Set(lengthTests.map(t => t.size))).filter(size => size <= 5000)
     const rawValues = new Array<number>(Math.max(...tests) * 2).fill(0)
 
     class Base {

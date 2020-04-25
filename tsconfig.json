@@ -3,6 +3,7 @@
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noEmitOnError": true,
     "strictNullChecks": true,
     "module": "commonjs",
     "moduleResolution": "node",

@@ -80,6 +80,7 @@ export const VOArray = <VOC extends ValueObjectContructor>(
           this._valueObjects.push(either.right)
         }
       }
+      if (errors.length > 0) throw errors
 
       if (raw.length !== this._valueObjects.length) throw Error(`Unknown error`)
     }
