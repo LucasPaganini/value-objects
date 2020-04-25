@@ -1,6 +1,6 @@
 import { VOArray, VOArrayOptions } from './array'
 
-fdescribe('VOArray', () => {
+describe('VOArray', () => {
   it('Should return a class that can be extended', () => {
     class Base {
       constructor(raw: 123) {}
@@ -59,7 +59,28 @@ fdescribe('VOArray', () => {
     expect(isolatedBases.map(v => v.valueOf())).toEqual(wrappedBases.valueOf())
   })
 
-  it("Should add a .index property to errors thrown by the instantiation of it's inner classes")
+  it("Should add a .index property to errors thrown by the instantiation of it's inner classes", () => {
+    const quantity = 15
+
+    class Base {
+      constructor(error: boolean) {
+        if (error) throw Error('Test error')
+      }
+      valueOf(): 456 {
+        return 456
+      }
+    }
+    class Test extends VOArray(Base) {}
+
+    const rawValues = Array.from({ length: quantity }).map((_, i) => !!(i % 2))
+    const fn = () => new Test(rawValues)
+    expect(fn).toThrowMatching(
+      (errArray): boolean =>
+        Array.isArray(errArray) &&
+        errArray.every(err => err instanceof Error) &&
+        errArray.every(err => typeof err.index === 'number'),
+    )
+  })
 
   it('Should throw on base class creation if one of the options is invalid', () => {
     const tests: Array<VOArrayOptions & { error: string | null }> = [
@@ -133,9 +154,33 @@ fdescribe('VOArray', () => {
     }
   })
 
-  it(
-    'Should be able to set a max errors and throw when the limit is reached or when there are no more values to instantiate',
-  )
+  it('Should be able to set a max errors and throw when the limit is reached or when there are no more values to instantiate', () => {
+    const tests = lengthTests.map(t => t.size).filter(size => size <= 5000)
+    const rawValues = new Array<number>(Math.max(...tests) * 2).fill(0)
+
+    class Base {
+      constructor(raw: number) {
+        throw Error('Test error')
+      }
+      valueOf(): 456 {
+        return 456
+      }
+    }
+
+    for (const maxErrors of tests) {
+      class Test extends VOArray(Base, { maxErrors }) {}
+      const fn = () => new Test(rawValues)
+
+      expect(fn).toThrowMatching(
+        (errArray): boolean =>
+          Array.isArray(errArray) &&
+          errArray.length === maxErrors &&
+          errArray.every(err => err instanceof Error) &&
+          errArray.every(err => typeof err.index === 'number') &&
+          errArray.every((err, i) => err.index === i),
+      )
+    }
+  })
 })
 
 const lengthTests = (() => {
