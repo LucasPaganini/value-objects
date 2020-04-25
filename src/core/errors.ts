@@ -52,6 +52,10 @@ export class RawTypeError extends TypeError {
   constructor(public readonly expected: string, public readonly actual: string, public readonly prop?: string) {
     super()
   }
+
+  static is(err: Error): err is RawTypeError {
+    return err.message === 'Wrong raw value type'
+  }
 }
 
 export class UnknownError extends Error {

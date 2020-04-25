@@ -40,6 +40,15 @@ describe('VOObject', () => {
     expect(instance.valueOf()).toEqual({ aaa: 'aaa', bbb: 'bbb', ccc: 'ccc' })
   })
 
+  it('Should return an record of instantiated inner classes', () => {
+    class Test extends VOObject({ aaa: AAA, bbb: BBB, ccc: CCC }) {}
+
+    const instance = new Test({ aaa: 123, bbb: 456, ccc: 789 })
+    expect(instance.aaa instanceof AAA).toBe(true)
+    expect(instance.bbb instanceof BBB).toBe(true)
+    expect(instance.ccc instanceof CCC).toBe(true)
+  })
+
   it("Should call each inner class' valueOf() when it's valueOf() is called", () => {
     class Test extends VOObject({ aaa: AAA, bbb: BBB, ccc: CCC }) {}
 

@@ -12,7 +12,7 @@ describe('VOSet', () => {
     expect(instance.test()).toBe('test')
   })
 
-  it('Should throw on base class creation if one of values in the set is not Setable', () => {
+  it('Should throw on base class creation if one of the values in the set is not Setable', () => {
     const tests = nonSetableValues.map(nonSetable => [...setableValues, nonSetable])
 
     for (const test of tests) {
@@ -47,7 +47,7 @@ describe('VOSet', () => {
     }
   })
 
-  it('SHould throw if the raw value is not in the set', () => {
+  it('Should throw if the raw value is not in the set', () => {
     const tests = [
       { not: 'c', set: ['a', 'b', '\t', '\n'] },
       { not: 4, set: [1, 2, 3, -1, -2, -3, 0] },
