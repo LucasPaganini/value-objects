@@ -1,7 +1,7 @@
 import { VOOptional } from './optional'
 import { RawTypeError } from './errors'
 
-fdescribe('VOOptional', () => {
+describe('VOOptional', () => {
   class Base {
     constructor(raw: number) {}
     valueOf(): 'base test' {
@@ -60,9 +60,34 @@ fdescribe('VOOptional', () => {
     }
   })
 
-  it("Should return some if it' a some raw value")
+  it("Should return some if it' a some raw value", () => {
+    class Test extends VOOptional(Base) {}
+    const instance = new Test(123)
 
-  it("Should return none if it's a none raw value")
+    expect(instance.isSome()).toBe(true)
+    expect(instance.isNone()).toBe(false)
+    expect(instance.value instanceof Base).toBe(true)
+    expect(instance.value!.valueOf()).toBe('base test')
+  })
+
+  it("Should return none if it's a none raw value", () => {
+    const tests = [
+      { nones: [null], raw: null },
+      { nones: [undefined], raw: undefined },
+      { nones: [undefined, null], raw: undefined },
+      { nones: [undefined, null], raw: null },
+    ]
+
+    for (const test of tests) {
+      class Test extends VOOptional(Base, test.nones) {}
+      const instance = new Test(test.raw)
+
+      expect(instance.isNone()).toBe(true)
+      expect(instance.isSome()).toBe(false)
+      expect(instance.value instanceof Base).toBe(false)
+      expect(instance.value).toBe(test.raw)
+    }
+  })
 })
 
 const noneableValues = [null, undefined]
