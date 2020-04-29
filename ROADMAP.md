@@ -1,0 +1,7 @@
+- Specify a license
+- Remove prod dependencies
+- Minify the dist code
+- Show minified size in npm
+- Add README
+- Figure out how to generate a website for the API docs
+- Make the git repo public
