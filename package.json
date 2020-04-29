@@ -1,8 +1,11 @@
 {
-  "name": "value-objects",
+  "name": "@lucaspaganini/value-objects",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript first validation and class creation library",
+  "main": "main.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh"
@@ -10,12 +13,19 @@
   "keywords": [
     "value objects"
   ],
-  "author": "Lucas Paganini",
-  "private": true,
+  "author": "Lucas Paganini <me@lucaspaganini.com> (https://lucaspaganini.com)",
   "engines": {
     "node": ">=12.14.0",
     "npm": ">=6.13.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasPaganini/value-objects.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LucasPaganini/value-objects/issues"
+  },
+  "homepage": "https://github.com/LucasPaganini/value-objects#readme",
   "devDependencies": {
     "@types/jasmine": "^3.5.2",
     "copyfiles": "^2.2.0",
