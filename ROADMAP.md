@@ -1,4 +1,3 @@
-- Specify a license
 - Add README
 - Figure out how to generate a website for the API docs
 - Make the git repo public
