@@ -4,7 +4,8 @@
   "description": "TypeScript first validation and class creation library",
   "main": "main.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "test": "bash scripts/test.sh",
