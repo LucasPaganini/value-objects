@@ -1,7 +1,7 @@
+import { isLeft } from '../utils'
 import { MinSizeError, NotIntegerError, RawTypeError } from './errors'
-import { ValueObject, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
 import { makeFromRaw } from './functions'
-import { isLeft } from 'fp-ts/lib/Either'
+import { ValueObject, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
 
 export interface VOObjectOptions {
   maxErrors?: number

@@ -1,4 +1,4 @@
-import { Either, left, right } from 'fp-ts/lib/Either'
+import { Either, left, right } from '../utils'
 import { NativeValueObject, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
 
 export const makeFromAny = <VOC extends ValueObjectContructor>(VO: VOC) => (

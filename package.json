@@ -34,7 +34,5 @@
     "rimraf": "^3.0.1",
     "typescript": "^3.8.3"
   },
-  "dependencies": {
-    "fp-ts": "^2.4.3"
-  }
+  "dependencies": {}
 }

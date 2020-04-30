@@ -1,5 +1,4 @@
 - Specify a license
-- Remove prod dependencies
 - Minify the dist code
 - Show minified size in npm
 - Add README

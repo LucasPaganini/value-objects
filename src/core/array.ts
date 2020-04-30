@@ -1,4 +1,4 @@
-import { isLeft } from 'fp-ts/lib/Either'
+import { isLeft } from '../utils'
 import { LogicError, MaxLengthError, MinLengthError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
 import { makeFromRaw } from './functions'
 import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
