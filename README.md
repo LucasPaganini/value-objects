@@ -147,4 +147,5 @@ app.post('/api/create-user', (req, res) => {
   - [VOObject](docs/api.md#voobject)
   - [VOAny](docs/api.md#voany)
   - [Functional helpers](docs/api.md#functions)
+  - [Errors](docs/api.md#errors)
 - [Contribute](docs/contributing.md)
