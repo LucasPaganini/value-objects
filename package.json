@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "bash scripts/test.sh",
-    "build": "bash scripts/build.sh"
+    "build": "bash scripts/build.sh",
+    "calculate-bundles": "bash scripts/calculate-bundles.sh"
   },
   "keywords": [
     "value objects"
@@ -29,10 +30,15 @@
   },
   "homepage": "https://github.com/LucasPaganini/value-objects#readme",
   "devDependencies": {
+    "@types/filesize": "^5.0.0",
     "@types/jasmine": "^3.5.2",
     "copyfiles": "^2.2.0",
+    "filesize": "^6.1.0",
+    "get-folder-size": "^2.0.1",
+    "gzip-size-cli": "^3.0.0",
     "jasmine": "^3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
+    "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.1",
     "typescript": "^3.8.3"
   },

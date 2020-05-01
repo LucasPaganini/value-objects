@@ -1,3 +1,4 @@
-- Add README
 - Figure out how to generate a website for the API docs
 - Make the git repo public
+- Add motivation to README
+- Add usage to README
