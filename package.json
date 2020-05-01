@@ -13,7 +13,21 @@
     "calculate-bundles": "bash scripts/calculate-bundles.sh"
   },
   "keywords": [
-    "value objects"
+    "value object",
+    "value",
+    "object",
+    "objects",
+    "class",
+    "extend",
+    "validation",
+    "domain",
+    "driven",
+    "design",
+    "ddd",
+    "typescript",
+    "type",
+    "safe",
+    "immutable"
   ],
   "author": "Lucas Paganini <me@lucaspaganini.com> (https://lucaspaganini.com)",
   "license": "MIT",
