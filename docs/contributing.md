@@ -1,4 +1,4 @@
-# Contribute
+# Contributing
 
 ## Guidelines (TODO)
 
@@ -10,4 +10,3 @@
 - Write the API docs
 - Add a profile pic to NPM
 - Figure out how to generate a website for the API docs
-- Make the git repo public
