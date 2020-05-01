@@ -20,3 +20,6 @@ gziped_size=$(gzip-size tmp/bundle.js --level=9)
 echo "Unpacked: $unpacked_size"
 echo "Minified bundle: $minified_bundle_size"
 echo "Gzipped minified bundle $gziped_size"
+
+# Clean 
+rimraf tmp
