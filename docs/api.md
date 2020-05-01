@@ -1,6 +1,6 @@
 # @lucaspaganini/value-objects API
 
-## VOInteger {#vointeger}
+## VOInteger
 
 Function to create an Integer value object. Returns a class that accepts a number for instantiation and returns that number when `valueOf()` is called.
 
@@ -26,7 +26,7 @@ You can customize the behaviour of `VOInteger()` passing options to it. Valid op
 | min    | Minimum non incluse acceptable value (doesn't need to be an integer) |
 | max    | Maximum non incluse acceptable value (doesn't need to be an integer) |
 
-> NOTE: `VOInteger()` will throw a `LogicError` if `options.min` is bigger than `options.max`.
+> NOTE: `VOInteger()` will throw a [`LogicError`](#logic-error) if `options.min` is bigger than `options.max`.
 
 ```typescript
 import { VOInteger, VOIntegerOptions } from '@lucaspaganini/value-objects';
@@ -40,20 +40,20 @@ class MyFloatRangeInteger extends VOInteger(options2) {} // OK
 class MyInvalidInteger extends VOInteger(options3) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)
 ```
 
-## VOFloat {#vofloat}
+## VOFloat
 
-## VOString {#vostring}
+## VOString
 
-## VOSet {#voset}
+## VOSet
 
-## VOOptional {#vooptional}
+## VOOptional
 
-## VOArray {#voarray}
+## VOArray
 
-## VOObject {#voobject}
+## VOObject
 
-## VOAny {#voany}
+## VOAny
 
-## Functional {#functions}
+## Functional helpers
 
-## Errors {#errors}
+## Errors

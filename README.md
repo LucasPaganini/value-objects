@@ -25,8 +25,6 @@ If you have to represent the user age in years, would you use a `string` or a `n
 Value objects to the rescue: If you want an age, create an Age object.
 
 ```typescript
-import { VOInteger } from '@lucaspaganini/value-objects';
-
 class Age {
   private _value: number;
 
@@ -146,6 +144,6 @@ app.post('/api/create-user', (req, res) => {
   - [VOArray](docs/api.md#voarray)
   - [VOObject](docs/api.md#voobject)
   - [VOAny](docs/api.md#voany)
-  - [Functional helpers](docs/api.md#functions)
+  - [Functional helpers](docs/api.md#functional-helpers)
   - [Errors](docs/api.md#errors)
 - [Contribute](docs/contributing.md)
