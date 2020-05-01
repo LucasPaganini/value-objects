@@ -1,8 +1,8 @@
 {
   "name": "@lucaspaganini/value-objects",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "TypeScript first validation and class creation library",
-  "main": "main.js",
+  "main": "dist/main.js",
   "files": [
     "dist",
     "src"

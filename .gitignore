@@ -2,6 +2,7 @@
 /dist
 /dist-tsc
 /tmp
+/tmp*
 
 # dependencies
 /node_modules

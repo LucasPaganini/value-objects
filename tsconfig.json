@@ -5,6 +5,8 @@
     "noImplicitReturns": true,
     "noEmitOnError": true,
     "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
