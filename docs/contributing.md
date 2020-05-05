@@ -4,7 +4,6 @@
 
 ## Roadmap
 
-- Add typescript version requirement
 - Write the quickstart
 - Write the API docs
 - Write guidelines for contributing

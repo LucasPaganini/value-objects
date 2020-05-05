@@ -7,6 +7,7 @@
     "dist",
     "src"
   ],
+  "types": "dist/main.d.ts",
   "scripts": {
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
@@ -31,10 +32,6 @@
   ],
   "author": "Lucas Paganini <me@lucaspaganini.com> (https://lucaspaganini.com)",
   "license": "MIT",
-  "engines": {
-    "node": ">=12.14.0",
-    "npm": ">=6.13.4"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LucasPaganini/value-objects.git"

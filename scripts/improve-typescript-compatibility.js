@@ -1,0 +1,59 @@
+const { join } = require('path')
+const { readFile, writeFile, readdir } = require('fs').promises
+const { lstatSync } = require('fs')
+
+const argv = process.argv
+const DIR_PATH = join(process.cwd(), argv[argv.length - 1])
+
+/**
+ * @param {string} file
+ * @returns {boolean}
+ */
+const isDeclarationFile = file => file.endsWith('.d.ts')
+
+/**
+ * @param {string} path
+ * @returns {Promise<Array<{ filename: string; data: string; fullPath: string }>>}
+ */
+const getDeclarationFiles = async dirPath => {
+  const shallowFileInfos = (await readdir(dirPath)).map(filename => {
+    const fullPath = join(dirPath, filename)
+    return { filename, fullPath }
+  })
+
+  const shallowFilesP = shallowFileInfos
+    .filter(({ filename }) => isDeclarationFile(filename))
+    .map(async info => {
+      const data = (await readFile(info.fullPath)).toString()
+      return { ...info, data }
+    })
+  const shallowFiles = await Promise.all(shallowFilesP)
+
+  const deepFilesP = shallowFileInfos
+    .map(({ fullPath }) => fullPath)
+    .filter(fullPath => lstatSync(fullPath).isDirectory())
+    .map(getDeclarationFiles)
+  const deepFiles = (await Promise.all(deepFilesP)).reduce((acc, curr) => acc.concat(curr), [])
+
+  const allFiles = shallowFiles.concat(deepFiles)
+  return allFiles
+}
+
+/**
+ * @param {{ filename: string; data: string; fullPath: string }} file
+ * @returns {Promise<{ filename: string; data: string; fullPath: string }>}
+ */
+const processFile = async file => {
+  // Replace class initializers e.g. "message = 'test';" for "message: 'test';"
+  const data = file.data.replace(/readonly (.*) =/g, 'readonly $1:')
+  return { ...file, data }
+}
+
+;(async () => {
+  const files = await getDeclarationFiles(DIR_PATH)
+  const promises = files.map(async file => {
+    const processed = await processFile(file)
+    await writeFile(processed.fullPath, processed.data)
+  })
+  return Promise.all(promises)
+})()

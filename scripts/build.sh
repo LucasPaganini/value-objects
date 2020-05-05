@@ -14,3 +14,6 @@ copyfiles --up=1 "dist-tsc/**/*" "src/**/!(*.ts)" dist
 
 # Clean the typescript build
 rimraf dist-tsc
+
+# Improve types compatibility
+node scripts/improve-typescript-compatibility dist
