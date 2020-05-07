@@ -24,7 +24,7 @@ describe('VOOptional', () => {
     const tests = nonNoneableValues.map(nonNoneable => [...noneableValues, nonNoneable])
 
     for (const test of tests) {
-      const fn = () => VOOptional(Base, <any[]>test)
+      const fn = () => VOOptional(Base, <Array<any>>test)
       expect(fn).toThrowError('Wrong raw value type')
     }
   })

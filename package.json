@@ -11,8 +11,9 @@
   "scripts": {
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
+    "lint": "eslint src/**/*.ts",
     "calculate-bundles": "bash scripts/calculate-bundles.sh",
-    "prepare": "npm run build"
+    "prepare": "npm run lint && npm run build"
   },
   "keywords": [
     "value object",
@@ -44,7 +45,11 @@
   "devDependencies": {
     "@types/filesize": "^5.0.0",
     "@types/jasmine": "^3.5.2",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "copyfiles": "^2.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
     "filesize": "^6.1.0",
     "get-folder-size": "^2.0.1",
     "gzip-size-cli": "^3.0.0",

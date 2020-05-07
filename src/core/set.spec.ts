@@ -16,7 +16,7 @@ describe('VOSet', () => {
     const tests = nonSetableValues.map(nonSetable => [...setableValues, nonSetable])
 
     for (const test of tests) {
-      const fn = () => VOSet(test as any[])
+      const fn = () => VOSet(test as Array<any>)
       expect(fn).toThrowError('Wrong raw value type')
     }
   })
