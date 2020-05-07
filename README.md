@@ -111,9 +111,9 @@ const userError = new User({
 
 const userSuccess = new User({
   email: 'test@example.com',
-  password: '123abc',
+  password: '123abcABC',
   age: 150,
-  favoriteShows: ['Lost'],
+  favoriteShows: ['You', 'House of Cards'],
 });
 ```
 

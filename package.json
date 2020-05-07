@@ -11,7 +11,8 @@
   "scripts": {
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
-    "calculate-bundles": "bash scripts/calculate-bundles.sh"
+    "calculate-bundles": "bash scripts/calculate-bundles.sh",
+    "prepare": "npm run build"
   },
   "keywords": [
     "value object",
