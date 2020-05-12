@@ -12,8 +12,10 @@
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
     "lint": "eslint src/**/*.ts",
+    "format": "prettier --config ./.prettierrc --write .",
     "calculate-bundles": "bash scripts/calculate-bundles.sh",
-    "prepare": "npm run lint && npm run build"
+    "prepublishOnly": "npm run format && npm run lint && npm run build",
+    "prepare": "npm run build"
   },
   "keywords": [
     "value object",
@@ -56,6 +58,7 @@
     "jasmine": "^3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
     "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.1",
     "typescript": "^3.8.3"
   },
