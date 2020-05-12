@@ -14,9 +14,13 @@
     "lint": "eslint src/**/*.ts",
     "format": "prettier --config ./.prettierrc --write . && prettier --config ./prettier-docs.json --write --ignore-path ./prettier-docs.ignore .",
     "calculate-bundles": "bash scripts/calculate-bundles.sh",
-    "precommit": "npm test && npm run format && npm run lint && npm run build",
     "prepublishOnly": "npm run format && npm run lint && npm run build",
     "prepare": "npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run format && npm run lint && npm run build"
+    }
   },
   "keywords": [
     "value object",
