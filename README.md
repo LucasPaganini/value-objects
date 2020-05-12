@@ -68,10 +68,20 @@ class Age extends VOInteger({ min: 0, max: 150 }) {
 ### Creating value objects
 
 ```typescript
-import { VOString, VOInteger, VOSet, VOArray, VOObject } from '@lucaspaganini/value-objects';
+import {
+  VOString,
+  VOInteger,
+  VOSet,
+  VOArray,
+  VOObject
+} from '@lucaspaganini/value-objects';
 
 const EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
-export class Email extends VOString({ trim: true, maxLength: 256, pattern: EMAIL_PATTERN }) {
+export class Email extends VOString({
+  trim: true,
+  maxLength: 256,
+  pattern: EMAIL_PATTERN
+}) {
   getHost(): string {
     const arr = this.valueOf().split('@');
     return arr[arr.length - 1];
@@ -79,7 +89,12 @@ export class Email extends VOString({ trim: true, maxLength: 256, pattern: EMAIL
 }
 
 const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$/; // One lowercase, one uppercase, one number
-class Password extends VOString({ trim: false, minLength: 8, maxLength: 256, pattern: PASSWORD_PATTERN }) {}
+class Password extends VOString({
+  trim: false,
+  minLength: 8,
+  maxLength: 256,
+  pattern: PASSWORD_PATTERN
+}) {}
 
 class Age extends VOInteger({ min: 0, max: 150 }) {
   toMonths(): number {
@@ -87,7 +102,12 @@ class Age extends VOInteger({ min: 0, max: 150 }) {
   }
 }
 
-class NetflixShow extends VOSet(['You', 'House of Cards', 'Sense8', 'The Witcher']) {}
+class NetflixShow extends VOSet([
+  'You',
+  'House of Cards',
+  'Sense8',
+  'The Witcher'
+]) {}
 
 class NetflixShows extends VOArray(NetflixShow, { minLength: 1 }) {}
 
@@ -95,7 +115,7 @@ class User extends VOObject({
   email: Email,
   password: Password,
   age: Age,
-  favoriteShows: NetflixShows,
+  favoriteShows: NetflixShows
 }) {}
 ```
 
@@ -106,14 +126,14 @@ const userError = new User({
   email: '', // RUNTIME ERROR: Will throw when trying to instantiate an Email with an empty string, but it's still a `string` so it's type is correct
   password: 123, // COMPILATION ERROR: TypeScript expects a `string` because that's what the Password constructor expects
   age: 21.5, // RUNTIME ERROR: Will throw when trying to instantiate an Age with a non integer number. If you want a float, you can extend `VOFloat()`
-  favoriteShows: ['Lost'], // RUNTIME ERROR: "Lost" is not in the set. You might think it shouldn't accept any string, but it's a design decision (see VOSet in the docs)
+  favoriteShows: ['Lost'] // RUNTIME ERROR: "Lost" is not in the set. You might think it shouldn't accept any string, but it's a design decision (see VOSet in the docs)
 });
 
 const userSuccess = new User({
   email: 'test@example.com',
   password: '123abcABC',
   age: 150,
-  favoriteShows: ['You', 'House of Cards'],
+  favoriteShows: ['You', 'House of Cards']
 });
 ```
 
@@ -130,7 +150,8 @@ userFromAny({}); // It expects `any` and will return a `Left<Error[]>`
 
 app.post('/api/create-user', (req, res) => {
   const userEither = userFromAny(req.body);
-  if (userEither._tag === 'Left') return res.status(400).json({ errors: userEither.left });
+  if (userEither._tag === 'Left')
+    return res.status(400).json({ errors: userEither.left });
   const user = userEither.right;
 
   const createdUser = createUser(user);
