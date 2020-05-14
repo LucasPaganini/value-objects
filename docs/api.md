@@ -123,6 +123,76 @@ limited2.valueOf(); // 0.13 => Only 2 precision digits and it's rounded up becau
 
 ## VOString
 
+Function to create a formatted string value object. Returns a class that accepts a string for instantiation and returns that string when `valueOf()` is called. If you have a list of strings and the value **must** be one of the strings, you should use `VOSet`.
+
+```typescript
+import { VOString } from '@lucaspaganini/value-objects';
+
+class UselessString extends VOString() {}
+
+const string = new UselessString('abc'); // OK
+string.valueOf(); // "abc"
+
+new UselessString(5); // Compilation error: Not a string
+```
+
+### VOStringOptions
+
+To make it useful, customize it's behaviour using the options:
+
+
+| Option    | Description                                                  | Rules                                                            |
+| :-------- | :----------------------------------------------------------- | :--------------------------------------------------------------- |
+| trim      | Whether it should trim the raw string (defaults to `false`)  | Boolean                                                          |
+| pattern   | Regular expression pattern for the raw string after trimming | RegExp                                                           |
+| minLength | Minimum inclusive acceptable length after trimming           | Number (integer), >=0, can't be bigger than `options.maxLength`  |
+| maxLength | Maximum inclusive acceptable length after trimming           | Number (integer), >=0, can't be smaller than `options.minLength` |
+
+```typescript
+import { VOString } from '@lucaspaganini/value-objects';
+
+class SuperShortString extends VOString({
+  trim: true,
+  minLength: 4,
+  maxLength: 8
+}) {}
+new SuperShortString('abcd'); // OK
+new SuperShortString(' ab '); // Runtime error: Too short (the length after trimming is 2 but the minLength is 4)
+new SuperShortString('123456789'); // Runtime error: Too long (the length after trimming is 9 but the maxLength is 8)
+
+const EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+class Email extends VOString({
+  trim: true,
+  maxLength: 256,
+  pattern: EMAIL_PATTERN
+}) {}
+new Email('test@example.com'); // OK
+new Email('test.example.com'); // Runtime error: Value doesn't match pattern
+
+const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$/; // One lowercase, one uppercase, one number
+class Password extends VOString({
+  trim: false,
+  minLength: 8,
+  maxLength: 256,
+  pattern: PASSWORD_PATTERN
+}) {}
+new Password('Secret123'); // OK
+new Password('abcd1234'); // Runtime error: Value doesn't match pattern
+new Password(' AB12ab '); // Runtime error: Too short (the length after trimming is 6 but the minLength is 8)
+
+const PASSWORD_BLACKLIST = ['Secret123', 'abc123ABC'];
+class WhitelistedPassword extends Password {
+  constructor(raw: string) {
+    super(raw);
+    const trimmedRaw = this.valueOf();
+    if (PASSWORD_BLACKLIST.includes(trimmedRaw))
+      throw Error('This password is blacklisted');
+  }
+}
+new WhitelistedPassword('Secret123'); // Runtime error: This password is blacklisted
+new WhitelistedPassword('123Secret'); // OK
+```
+
 ## VOSet
 
 ## VOOptional
