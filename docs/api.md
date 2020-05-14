@@ -140,7 +140,6 @@ new UselessString(5); // Compilation error: Not a string
 
 To make it useful, customize it's behaviour using the options:
 
-
 | Option    | Description                                                  | Rules                                                            |
 | :-------- | :----------------------------------------------------------- | :--------------------------------------------------------------- |
 | trim      | Whether it should trim the raw string (defaults to `false`)  | Boolean                                                          |

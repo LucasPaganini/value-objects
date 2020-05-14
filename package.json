@@ -13,13 +13,14 @@
     "build": "bash scripts/build.sh",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --config ./.prettierrc --write . && prettier --config ./prettier-docs.json --write --ignore-path ./prettier-docs.ignore .",
+    "is-formatted": "prettier --config ./.prettierrc --check . && prettier --config ./prettier-docs.json --check --ignore-path ./prettier-docs.ignore .",
     "calculate-bundles": "bash scripts/calculate-bundles.sh",
-    "prepublishOnly": "npm run format && npm run lint && npm run build",
+    "prepublishOnly": "npm run format && npm run lint && npm test && npm run build",
     "prepare": "npm run build"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && npm run format && npm run lint && npm run build"
+      "pre-commit": "npm test && npm run is-formatted && npm run lint"
     }
   },
   "keywords": [
