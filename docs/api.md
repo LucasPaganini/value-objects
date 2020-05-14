@@ -240,6 +240,65 @@ new StrictSet(false); // Compilation error: Expects true | 123
 
 ## VOOptional
 
+Function to create an optional value object. Receives a value object constructor and returns a class that accepts what the value object constructor would accept or a `Noneable` (`Noneable` can be `undefined` or `null`, it defaults to just `undefined`) value. That's super useful when you already have a class with the value you want but you need to make it optional.
+
+```typescript
+type Noneable = undefined | null;
+```
+
+The class created by `VOOptional` wraps the inner class and exposes it through the `value` property when it's instantiated. Calling `valueOf()` will either return the `Noneable` value or the `valueOf()` from the inner class.
+
+```typescript
+import { VOOptional, VOString } from '@lucaspaganini/value-objects';
+
+class Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}
+new Name('Lucas Paganini'); // OK
+new Name(undefined); // Compilation error: Not a string
+new Name(null); // Compilation error: Not a string
+
+class OptionalName extends VOOptional(Name) {}
+new OptionalName('Lucas Paganini'); // OK
+new OptionalName(undefined); // OK
+new OptionalName(null); // Compilation error: Expects string | undefined
+
+const name = new Name('Lucas Paganini'); // OK
+name.valueOf(); // "Lucas Paganini"
+
+const optional1 = new OptionalName('Lucas Paganini'); // OK
+optional1.value; // Name instance
+optional1.valueOf(); // "Lucas Paganini"
+
+const optional2 = new OptionalName(undefined); // OK
+optional2.value; // undefined
+optional2.valueOf(); // undefined
+```
+
+This function has no options but it does accept a second parameter which indicates what `Noneable`s should be used. For default, it only accepts `undefined`, but you can change that to also accept `undefined` and `null` or maybe to just accept `null`.
+
+```typescript
+import { VOSet } from '@lucaspaganini/value-objects';
+
+class Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}
+new Name('Lucas Paganini'); // OK
+new Name(undefined); // Compilation error: Not a string
+new Name(null); // Compilation error: Not a string
+
+class OptionalName1 extends VOOptional(Name) {}
+new OptionalName1('Lucas Paganini'); // OK
+new OptionalName1(undefined); // OK
+new OptionalName1(null); // Compilation error: Expects string | undefined
+
+class OptionalName2 extends VOOptional(Name, [undefined, null]) {}
+new OptionalName2('Lucas Paganini'); // OK
+new OptionalName2(undefined); // OK
+new OptionalName2(null); // OK
+
+class OptionalName3 extends VOOptional(Name, [null]) {}
+new OptionalName3('Lucas Paganini'); // OK
+new OptionalName3(undefined); // Compilation error: Expects string | null
+new OptionalName3(null); // OK
+```
+
 ## VOArray
 
 ## VOObject
