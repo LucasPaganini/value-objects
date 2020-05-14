@@ -23,7 +23,7 @@ export const VOOptional = <VOC extends ValueObjectContructor, None extends Nonea
   VO: VOC,
   nones?: Array<None>,
 ): VOOptionalConstructor<VOC, None> => {
-  const _nones = nones ?? []
+  const _nones = nones ?? [<None>undefined]
   for (const [i, v] of Object.entries(_nones)) {
     if (!isNoneable(v)) throw new RawTypeError(NONEABLES.join(' | '), v, `nones[${i}]`)
   }
