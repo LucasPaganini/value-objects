@@ -1,9 +1,28 @@
 import { LogicError, MaxSizeError, MinSizeError, NotInSetError, NotIntegerError, RawTypeError } from './errors'
 
 export interface VOFloatOptions {
+  /**
+   * Minimum inclusive acceptable value.
+   * @type {number} Can't be bigger than `max`
+   */
   min?: number
+
+  /**
+   * Maximum inclusive acceptable value.
+   * @type {number} Can't be smaller than `min`
+   */
   max?: number
+
+  /**
+   * Floating point precision.
+   * @type {number (integer)} Can't be less than zero
+   */
   precision?: number
+
+  /**
+   * Trimming strategy for numbers with more precision than `precision`.
+   * @type  {"floor" | "ceil" | "round"} Defaults to `"round"`
+   */
   precisionTrim?: 'floor' | 'ceil' | 'round'
 }
 

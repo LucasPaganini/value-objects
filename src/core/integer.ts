@@ -1,7 +1,16 @@
 import { MaxSizeError, MinSizeError, NotIntegerError, RawTypeError, LogicError } from './errors'
 
 export interface VOIntegerOptions {
+  /**
+   * Minimum inclusive acceptable value.
+   * @type {number} Can't be bigger than `max`
+   */
   min?: number
+
+  /**
+   * Maximum inclusive acceptable value.
+   * @type {number} Can't be smaller than `min`
+   */
   max?: number
 }
 

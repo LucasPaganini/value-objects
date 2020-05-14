@@ -9,9 +9,28 @@ import {
 } from './errors'
 
 export interface VOStringOptions {
+  /**
+   * Whether it should trim the raw string.
+   * @type {boolean} Defaults to `false`
+   */
   trim?: boolean
+
+  /**
+   * Minimum inclusive acceptable length after trimming.
+   * @type {number (integer)} Can't be less than zero or bigger than `maxLength`
+   */
   minLength?: number
+
+  /**
+   * Maximum inclusive acceptable length after trimming.
+   * @type {number (integer)} Can't be less than zero or smaller than `minLength`
+   */
   maxLength?: number
+
+  /**
+   * Regular expression pattern for the raw string after trimming.
+   * @type {RegExp}
+   */
   pattern?: RegExp
 }
 

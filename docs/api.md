@@ -194,6 +194,50 @@ new WhitelistedPassword('123Secret'); // OK
 
 ## VOSet
 
+Function to create a set of strings, booleans or numbers. Returns a class that accepts either: (i) a string, boolean or number, or (ii) the literal types of the set values (the expected type depends on the types of the set values and the `options.strict` flag) for instantiation and returns that value when `valueOf()` is called.
+
+```typescript
+import { VOSet } from '@lucaspaganini/value-objects';
+
+class TestSet extends VOSet([123, 'abc']) {}
+new TestSet('abc'); // OK
+new TestSet(''); // Runtime error: Not in set
+new TestSet(1); // Runtime error: Not in set
+new TestSet(false); // Compilation error: Expects string | number
+```
+
+Each value in the set needs to be `Setable`. To be `Setable` is to be a `number`, `string` or `boolean`.
+
+```typescript
+type Setable = string | number | boolean;
+```
+
+### VOSetOptions
+
+The coolest part of `VOSet` is definitely the conditional types that decide what is expected for instantiation and the customization of this behaviour using the `options.strict` flag. See the examples below.
+
+| Option | Description                                                                    | Rules   |
+| :----- | :----------------------------------------------------------------------------- | :------ |
+| strict | Whether it expects the set literal types for instantiation (defaults to false) | Boolean |
+
+```typescript
+import { VOSet } from '@lucaspaganini/value-objects';
+
+class NonStrictSet extends VOSet([123, true]) {}
+new NonStrictSet(true); // OK
+new NonStrictSet('abc'); // Compilation error: Expects number | boolean
+new NonStrictSet(''); // Compilation error: Expects number | boolean
+new NonStrictSet(1); // Runtime error: Not in set
+new NonStrictSet(false); // Runtime error: Not in set
+
+class StrictSet extends VOSet([123, true], { strict: true }) {}
+new StrictSet(true); // OK
+new StrictSet('abc'); // Compilation error: Expects true | 123
+new StrictSet(''); // Compilation error: Expects true | 123
+new StrictSet(1); // Compilation error: Expects true | 123
+new StrictSet(false); // Compilation error: Expects true | 123
+```
+
 ## VOOptional
 
 ## VOArray
