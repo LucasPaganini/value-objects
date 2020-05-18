@@ -301,6 +301,34 @@ new OptionalName3(null); // OK
 
 ## VOArray
 
+Function to create an array value object. Receives a value object constructor and returns a class that accepts an array of what the value object constructor would accept. Calling `valueOf()` calls `valueOf()` for all it's inner instances and returns an array of the results. Useful if you already have a class and you need an array of it.
+
+```typescript
+import { VOString, VOArray } from '@lucaspaganini/value-objects';
+
+const EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+class Email extends VOString({
+  trim: true,
+  maxLength: 256,
+  pattern: EMAIL_PATTERN
+}) {
+  getHost(): string {
+    const arr = this.valueOf().split('@');
+    return arr[arr.length - 1];
+  }
+}
+
+class EmailsArray extends VOArray(Email) {}
+new EmailsArray(['me@lucaspaganini.com', 'test@example.com']); // OK
+new EmailsArray([123]); // Compilation error: Expects Array<string>
+new EmailsArray(['invalid-email']); // Runtime error: Value doesn't match pattern
+
+const emails = new EmailsArray(['me@lucaspaganini.com', 'test@example.com']);
+emails.valueOf(); // ['me@lucaspaganini.com', 'test@example.com']
+emails.toArray(); // [Email, Email]
+emails.toArray().map((email) => email.getHost()); // ['lucaspaganini.com', 'example.com']
+```
+
 ## VOObject
 
 ## VOAny
