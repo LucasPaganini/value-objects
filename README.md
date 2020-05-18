@@ -12,11 +12,11 @@ A TypeScript first validation and class creation library. [Learn in 10 minutes w
 
 NPM's "Unpacked Size" is innacurate because the package includes the source maps and source files for easier debugging. Also, The `lib/` folder is a module aside, it includes some common use cases for the library but it's not included in the main bundle, it's just there for your convenience. I'd bet that most users won't touch the `lib/`, so, the accurate size of this library for most users is this:
 
-| Version 1.0.7           |     Size |
+| Version 1.0.8           |     Size |
 | :---------------------- | -------: |
-| Unpacked                | 25.08 KB |
-| Minified bundle         | 16.15 KB |
-| Gzipped minified bundle |  3.75 KB |
+| Unpacked                | 27.05 KB |
+| Minified bundle         | 17.65 KB |
+| Gzipped minified bundle |  4.01 KB |
 
 ## Motivation
 
@@ -61,7 +61,7 @@ class Age extends VOInteger({ min: 0, max: 150 }) {
 
 | Package version | TypeScript version |
 | --------------: | -----------------: |
-|           1.0.7 |           >= 2.8.1 |
+|           1.0.8 |           >= 2.8.1 |
 
 ## Usage
 
