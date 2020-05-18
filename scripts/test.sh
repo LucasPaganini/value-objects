@@ -13,7 +13,7 @@ tsc -p tsconfig.spec.json
 copyfiles --up=1 "dist-tsc/**/*" "src/**/!(*.ts)" dist
 
 # Run tests with jasmine
-jasmine --config=jasmine.json && 
+node scripts/jasmine.js
 
 # Clean the build
 rimraf dist dist-tsc
