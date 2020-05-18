@@ -1,6 +1,0 @@
-# Ignore everything
-*
-
-# But not markdown
-!**/*.md
-!/docs
