@@ -173,4 +173,5 @@ app.post('/api/create-user', (req, res) => {
   - [VOAny](docs/api.md#voany)
   - [Functional helpers](docs/api.md#functional-helpers)
   - [Errors](docs/api.md#errors)
-- [Contribute](docs/contributing.md)
+- [Contribute](CONTRIBUTING.md)
+- [License (MIT)](LICENSE.md)
