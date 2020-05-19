@@ -329,6 +329,44 @@ emails.toArray(); // [Email, Email]
 emails.toArray().map((email) => email.getHost()); // ['lucaspaganini.com', 'example.com']
 ```
 
+### VOArrayOptions
+
+You can customize the array with some options:
+
+| Option    | Description                                                             | Rules                                                            |
+| :-------- | :---------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| maxErrors | Maximum inclusive errors to acumulate before throwing (defaults to `1`) | Number (integer), >=0                                            |
+| minLength | Minimum inclusive length                                                | Number (integer), >=0, can't be bigger than `options.maxLength`  |
+| maxLength | Maximum inclusive length                                                | Number (integer), >=0, can't be smaller than `options.minLength` |
+
+```typescript
+import { VOArray } from '@lucaspaganini/value-objects';
+
+class Test {
+  constructor(shouldThrow: boolean) {
+    if (shouldThrow) {
+      throw Error('I was instructed to throw');
+    }
+  }
+
+  valueOf() {
+    return "Nevermind me, I'm just a test";
+  }
+}
+new Test(false); // OK
+new Test(true); // Runtime error: I was instructed to throw
+
+class TestsArray extends VOArray(Test, {
+  minLength: 1,
+  maxLength: 5,
+  maxErrors: 2
+}) {}
+new TestsArray([false]); // OK
+new TestsArray([]); // Runtime error: Too short
+new TestsArray([false, false, false, false, false, false]); // Runtime error: Too long
+new TestsArray([true, true, true, true]); // Runtime error: ["I was instructed to throw", "I was instructed to throw"]
+```
+
 ## VOObject
 
 ## VOAny

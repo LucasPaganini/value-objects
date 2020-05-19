@@ -4,8 +4,22 @@ import { makeFromRaw } from './functions'
 import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
 
 export interface VOArrayOptions {
+  /**
+   * Minimum inclusive length.
+   * @type {number (integer)} Can't be less than zero or bigger than `maxLength`
+   */
   minLength?: number
+
+  /**
+   * Maximum inclusive length.
+   * @type {number (integer)} Can't be less than zero or smaller than `minLength`
+   */
   maxLength?: number
+
+  /**
+   * Maximum inclusive errors to acumulate before throwing.
+   * @type {number (integer)} Can't be less than zero, defaults to `1`
+   */
   maxErrors?: number
 }
 
