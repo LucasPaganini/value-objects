@@ -1,6 +1,6 @@
 import { isLeft } from '../utils'
 import { LogicError, MaxLengthError, MinLengthError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
-import { makeFromRaw } from './functions'
+import { makeFromRawInit } from './functions'
 import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
 
 export interface VOArrayOptions {
@@ -78,7 +78,7 @@ export const VOArray = <VOC extends ValueObjectContructor>(
         throw new MaxLengthError(options.maxLength, raw.length)
 
       const errors: Array<Error> = []
-      const fromRaw = makeFromRaw(VO)
+      const fromRaw = makeFromRawInit(VO)
 
       for (const [_i, _raw] of Object.entries(raw)) {
         const index = parseInt(_i)

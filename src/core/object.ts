@@ -1,6 +1,6 @@
 import { isLeft } from '../utils'
 import { MinSizeError, NotIntegerError, RawTypeError } from './errors'
-import { makeFromRaw } from './functions'
+import { makeFromRawInit } from './functions'
 import { ValueObject, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
 
 export interface VOObjectOptions {
@@ -42,7 +42,7 @@ export const VOObject = <O extends VOObjectSchema<O>>(
       const errors: Array<Error> = []
 
       for (const [prop, VO] of Object.entries(schema)) {
-        const fromRaw = makeFromRaw(<any>VO)
+        const fromRaw = makeFromRawInit(<any>VO)
         const either = fromRaw((<any>raw)[prop])
 
         if (isLeft(either)) {
