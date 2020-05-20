@@ -9,18 +9,19 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
+  globals: {},
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
   rules: {
     'no-extra-semi': 'off',
+
+    eqeqeq: ['error', 'always'],
+    'prefer-const': ['error'],
+    camelcase: ['error', { properties: 'always' }],
 
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
