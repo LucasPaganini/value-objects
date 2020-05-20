@@ -369,6 +369,71 @@ new TestsArray([true, true, true, true]); // Runtime error: ["I was instructed t
 
 ## VOObject
 
+Creates an object value object. Receives an object of value object constructors as values and returns a class that accepts an object mapping their keys to what the value object constructor for that key would accept. Calling `valueOf()` calls `valueOf()` for all it's inner instances and returns them in an object. Useful if you want to aggregate classes.
+
+```typescript
+import { VOString, VOObject } from '@lucaspaganini/value-objects';
+
+const EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+class Email extends VOString({
+  trim: true,
+  maxLength: 256,
+  pattern: EMAIL_PATTERN
+}) {
+  getHost(): string {
+    const arr = this.valueOf().split('@');
+    return arr[arr.length - 1];
+  }
+}
+
+class Name extends VOString({
+  trim: true,
+  maxLength: 256,
+  minLength: 1
+}) {}
+
+const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$/; // One lowercase, one uppercase, one number
+class Password extends VOString({
+  trim: false,
+  minLength: 8,
+  maxLength: 256,
+  pattern: PASSWORD_PATTERN
+}) {}
+
+class User extends VOObject({
+  name: Name,
+  email: Email,
+  password: Password
+}) {}
+
+new User({
+  name: 'Lucas',
+  email: 'me@lucaspaganini.com',
+  password: 'Secret123'
+}); // OK
+
+new User({
+  name: 'Lucas',
+  email: 123,
+  password: 'Secret123'
+}); // Compilation error: `.email` expects a string
+
+new User({
+  name: 'Lucas',
+  email: 'lucaspaganini.com',
+  password: 'Secret123'
+}); // Runtime error: `.email` Value doesn't match pattern
+
+const user = new User({
+  name: 'Lucas',
+  email: 'me@lucaspaganini.com',
+  password: 'Secret123'
+});
+
+user.valueOf(); // { name: 'Lucas', email: 'me@lucaspaganini.com', password: 'Secret123' }
+user.email.getHost(); // lucaspaganini.com
+```
+
 ## VOAny
 
 ## Functional helpers
