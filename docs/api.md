@@ -434,6 +434,47 @@ user.valueOf(); // { name: 'Lucas', email: 'me@lucaspaganini.com', password: 'Se
 user.email.getHost(); // lucaspaganini.com
 ```
 
+### VOObjectOptions
+
+You can customize the ammount of errors that the generate class will accumulate before throwing.
+
+You can customize the array with some options:
+
+| Option    | Description                                                             | Rules                 |
+| :-------- | :---------------------------------------------------------------------- | :-------------------- |
+| maxErrors | Maximum inclusive errors to acumulate before throwing (defaults to `1`) | Number (integer), >=0 |
+
+```typescript
+import { VOObject } from '@lucaspaganini/value-objects';
+
+class Test {
+  constructor(shouldThrow: boolean) {
+    if (shouldThrow) {
+      throw Error('I was instructed to throw');
+    }
+  }
+
+  valueOf() {
+    return "Nevermind me, I'm just a test";
+  }
+}
+new Test(false); // OK
+new Test(true); // Runtime error: I was instructed to throw
+
+class TestsObject extends VoObject(
+  {
+    aaa: Test,
+    bbb: Test,
+    ccc: Test
+  },
+  {
+    maxErrors: 2
+  }
+) {}
+new TestsArray({ aaa: false, bbb: false, ccc: false }); // OK
+new TestsArray({ aaa: true, bbb: true, ccc: true }); // Runtime error: ["I was instructed to throw", "I was instructed to throw"]
+```
+
 ## VOAny
 
 ## Functional helpers

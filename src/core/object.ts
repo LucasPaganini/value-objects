@@ -4,6 +4,10 @@ import { makeFromRawInit } from './functions'
 import { ValueObject, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
 
 export interface VOObjectOptions {
+  /**
+   * Maximum inclusive errors to acumulate before throwing.
+   * @type {number (integer)} Can't be less than zero, defaults to `1`
+   */
   maxErrors?: number
 }
 
