@@ -23,16 +23,6 @@ export interface VOIntegerConstructor {
 }
 
 export const VOInteger = (options: VOIntegerOptions = {}): VOIntegerConstructor => {
-  if (options.min !== undefined) {
-    if (typeof options.min !== 'number') throw new RawTypeError('number', typeof options.min, 'options.min')
-  }
-  if (options.max !== undefined) {
-    if (typeof options.max !== 'number') throw new RawTypeError('number', typeof options.max, 'options.max')
-  }
-  if (options.min !== undefined && options.max !== undefined) {
-    if (options.min > options.max) throw new LogicError('options.min should not be bigger than options.max')
-  }
-
   return class {
     protected _value: number
 
