@@ -17,3 +17,7 @@ jasmine.clearReporters()
 jasmine.addReporter(specReporter)
 
 jasmine.execute()
+jasmine.onComplete(passed => {
+  const code = passed ? 0 : 1
+  process.exit(code)
+})
