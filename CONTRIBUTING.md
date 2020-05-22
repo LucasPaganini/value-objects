@@ -24,7 +24,6 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 ## Roadmap
 
 - Write the quickstart
-- Write the API docs
 - Explain what is required for a class to be a ValueObject
 - Add a changelog
 - Figure out how to generate a website for the API docs
