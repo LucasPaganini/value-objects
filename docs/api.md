@@ -477,6 +477,21 @@ new TestsArray({ aaa: true, bbb: true, ccc: true }); // Runtime error: ["I was i
 
 ## VOAny
 
+Function to create one of the inner value objects. Receives a list of value object constructors and returns a class that accepts all that the value objects would accept and tries to instantiate these classes in order.
+
+The class created by `VOAny` wraps the inner classes and exposes the one used for instantiation through the `value` property. Calling `valueOf()` will call `valueOf()` for the inner class.
+
+```typescript
+import { VOAny } from '@lucaspaganini/value-objects';
+
+class Email { ... }
+class UserName { ... }
+class EmailOrUserName extends VOAny([Email, UserName]) {}
+
+new EmailOrUserName('lucas@example.com').value // Email
+new EmailOrUserName('lucas').value // UserName
+```
+
 ## Functional helpers
 
 ## Errors
