@@ -25,7 +25,6 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 
 - Write the quickstart
 - Explain what is required for a class to be a ValueObject
-- Add a changelog
 - Figure out how to generate a website for the API docs
 - Youtube video for the quickstart
 - Youtube tutorials for this lib including usage
