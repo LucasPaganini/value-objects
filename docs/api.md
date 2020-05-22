@@ -488,10 +488,62 @@ class Email { ... }
 class UserName { ... }
 class EmailOrUserName extends VOAny([Email, UserName]) {}
 
-new EmailOrUserName('lucas@example.com').value // Email
+new EmailOrUserName('lucas@example.com').value // ØEmail
 new EmailOrUserName('lucas').value // UserName
 ```
 
 ## Functional helpers
 
-## Errors
+Utility functions created from value object constructors.
+
+### makeIsValidRawInit()
+
+Signature: `<VOC extends ValueObjectContructor>(VO: VOC) => (v: any) => v is VOCRawInit<VOC>`
+
+Makes a function that receives a value and returns a boolean indicating whether that value would be valid to instantiate the value object class.
+
+```typescript
+import { makeIsValidRawInit } from '@lucaspaganini/value-objects';
+
+class Test {
+  constructor(rawInit: string) {
+    if (rawInit !== 'valid') throw Error('invalid raw init value');
+  }
+
+  valueOf() {
+    return 'valid';
+  }
+}
+
+const isValidTestRawInit = makeIsValidRawInit(Test);
+isValidTestRawInit('valid'); // true
+isValidTestRawInit('invalid'); // false
+isValidTestRawInit('abc'); // false
+isValidTestRawInit(123); // false
+```
+
+### makeFromRawInit()
+
+Signature: `<VOC extends ValueObjectContructor>(VO: VOC) => (data: VOCRawInit<VOC>) => Either<Array<Error>, InstanceType<VOC>>`
+
+Makes a function that receives the value object raw init, tries to instantiate the class and returns either the instantiate class or an array of errors.
+
+```typescript
+import { makeFromRawInit } from '@lucaspaganini/value-objects';
+
+class Test {
+  constructor(rawInit: string) {
+    if (rawInit !== 'valid') throw Error('invalid raw init value');
+  }
+
+  valueOf() {
+    return 'valid';
+  }
+}
+
+const testFrom = makeFromRawInit(Test);
+testFrom('valid').right; // Test
+testFrom('invalid').left; // [Error]
+testFrom('abc').left; // [Error]
+testFrom(123).left; // [Error]
+```

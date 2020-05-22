@@ -10,13 +10,10 @@ export const makeIsValidRawInit = <VOC extends ValueObjectContructor>(VO: VOC) =
   }
 }
 
-export const makeIsInstance = <VOC extends ValueObjectContructor>(VO: VOC) => (v: any): v is InstanceType<VOC> =>
-  v instanceof VO
-
 export const makeFromRawInit = <VOC extends ValueObjectContructor>(VO: VOC) => (
   data: VOCRawInit<VOC>,
 ): Either<Array<Error>, InstanceType<VOC>> => {
-  const isError = makeIsInstance(Error)
+  const isError = (v: any): v is Error => v instanceof Error
 
   try {
     return right(new VO(data) as any)
@@ -29,12 +26,10 @@ export const makeFromRawInit = <VOC extends ValueObjectContructor>(VO: VOC) => (
 
 export interface ValueObjectFunctions<VOC extends ValueObjectContructor> {
   isValidRawInit(v: any): v is VOCRawInit<VOC>
-  isInstance(v: any): v is InstanceType<VOC>
   fromRawInit(data: VOCRawInit<VOC>): Either<Array<Error>, InstanceType<VOC>>
 }
 
 export const makeFunctions = <VOC extends ValueObjectContructor>(VO: VOC): ValueObjectFunctions<VOC> => ({
   isValidRawInit: makeIsValidRawInit(VO),
-  isInstance: makeIsInstance(VO),
   fromRawInit: makeFromRawInit(VO),
 })
