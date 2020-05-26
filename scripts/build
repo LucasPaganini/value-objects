@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Clean the last build
 rimraf dist dist-tsc &&
 
 # Build typescript files in dist-tsc/
-tsc -p tsconfig.spec.json &&
+tsc &&
 
 # Copy 
 # - non typescript files on src/ 
@@ -12,8 +12,8 @@ tsc -p tsconfig.spec.json &&
 # to dist/
 copyfiles --up=1 "dist-tsc/**/*" "src/**/!(*.ts)" dist &&
 
-# Run tests with jasmine
-node scripts/jasmine.js &&
+# Clean the typescript build
+rimraf dist-tsc &&
 
-# Clean the build
-rimraf dist dist-tsc
+# Improve types compatibility
+scripts/improve-typescript-compatibility dist

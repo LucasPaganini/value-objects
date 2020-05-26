@@ -9,11 +9,11 @@
   ],
   "types": "dist/main.d.ts",
   "scripts": {
-    "test": "bash scripts/test.sh",
-    "build": "bash scripts/build.sh",
-    "lint": "prettier --check . && eslint src/**/*.ts",
-    "format": "prettier --write . && eslint --fix src/**/*.ts",
-    "calculate-bundles": "bash scripts/calculate-bundles.sh",
+    "test": "scripts/test",
+    "build": "scripts/build",
+    "lint": "scripts/lint",
+    "format": "scripts/format",
+    "calculate-bundles": "scripts/calculate-bundles",
     "prepublishOnly": "npm run format && npm run lint && npm test && npm run build",
     "prepare": "npm run build"
   },

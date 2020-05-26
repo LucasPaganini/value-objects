@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { join } = require('path')
 const { readFile, writeFile, readdir } = require('fs').promises
 const { lstatSync } = require('fs')
