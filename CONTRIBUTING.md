@@ -23,7 +23,6 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 
 ## Roadmap
 
-- Write the quickstart
 - Explain what is required for a class to be a ValueObject
 - Figure out how to generate a website for the API docs
 - Youtube video for the quickstart
