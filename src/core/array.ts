@@ -1,7 +1,7 @@
 import { isLeft } from '../utils'
 import { LogicError, MaxLengthError, MinLengthError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
 import { makeFromRawInit } from './functions'
-import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
+import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
 
 export interface VOArrayOptions {
   /**
@@ -23,7 +23,7 @@ export interface VOArrayOptions {
   maxErrors?: number
 }
 
-export interface VOArrayInstance<VO extends NativeValueObject<any>> {
+export interface VOArrayInstance<VO extends ValueObject<any>> {
   toArray(): Array<VO>
   valueOf(): Array<VORaw<VO>>
 }

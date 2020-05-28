@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Make scripts executable and use a shebang to specify the interpreter
+- Rename the `NativeValueObject` interface to `ValueObject`
+- Rename the `ValueObject` interface to `ValueObjectWorkAround`
 
 ## [1.1.0](https://github.com/LucasPaganini/value-objects/releases/tag/v1.1.0) - 2020-05-19
 

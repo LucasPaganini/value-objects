@@ -1,7 +1,7 @@
 import { isLeft } from '../utils'
 import { MinSizeError, NotIntegerError, RawTypeError } from './errors'
 import { makeFromRawInit } from './functions'
-import { ValueObject, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
+import { ValueObjectWorkAround, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
 
 export interface VOObjectOptions {
   /**
@@ -19,7 +19,7 @@ type VOObjectRawSchema<O extends VOObjectSchema<O>> = {
   [P in keyof O]: O[P] extends ValueObjectContructor ? VOCRaw<O[P]> : never
 }
 
-export type VOObjectInstance<O extends VOObjectSchema<O>> = ValueObject<VOObjectRawSchema<O>> &
+export type VOObjectInstance<O extends VOObjectSchema<O>> = ValueObjectWorkAround<VOObjectRawSchema<O>> &
   { [P in keyof O]: InstanceType<O[P]> }
 
 export interface VOObjectConstructor<O extends VOObjectSchema<O>> {

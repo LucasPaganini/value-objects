@@ -1,18 +1,18 @@
-export interface NativeValueObject<Raw> {
+export interface ValueObject<Raw> {
   valueOf(): Raw
 }
 
-export interface ValueObject<Raw> extends NativeValueObject<Raw> {
+export interface ValueObjectWorkAround<Raw> extends ValueObject<Raw> {
   toRaw(): Raw
 }
 
 export interface ValueObjectContructor<Raw = any, RawInit = Raw> {
-  new (r: RawInit): NativeValueObject<Raw>
+  new (r: RawInit): ValueObject<Raw>
 }
 
-export type VORaw<VO extends NativeValueObject<any>> = VO extends ValueObject<any>
+export type VORaw<VO extends ValueObject<any>> = VO extends ValueObjectWorkAround<any>
   ? ReturnType<VO['toRaw']>
-  : VO extends NativeValueObject<infer R>
+  : VO extends ValueObject<infer R>
   ? R
   : never
 export type VOCRawInit<VOC extends ValueObjectContructor> = VOC extends ValueObjectContructor<any, infer T> ? T : never
