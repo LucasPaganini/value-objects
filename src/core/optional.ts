@@ -1,11 +1,11 @@
-import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw, VOCRaw } from './value-object'
+import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw, VOCRaw } from './value-object'
 import { RawTypeError } from './errors'
 
 export type Noneable = undefined | null
 const NONEABLES: Array<Noneable> = [undefined, null]
 const isNoneable = (v: any): v is Noneable => NONEABLES.includes(v)
 
-export interface VOOptionalInstance<VO extends NativeValueObject<any>, None extends Noneable> {
+export interface VOOptionalInstance<VO extends ValueObject<any>, None extends Noneable> {
   value: VO | None
   isSome(): boolean
   isNone(): boolean

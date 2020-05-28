@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { join } = require('path')
 const getFolderSize = require('get-folder-size')
 const filesize = require('filesize')

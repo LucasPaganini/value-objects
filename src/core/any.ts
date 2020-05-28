@@ -1,7 +1,7 @@
-import { NativeValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
+import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
 import { MinLengthError } from './errors'
 
-export interface VOAnyInstance<VO extends NativeValueObject<any>> {
+export interface VOAnyInstance<VO extends ValueObject<any>> {
   readonly value: VO
   valueOf(): VORaw<VO>
 }

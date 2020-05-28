@@ -12,11 +12,11 @@ A TypeScript first validation and class creation library. [Learn in 10 minutes w
 
 NPM's "Unpacked Size" is innacurate because the package includes the source maps and source files for easier debugging. Also, The `lib/` folder is a module aside, it includes some common use cases for the library but it's not included in the main bundle, it's just there for your convenience. I'd bet that most users won't touch the `lib/`, so, the accurate size of this library for most users is this:
 
-| Version 1.1.0           |     Size |
+| Version 1.2.0           |     Size |
 | :---------------------- | -------: |
-| Unpacked                | 27.09 KB |
-| Minified bundle         | 17.70 KB |
-| Gzipped minified bundle |  4.03 KB |
+| Unpacked                | 26.95 KB |
+| Minified bundle         | 17.57 KB |
+| Gzipped minified bundle |  4.00 KB |
 
 ## Motivation
 
@@ -163,6 +163,7 @@ app.post('/api/create-user', (req, res) => {
 
 - [Learn in 10 minutes with the quickstart](docs/quickstart.md)
 - [API](docs/api.md)
+  - [ValueObject](docs/api.md#value-object)
   - [VOInteger](docs/api.md#vointeger)
   - [VOFloat](docs/api.md#vofloat)
   - [VOString](docs/api.md#vostring)
@@ -172,6 +173,5 @@ app.post('/api/create-user', (req, res) => {
   - [VOObject](docs/api.md#voobject)
   - [VOAny](docs/api.md#voany)
   - [Functional helpers](docs/api.md#functional-helpers)
-  - [Errors](docs/api.md#errors)
 - [Contribute](CONTRIBUTING.md)
 - [License (MIT)](LICENSE.md)
