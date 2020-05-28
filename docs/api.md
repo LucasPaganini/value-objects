@@ -1,6 +1,6 @@
 # @lucaspaganini/value-objects API
 
-## ValueObject
+## [ValueObject](../src/core/value-object.ts)
 
 This is the base interface that drives this whole library. All the utility functions, be it `VOInteger()`, `VOArray()` or `VOSet()`, they all return classes that comply with the `ValueObject` interface.
 
@@ -12,7 +12,7 @@ interface ValueObject<Raw> {
 
 The choice for `valueOf()` is **super** important because it allows us to leverage the way that JavaScript works. Every Object in JavaScript implements `valueOf()`, it's a native thing. That means `Date`, `Boolean`, `Number`, and _many many many other_ JavaScript classes comply with this library.
 
-### ValueObjectConstructor
+### [ValueObjectConstructor](../src/core/value-object.ts)
 
 Another important interface is the `ValueObjectConstructor`. It ensures that the class constructor complies with what we expect. PS: yes, most JavaScript class constructors also comply with this interface.
 
@@ -24,7 +24,7 @@ interface ValueObjectContructor<Raw = any, RawInit = Raw> {
 
 `RawInit` is the type of the value passed to the constructor and `Raw` is the type we return when calling `valueOf()`. In many casØes, they are the same, but there are special cases when you want them to be different. `Number` is a great example, if you call `valueOf()`, you'll always get a `number`, but when constructing, [you can pass it a `string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/Number).
 
-## VOInteger
+## [VOInteger](../src/core/integer.ts)
 
 Function to create an integer number value object. Returns a class that accepts a (integer) number for instantiation and returns that number when `valueOf()` is called.
 
@@ -44,7 +44,7 @@ int2.valueOf(); // 5
 const int3 = new MyInteger(5.5); // Runtime error: Not an integer
 ```
 
-### VOIntegerOptions
+### [VOIntegerOptions](../src/core/integer.ts)
 
 You can customize the behaviour of `VOInteger()` passing options to it. Valid options are:
 
@@ -71,7 +71,7 @@ new MyFloatRangeInteger(101); // Runtime error: Too big
 class MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)
 ```
 
-## VOFloat
+## [VOFloat](../src/core/float.ts)
 
 Function to create a floating point number value object. Returns a class that accepts a number for instantiation and returns that number when `valueOf()` is called.
 
@@ -92,7 +92,7 @@ float3.valueOf(); // 5.5
 const float4 = new MyFloat('5.5'); // Compilation error: Not a number
 ```
 
-### VOFloatOptions
+### [VOFloatOptions](../src/core/float.ts)
 
 You can customize the behaviour of `VOFloat()` passing options to it. It accepts `VOInteger` options and some others. Valid options are:
 
@@ -145,7 +145,7 @@ const limited2 = new LimitedPrecisionFloatWithRange(0.123456789);
 limited2.valueOf(); // 0.13 => Only 2 precision digits and it's rounded up because we're using "ceil"
 ```
 
-## VOString
+## [VOString](../src/core/string.ts)
 
 Function to create a formatted string value object. Returns a class that accepts a string for instantiation and returns that string when `valueOf()` is called. If you have a list of strings and the value **must** be one of the strings, you should use `VOSet`.
 
@@ -160,7 +160,7 @@ string.valueOf(); // "abc"
 new UselessString(5); // Compilation error: Not a string
 ```
 
-### VOStringOptions
+### [VOStringOptions](../src/core/string.ts)
 
 To make it useful, customize it's behaviour using the options:
 
@@ -216,7 +216,7 @@ new WhitelistedPassword('Secret123'); // Runtime error: This password is blackli
 new WhitelistedPassword('123Secret'); // OK
 ```
 
-## VOSet
+## [VOSet](../src/core/set.ts)
 
 Function to create a set of strings, booleans or numbers. Returns a class that accepts either: (i) a string, boolean or number, or (ii) the literal types of the set values (the expected type depends on the types of the set values and the `options.strict` flag) for instantiation and returns that value when `valueOf()` is called.
 
@@ -236,7 +236,7 @@ Each value in the set needs to be `Setable`. To be `Setable` is to be a `number`
 type Setable = string | number | boolean;
 ```
 
-### VOSetOptions
+### [VOSetOptions](../src/core/set.ts)
 
 The coolest part of `VOSet` is definitely the conditional types that decide what is expected for instantiation and the customization of this behaviour using the `options.strict` flag. See the examples below.
 
@@ -262,7 +262,7 @@ new StrictSet(1); // Compilation error: Expects true | 123
 new StrictSet(false); // Compilation error: Expects true | 123
 ```
 
-## VOOptional
+## [VOOptional](../src/core/optional.ts)
 
 Function to create an optional value object. Receives a value object constructor and returns a class that accepts what the value object constructor would accept or a `Noneable` (`Noneable` can be `undefined` or `null`, it defaults to just `undefined`) value. That's super useful when you already have a class with the value you want but you need to make it optional.
 
@@ -323,7 +323,7 @@ new OptionalName3(undefined); // Compilation error: Expects string | null
 new OptionalName3(null); // OK
 ```
 
-## VOArray
+## [VOArray](../src/core/array.ts)
 
 Function to create an array value object. Receives a value object constructor and returns a class that accepts an array of what the value object constructor would accept. Calling `valueOf()` calls `valueOf()` for all it's inner instances and returns an array of the results. Useful if you already have a class and you need an array of it.
 
@@ -353,7 +353,7 @@ emails.toArray(); // [Email, Email]
 emails.toArray().map((email) => email.getHost()); // ['lucaspaganini.com', 'example.com']
 ```
 
-### VOArrayOptions
+### [VOArrayOptions](../src/core/array.ts)
 
 You can customize the array with some options:
 
@@ -391,7 +391,7 @@ new TestsArray([false, false, false, false, false, false]); // Runtime error: To
 new TestsArray([true, true, true, true]); // Runtime error: ["I was instructed to throw", "I was instructed to throw"]
 ```
 
-## VOObject
+## [VOObject](../src/core/object.ts)
 
 Creates an object value object. Receives an object of value object constructors as values and returns a class that accepts an object mapping their keys to what the value object constructor for that key would accept. Calling `valueOf()` calls `valueOf()` for all it's inner instances and returns them in an object. Useful if you want to aggregate classes.
 
@@ -458,7 +458,7 @@ user.valueOf(); // { name: 'Lucas', email: 'me@lucaspaganini.com', password: 'Se
 user.email.getHost(); // lucaspaganini.com
 ```
 
-### VOObjectOptions
+### [VOObjectOptions](../src/core/object.ts)
 
 You can customize the ammount of errors that the generate class will accumulate before throwing.
 
@@ -499,7 +499,7 @@ new TestsArray({ aaa: false, bbb: false, ccc: false }); // OK
 new TestsArray({ aaa: true, bbb: true, ccc: true }); // Runtime error: ["I was instructed to throw", "I was instructed to throw"]
 ```
 
-## VOAny
+## [VOAny](../src/core/any.ts)
 
 Function to create one of the inner value objects. Receives a list of value object constructors and returns a class that accepts all that the value objects would accept and tries to instantiate these classes in order.
 
@@ -516,11 +516,11 @@ new EmailOrUserName('lucas@example.com').value // ØEmail
 new EmailOrUserName('lucas').value // UserName
 ```
 
-## Functional helpers
+## [Functional helpers](../src/core/functions.ts)
 
 Utility functions created from value object constructors.
 
-### makeIsValidRawInit()
+### (makeIsValidRawInit())(../src/core/functions.ts)
 
 Signature: `<VOC extends ValueObjectContructor>(VO: VOC) => (v: any) => v is VOCRawInit<VOC>`
 
@@ -546,7 +546,7 @@ isValidTestRawInit('abc'); // false
 isValidTestRawInit(123); // false
 ```
 
-### makeFromRawInit()
+### (makeFromRawInit())(../src/core/functions.ts)
 
 Signature: `<VOC extends ValueObjectContructor>(VO: VOC) => (data: VOCRawInit<VOC>) => Either<Array<Error>, InstanceType<VOC>>`
 

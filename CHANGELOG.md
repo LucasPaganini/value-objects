@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Write the quickstart
 - Write docs for ValueObject and ValueObjectConstructor
+- Link the source code in the API docs
 
 ### Changed
 
