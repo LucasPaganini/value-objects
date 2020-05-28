@@ -23,9 +23,10 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 
 ## Roadmap
 
-- Explain what is required for a class to be a ValueObject
 - Figure out how to generate a website for the API docs
+- Write gamified guides for common use cases
 - Youtube video for the quickstart
+- Youtube tutorials for how I built this library
 - Youtube tutorials for this lib including usage
 - Youtube tutorials on alternative libs compared to this lib/approach
 

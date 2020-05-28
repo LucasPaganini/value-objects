@@ -1,5 +1,29 @@
 # @lucaspaganini/value-objects API
 
+## ValueObject
+
+This is the base interface that drives this whole library. All the utility functions, be it `VOInteger()`, `VOArray()` or `VOSet()`, they all return classes that comply with the `ValueObject` interface.
+
+```typescript
+interface ValueObject<Raw> {
+  valueOf(): Raw;
+}
+```
+
+The choice for `valueOf()` is **super** important because it allows us to leverage the way that JavaScript works. Every Object in JavaScript implements `valueOf()`, it's a native thing. That means `Date`, `Boolean`, `Number`, and _many many many other_ JavaScript classes comply with this library.
+
+### ValueObjectConstructor
+
+Another important interface is the `ValueObjectConstructor`. It ensures that the class constructor complies with what we expect. PS: yes, most JavaScript class constructors also comply with this interface.
+
+```typescript
+interface ValueObjectContructor<Raw = any, RawInit = Raw> {
+  new (r: RawInit): ValueObject<Raw>;
+}
+```
+
+`RawInit` is the type of the value passed to the constructor and `Raw` is the type we return when calling `valueOf()`. In many casØes, they are the same, but there are special cases when you want them to be different. `Number` is a great example, if you call `valueOf()`, you'll always get a `number`, but when constructing, [you can pass it a `string`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/Number).
+
 ## VOInteger
 
 Function to create an integer number value object. Returns a class that accepts a (integer) number for instantiation and returns that number when `valueOf()` is called.

@@ -163,6 +163,7 @@ app.post('/api/create-user', (req, res) => {
 
 - [Learn in 10 minutes with the quickstart](docs/quickstart.md)
 - [API](docs/api.md)
+  - [ValueObject](docs/api.md#value-object)
   - [VOInteger](docs/api.md#vointeger)
   - [VOFloat](docs/api.md#vofloat)
   - [VOString](docs/api.md#vostring)
