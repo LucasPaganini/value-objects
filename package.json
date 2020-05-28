@@ -13,6 +13,7 @@
     "build": "scripts/build",
     "lint": "scripts/lint",
     "format": "scripts/format",
+    "extract-docs": "typedoc --json docs/docs.json src",
     "calculate-bundles": "scripts/calculate-bundles",
     "prepublishOnly": "npm run format && npm run lint && npm test && npm run build",
     "prepare": "npm run build"
@@ -67,6 +68,7 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
+    "typedoc": "^0.17.7",
     "typescript": "^3.9.3"
   },
   "dependencies": {}

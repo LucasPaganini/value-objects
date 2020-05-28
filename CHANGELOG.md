@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## Added
+
+- Script to generate a JSON API docs
+
 ## [1.2.0](https://github.com/LucasPaganini/value-objects/releases/tag/v1.2.0) - 2020-05-27
 
 ### Added
