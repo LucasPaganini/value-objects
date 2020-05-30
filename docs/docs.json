@@ -3961,6 +3961,7 @@
                   ],
                   "type": {
                     "type": "reference",
+                    "id": 156,
                     "typeArguments": [
                       {
                         "type": "reference",
@@ -4817,16 +4818,6 @@
           "target": 186
         },
         {
-          "id": 386,
-          "name": "ValueObjectWorkAround",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 6
-        },
-        {
           "id": 360,
           "name": "makeFromRawInit",
           "kind": 16777216,
@@ -4911,7 +4902,6 @@
             385,
             387,
             361,
-            386,
             360,
             362,
             359
@@ -5467,7 +5457,6 @@
             "types": [
               {
                 "type": "reference",
-                "id": 6,
                 "typeArguments": [
                   {
                     "type": "reference",
@@ -7187,6 +7176,10 @@
           "flags": {
             "isExported": true
           },
+          "comment": {
+            "shortText": "This is the base interface that drives this whole library.\nAll the utility functions, be it {@link VOInteger}, {@link VOArray} or {@link VOSet},\nthey all return classes that comply with the `ValueObject` interface.",
+            "text": "The choice for `valueOf()` is **super** important because it allows us to leverage\nthe way that JavaScript works. Every Object in JavaScript implements `valueOf()`,\nit's a native thing. That means `Date`, `Boolean`, `Number`, and _many many many other_\nJavaScript classes comply with this library.\n"
+          },
           "typeParameter": [
             {
               "id": 3,
@@ -7195,6 +7188,9 @@
               "kindString": "Type parameter",
               "flags": {
                 "isExported": true
+              },
+              "comment": {
+                "shortText": "Primitive(ish) representation of the value object.\n"
               }
             }
           ],
@@ -7225,7 +7221,7 @@
               "sources": [
                 {
                   "fileName": "src/core/value-object.ts",
-                  "line": 2,
+                  "line": 14,
                   "character": 9
                 }
               ]
@@ -7241,15 +7237,8 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 1,
+              "line": 13,
               "character": 28
-            }
-          ],
-          "extendedBy": [
-            {
-              "type": "reference",
-              "id": 6,
-              "name": "ValueObjectWorkAround"
             }
           ]
         },
@@ -7261,6 +7250,7 @@
           "flags": {
             "isExported": true
           },
+          "comment": {},
           "typeParameter": [
             {
               "id": 13,
@@ -7269,6 +7259,9 @@
               "kindString": "Type parameter",
               "flags": {
                 "isExported": true
+              },
+              "comment": {
+                "shortText": "Primitive(ish) representation of the value object."
               }
             },
             {
@@ -7278,6 +7271,9 @@
               "kindString": "Type parameter",
               "flags": {
                 "isExported": true
+              },
+              "comment": {
+                "shortText": "Initial primitive(ish) used to instantiate the value object.\n"
               }
             }
           ],
@@ -7330,7 +7326,7 @@
               "sources": [
                 {
                   "fileName": "src/core/value-object.ts",
-                  "line": 9,
+                  "line": 31,
                   "character": 66
                 }
               ]
@@ -7346,129 +7342,8 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 9,
+              "line": 31,
               "character": 38
-            }
-          ]
-        },
-        {
-          "id": 6,
-          "name": "ValueObjectWorkAround",
-          "kind": 256,
-          "kindString": "Interface",
-          "flags": {
-            "isExported": true
-          },
-          "typeParameter": [
-            {
-              "id": 7,
-              "name": "Raw",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {
-                "isExported": true
-              }
-            }
-          ],
-          "children": [
-            {
-              "id": 8,
-              "name": "toRaw",
-              "kind": 2048,
-              "kindString": "Method",
-              "flags": {
-                "isExported": true
-              },
-              "signatures": [
-                {
-                  "id": 9,
-                  "name": "toRaw",
-                  "kind": 4096,
-                  "kindString": "Call signature",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "typeParameter",
-                    "name": "Raw"
-                  }
-                }
-              ],
-              "sources": [
-                {
-                  "fileName": "src/core/value-object.ts",
-                  "line": 6,
-                  "character": 7
-                }
-              ]
-            },
-            {
-              "id": 10,
-              "name": "valueOf",
-              "kind": 2048,
-              "kindString": "Method",
-              "flags": {
-                "isExported": true
-              },
-              "signatures": [
-                {
-                  "id": 11,
-                  "name": "valueOf",
-                  "kind": 4096,
-                  "kindString": "Call signature",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "typeParameter",
-                    "name": "Raw"
-                  },
-                  "inheritedFrom": {
-                    "type": "reference",
-                    "id": 4,
-                    "name": "ValueObject.valueOf"
-                  }
-                }
-              ],
-              "sources": [
-                {
-                  "fileName": "src/core/value-object.ts",
-                  "line": 2,
-                  "character": 9
-                }
-              ],
-              "inheritedFrom": {
-                "type": "reference",
-                "id": 4,
-                "name": "ValueObject.valueOf"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Methods",
-              "kind": 2048,
-              "children": [8, 10]
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/value-object.ts",
-              "line": 5,
-              "character": 38
-            }
-          ],
-          "extendedTypes": [
-            {
-              "type": "reference",
-              "id": 2,
-              "typeArguments": [
-                {
-                  "type": "typeParameter",
-                  "name": "Raw"
-                }
-              ],
-              "name": "ValueObject"
             }
           ]
         },
@@ -7480,6 +7355,9 @@
           "flags": {
             "isExported": true
           },
+          "comment": {
+            "shortText": "Returns the raw type of a value object constructor. The raw type is the type of\nthe value returned by the value object when calling `valueOf()`."
+          },
           "typeParameter": [
             {
               "id": 23,
@@ -7488,6 +7366,9 @@
               "kindString": "Type parameter",
               "flags": {
                 "isExported": true
+              },
+              "comment": {
+                "shortText": "The value object constructor from which the raw type is extracted.\n"
               },
               "type": {
                 "type": "reference",
@@ -7499,7 +7380,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 19,
+              "line": 61,
               "character": 18
             }
           ],
@@ -7548,6 +7429,9 @@
           "flags": {
             "isExported": true
           },
+          "comment": {
+            "shortText": "Returns the initial raw type of a value object constructor. The initial raw type is the\ntype of the value used to instantiate the value object when calling `constructor(rawInit)`."
+          },
           "typeParameter": [
             {
               "id": 21,
@@ -7556,6 +7440,9 @@
               "kindString": "Type parameter",
               "flags": {
                 "isExported": true
+              },
+              "comment": {
+                "shortText": "The value object constructor from which the initial raw type is extracted.\n"
               },
               "type": {
                 "type": "reference",
@@ -7567,7 +7454,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 18,
+              "line": 53,
               "character": 22
             }
           ],
@@ -7614,6 +7501,9 @@
           "flags": {
             "isExported": true
           },
+          "comment": {
+            "shortText": "Returns the raw type of a value object. The raw type is the type of the value\nreturned by the value object when calling `valueOf()`."
+          },
           "typeParameter": [
             {
               "id": 19,
@@ -7622,6 +7512,9 @@
               "kindString": "Type parameter",
               "flags": {
                 "isExported": true
+              },
+              "comment": {
+                "shortText": "The value object from which the raw type is extracted.\n"
               },
               "type": {
                 "type": "reference",
@@ -7639,7 +7532,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 13,
+              "line": 41,
               "character": 17
             }
           ],
@@ -7730,7 +7623,7 @@
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [2, 12, 6]
+          "children": [2, 12]
         },
         {
           "title": "Type aliases",
@@ -9026,16 +8919,6 @@
           "target": 186
         },
         {
-          "id": 440,
-          "name": "ValueObjectWorkAround",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 6
-        },
-        {
           "id": 414,
           "name": "makeFromRawInit",
           "kind": 16777216,
@@ -9120,7 +9003,6 @@
             439,
             441,
             415,
-            440,
             414,
             416,
             413
@@ -9136,6 +9018,565 @@
       ]
     },
     {
+      "id": 147,
+      "name": "\"utils/either\"",
+      "kind": 1,
+      "kindString": "Module",
+      "flags": {
+        "isExported": true
+      },
+      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/utils/either.ts",
+      "children": [
+        {
+          "id": 148,
+          "name": "Left",
+          "kind": 256,
+          "kindString": "Interface",
+          "flags": {
+            "isExported": true
+          },
+          "typeParameter": [
+            {
+              "id": 149,
+              "name": "L",
+              "kind": 131072,
+              "kindString": "Type parameter",
+              "flags": {
+                "isExported": true
+              }
+            }
+          ],
+          "children": [
+            {
+              "id": 150,
+              "name": "_tag",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {
+                "isExported": true
+              },
+              "sources": [
+                {
+                  "fileName": "src/utils/either.ts",
+                  "line": 2,
+                  "character": 6
+                }
+              ],
+              "type": {
+                "type": "stringLiteral",
+                "value": "Left"
+              }
+            },
+            {
+              "id": 151,
+              "name": "left",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {
+                "isExported": true
+              },
+              "sources": [
+                {
+                  "fileName": "src/utils/either.ts",
+                  "line": 3,
+                  "character": 6
+                }
+              ],
+              "type": {
+                "type": "typeParameter",
+                "name": "L"
+              }
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "kind": 1024,
+              "children": [150, 151]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 1,
+              "character": 21
+            }
+          ]
+        },
+        {
+          "id": 152,
+          "name": "Right",
+          "kind": 256,
+          "kindString": "Interface",
+          "flags": {
+            "isExported": true
+          },
+          "typeParameter": [
+            {
+              "id": 153,
+              "name": "R",
+              "kind": 131072,
+              "kindString": "Type parameter",
+              "flags": {
+                "isExported": true
+              }
+            }
+          ],
+          "children": [
+            {
+              "id": 154,
+              "name": "_tag",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {
+                "isExported": true
+              },
+              "sources": [
+                {
+                  "fileName": "src/utils/either.ts",
+                  "line": 7,
+                  "character": 6
+                }
+              ],
+              "type": {
+                "type": "stringLiteral",
+                "value": "Right"
+              }
+            },
+            {
+              "id": 155,
+              "name": "right",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {
+                "isExported": true
+              },
+              "sources": [
+                {
+                  "fileName": "src/utils/either.ts",
+                  "line": 8,
+                  "character": 7
+                }
+              ],
+              "type": {
+                "type": "typeParameter",
+                "name": "R"
+              }
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "kind": 1024,
+              "children": [154, 155]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 6,
+              "character": 22
+            }
+          ]
+        },
+        {
+          "id": 156,
+          "name": "Either",
+          "kind": 4194304,
+          "kindString": "Type alias",
+          "flags": {
+            "isExported": true
+          },
+          "typeParameter": [
+            {
+              "id": 157,
+              "name": "L",
+              "kind": 131072,
+              "kindString": "Type parameter",
+              "flags": {
+                "isExported": true
+              }
+            },
+            {
+              "id": 158,
+              "name": "R",
+              "kind": 131072,
+              "kindString": "Type parameter",
+              "flags": {
+                "isExported": true
+              }
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 11,
+              "character": 18
+            }
+          ],
+          "type": {
+            "type": "union",
+            "types": [
+              {
+                "type": "reference",
+                "id": 148,
+                "typeArguments": [
+                  {
+                    "type": "typeParameter",
+                    "name": "L"
+                  }
+                ],
+                "name": "Left"
+              },
+              {
+                "type": "reference",
+                "id": 152,
+                "typeArguments": [
+                  {
+                    "type": "typeParameter",
+                    "name": "R"
+                  }
+                ],
+                "name": "Right"
+              }
+            ]
+          }
+        },
+        {
+          "id": 159,
+          "name": "isLeft",
+          "kind": 64,
+          "kindString": "Function",
+          "flags": {
+            "isExported": true,
+            "isConst": true
+          },
+          "signatures": [
+            {
+              "id": 160,
+              "name": "isLeft",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {
+                "isExported": true
+              },
+              "typeParameter": [
+                {
+                  "id": 161,
+                  "name": "L",
+                  "kind": 131072,
+                  "kindString": "Type parameter",
+                  "flags": {
+                    "isExported": true
+                  }
+                },
+                {
+                  "id": 162,
+                  "name": "R",
+                  "kind": 131072,
+                  "kindString": "Type parameter",
+                  "flags": {
+                    "isExported": true
+                  }
+                }
+              ],
+              "parameters": [
+                {
+                  "id": 163,
+                  "name": "either",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "reference",
+                    "id": 156,
+                    "typeArguments": [
+                      {
+                        "type": "typeParameter",
+                        "name": "L"
+                      },
+                      {
+                        "type": "typeParameter",
+                        "name": "R"
+                      }
+                    ],
+                    "name": "Either"
+                  }
+                }
+              ],
+              "type": {
+                "type": "predicate",
+                "name": "either",
+                "asserts": false,
+                "targetType": {
+                  "type": "reference",
+                  "typeArguments": [
+                    {
+                      "type": "typeParameter",
+                      "name": "L"
+                    }
+                  ],
+                  "name": "Left"
+                }
+              }
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 13,
+              "character": 19
+            }
+          ]
+        },
+        {
+          "id": 164,
+          "name": "isRight",
+          "kind": 64,
+          "kindString": "Function",
+          "flags": {
+            "isExported": true,
+            "isConst": true
+          },
+          "signatures": [
+            {
+              "id": 165,
+              "name": "isRight",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {
+                "isExported": true
+              },
+              "typeParameter": [
+                {
+                  "id": 166,
+                  "name": "L",
+                  "kind": 131072,
+                  "kindString": "Type parameter",
+                  "flags": {
+                    "isExported": true
+                  }
+                },
+                {
+                  "id": 167,
+                  "name": "R",
+                  "kind": 131072,
+                  "kindString": "Type parameter",
+                  "flags": {
+                    "isExported": true
+                  }
+                }
+              ],
+              "parameters": [
+                {
+                  "id": 168,
+                  "name": "either",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "reference",
+                    "id": 156,
+                    "typeArguments": [
+                      {
+                        "type": "typeParameter",
+                        "name": "L"
+                      },
+                      {
+                        "type": "typeParameter",
+                        "name": "R"
+                      }
+                    ],
+                    "name": "Either"
+                  }
+                }
+              ],
+              "type": {
+                "type": "predicate",
+                "name": "either",
+                "asserts": false,
+                "targetType": {
+                  "type": "reference",
+                  "typeArguments": [
+                    {
+                      "type": "typeParameter",
+                      "name": "R"
+                    }
+                  ],
+                  "name": "Right"
+                }
+              }
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 15,
+              "character": 20
+            }
+          ]
+        },
+        {
+          "id": 169,
+          "name": "left",
+          "kind": 64,
+          "kindString": "Function",
+          "flags": {
+            "isExported": true,
+            "isConst": true
+          },
+          "signatures": [
+            {
+              "id": 170,
+              "name": "left",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {
+                "isExported": true
+              },
+              "typeParameter": [
+                {
+                  "id": 171,
+                  "name": "L",
+                  "kind": 131072,
+                  "kindString": "Type parameter",
+                  "flags": {
+                    "isExported": true
+                  }
+                }
+              ],
+              "parameters": [
+                {
+                  "id": 172,
+                  "name": "value",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "typeParameter",
+                    "name": "L"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 148,
+                "typeArguments": [
+                  {
+                    "type": "typeParameter",
+                    "name": "L"
+                  }
+                ],
+                "name": "Left"
+              }
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 17,
+              "character": 17
+            }
+          ]
+        },
+        {
+          "id": 173,
+          "name": "right",
+          "kind": 64,
+          "kindString": "Function",
+          "flags": {
+            "isExported": true,
+            "isConst": true
+          },
+          "signatures": [
+            {
+              "id": 174,
+              "name": "right",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {
+                "isExported": true
+              },
+              "typeParameter": [
+                {
+                  "id": 175,
+                  "name": "R",
+                  "kind": 131072,
+                  "kindString": "Type parameter",
+                  "flags": {
+                    "isExported": true
+                  }
+                }
+              ],
+              "parameters": [
+                {
+                  "id": 176,
+                  "name": "value",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "typeParameter",
+                    "name": "R"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 152,
+                "typeArguments": [
+                  {
+                    "type": "typeParameter",
+                    "name": "R"
+                  }
+                ],
+                "name": "Right"
+              }
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/utils/either.ts",
+              "line": 22,
+              "character": 18
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Interfaces",
+          "kind": 256,
+          "children": [148, 152]
+        },
+        {
+          "title": "Type aliases",
+          "kind": 4194304,
+          "children": [156]
+        },
+        {
+          "title": "Functions",
+          "kind": 64,
+          "children": [159, 164, 169, 173]
+        }
+      ],
+      "sources": [
+        {
+          "fileName": "src/utils/either.ts",
+          "line": 1,
+          "character": 0
+        }
+      ]
+    },
+    {
       "id": 177,
       "name": "\"utils/index\"",
       "kind": 1,
@@ -9144,6 +9585,85 @@
         "isExported": true
       },
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/utils/index.ts",
+      "children": [
+        {
+          "id": 180,
+          "name": "Either",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 156
+        },
+        {
+          "id": 178,
+          "name": "Left",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 148
+        },
+        {
+          "id": 179,
+          "name": "Right",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 152
+        },
+        {
+          "id": 181,
+          "name": "isLeft",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 159
+        },
+        {
+          "id": 182,
+          "name": "isRight",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 164
+        },
+        {
+          "id": 183,
+          "name": "left",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 169
+        },
+        {
+          "id": 184,
+          "name": "right",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 173
+        }
+      ],
+      "groups": [
+        {
+          "title": "References",
+          "kind": 16777216,
+          "children": [180, 178, 179, 181, 182, 183, 184]
+        }
+      ],
       "sources": [
         {
           "fileName": "src/utils/index.ts",
@@ -9179,6 +9699,7 @@
         476,
         465,
         391,
+        147,
         177
       ]
     }
