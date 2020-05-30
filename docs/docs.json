@@ -1,9 +1,9 @@
 {
   "id": 0,
-  "name": "@lucaspaganini/value-objects",
+  "name": "@lucaspaganini/value-objects - v1.2.0",
   "kind": 0,
   "flags": {},
-  "originalName": "",
+  "originalName": "@lucaspaganini/value-objects",
   "children": [
     {
       "id": 132,
@@ -373,24 +373,7 @@
       ]
     },
     {
-      "id": 147,
-      "name": "\"core/any.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/any.spec.ts",
-      "sources": [
-        {
-          "fileName": "src/core/any.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 207,
+      "id": 206,
       "name": "\"core/array\"",
       "kind": 1,
       "kindString": "Module",
@@ -400,7 +383,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/array.ts",
       "children": [
         {
-          "id": 218,
+          "id": 217,
           "name": "VOArrayConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -409,7 +392,7 @@
           },
           "typeParameter": [
             {
-              "id": 219,
+              "id": 218,
               "name": "VOC",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -425,7 +408,7 @@
           ],
           "children": [
             {
-              "id": 220,
+              "id": 219,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -434,7 +417,7 @@
               },
               "signatures": [
                 {
-                  "id": 221,
+                  "id": 220,
                   "name": "new VOArrayConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -443,7 +426,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 222,
+                      "id": 221,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -476,7 +459,7 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 212,
+                    "id": 211,
                     "typeArguments": [
                       {
                         "type": "reference",
@@ -511,7 +494,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [220]
+              "children": [219]
             }
           ],
           "sources": [
@@ -523,7 +506,7 @@
           ]
         },
         {
-          "id": 212,
+          "id": 211,
           "name": "VOArrayInstance",
           "kind": 256,
           "kindString": "Interface",
@@ -532,7 +515,7 @@
           },
           "typeParameter": [
             {
-              "id": 213,
+              "id": 212,
               "name": "VO",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -554,7 +537,7 @@
           ],
           "children": [
             {
-              "id": 214,
+              "id": 213,
               "name": "toArray",
               "kind": 2048,
               "kindString": "Method",
@@ -563,7 +546,7 @@
               },
               "signatures": [
                 {
-                  "id": 215,
+                  "id": 214,
                   "name": "toArray",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -602,7 +585,7 @@
               ]
             },
             {
-              "id": 216,
+              "id": 215,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -611,7 +594,7 @@
               },
               "signatures": [
                 {
-                  "id": 217,
+                  "id": 216,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -661,7 +644,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [214, 216]
+              "children": [213, 215]
             }
           ],
           "sources": [
@@ -673,7 +656,7 @@
           ]
         },
         {
-          "id": 208,
+          "id": 207,
           "name": "VOArrayOptions",
           "kind": 256,
           "kindString": "Interface",
@@ -682,7 +665,7 @@
           },
           "children": [
             {
-              "id": 211,
+              "id": 210,
               "name": "maxErrors",
               "kind": 1024,
               "kindString": "Property",
@@ -715,7 +698,7 @@
               }
             },
             {
-              "id": 210,
+              "id": 209,
               "name": "maxLength",
               "kind": 1024,
               "kindString": "Property",
@@ -748,7 +731,7 @@
               }
             },
             {
-              "id": 209,
+              "id": 208,
               "name": "minLength",
               "kind": 1024,
               "kindString": "Property",
@@ -785,7 +768,7 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [211, 210, 209]
+              "children": [210, 209, 208]
             }
           ],
           "sources": [
@@ -797,7 +780,7 @@
           ]
         },
         {
-          "id": 223,
+          "id": 222,
           "name": "VOArray",
           "kind": 64,
           "kindString": "Function",
@@ -807,7 +790,7 @@
           },
           "signatures": [
             {
-              "id": 224,
+              "id": 223,
               "name": "VOArray",
               "kind": 4096,
               "kindString": "Call signature",
@@ -816,7 +799,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 225,
+                  "id": 224,
                   "name": "VOC",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -832,7 +815,7 @@
               ],
               "parameters": [
                 {
-                  "id": 226,
+                  "id": 225,
                   "name": "VO",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -850,7 +833,7 @@
                   }
                 },
                 {
-                  "id": 227,
+                  "id": 226,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -859,7 +842,7 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 208,
+                    "id": 207,
                     "name": "VOArrayOptions"
                   },
                   "defaultValue": "{}"
@@ -867,7 +850,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 218,
+                "id": 217,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
@@ -896,100 +879,17 @@
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [218, 212, 208]
+          "children": [217, 211, 207]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [223]
+          "children": [222]
         }
       ],
       "sources": [
         {
           "fileName": "src/core/array.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 228,
-      "name": "\"core/array.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/array.spec.ts",
-      "children": [
-        {
-          "id": 229,
-          "name": "lengthTests",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/array.spec.ts",
-              "line": 182,
-              "character": 17
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "reflection",
-              "declaration": {
-                "id": 230,
-                "name": "__type",
-                "kind": 65536,
-                "kindString": "Type literal",
-                "flags": {},
-                "children": [
-                  {
-                    "id": 231,
-                    "name": "range",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/array.spec.ts",
-                        "line": 194,
-                        "character": 68
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    }
-                  }
-                ],
-                "groups": [
-                  {
-                    "title": "Variables",
-                    "kind": 32,
-                    "children": [231]
-                  }
-                ]
-              }
-            }
-          },
-          "defaultValue": "(() => {\n  const ranges = [-10, -5, 0, 5, 10]\n  const testsBase = [\n    { size: 10 },\n    { size: 99 },\n    { size: 287 },\n    { size: 573 },\n    { size: 904 },\n    { size: 2187 },\n    { size: 6700 },\n    { size: 68000 },\n  ]\n  return testsBase.map(test => ranges.map(range => ({ ...test, range }))).reduce((acc, curr) => acc.concat(curr), [])\n})()"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [229]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/core/array.spec.ts",
           "line": 1,
           "character": 0
         }
@@ -1164,11 +1064,6 @@
                     "name": "string"
                   }
                 ]
-              },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
               },
               "inheritedFrom": {
                 "type": "reference",
@@ -1420,11 +1315,6 @@
                     "name": "string"
                   }
                 ]
-              },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
               },
               "inheritedFrom": {
                 "type": "reference",
@@ -1701,11 +1591,6 @@
                   }
                 ]
               },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
-              },
               "inheritedFrom": {
                 "type": "reference",
                 "id": 34,
@@ -1980,11 +1865,6 @@
                   }
                 ]
               },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
-              },
               "inheritedFrom": {
                 "type": "reference",
                 "id": 34,
@@ -2212,11 +2092,6 @@
                     "name": "string"
                   }
                 ]
-              },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
               },
               "inheritedFrom": {
                 "type": "reference",
@@ -2537,11 +2412,6 @@
                   }
                 ]
               },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
-              },
               "inheritedFrom": {
                 "type": "reference",
                 "id": 34,
@@ -2813,11 +2683,6 @@
                   }
                 ]
               },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
-              },
               "inheritedFrom": {
                 "type": "reference",
                 "id": 34,
@@ -3017,11 +2882,6 @@
                     "name": "string"
                   }
                 ]
-              },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
               },
               "inheritedFrom": {
                 "type": "reference",
@@ -3572,11 +3432,6 @@
                   }
                 ]
               },
-              "overwrites": {
-                "type": "reference",
-                "id": 34,
-                "name": "Error.stack"
-              },
               "inheritedFrom": {
                 "type": "reference",
                 "id": 34,
@@ -3649,7 +3504,7 @@
       ]
     },
     {
-      "id": 232,
+      "id": 227,
       "name": "\"core/float\"",
       "kind": 1,
       "kindString": "Module",
@@ -3659,7 +3514,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/float.ts",
       "children": [
         {
-          "id": 241,
+          "id": 236,
           "name": "VOFloatConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -3668,7 +3523,7 @@
           },
           "children": [
             {
-              "id": 242,
+              "id": 237,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -3677,7 +3532,7 @@
               },
               "signatures": [
                 {
-                  "id": 243,
+                  "id": 238,
                   "name": "new VOFloatConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -3686,7 +3541,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 244,
+                      "id": 239,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -3701,7 +3556,7 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 238,
+                    "id": 233,
                     "name": "VOFloatInstance"
                   }
                 }
@@ -3719,7 +3574,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [242]
+              "children": [237]
             }
           ],
           "sources": [
@@ -3731,7 +3586,7 @@
           ]
         },
         {
-          "id": 238,
+          "id": 233,
           "name": "VOFloatInstance",
           "kind": 256,
           "kindString": "Interface",
@@ -3740,7 +3595,7 @@
           },
           "children": [
             {
-              "id": 239,
+              "id": 234,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -3749,7 +3604,7 @@
               },
               "signatures": [
                 {
-                  "id": 240,
+                  "id": 235,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -3775,7 +3630,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [239]
+              "children": [234]
             }
           ],
           "sources": [
@@ -3788,13 +3643,13 @@
           "extendedBy": [
             {
               "type": "reference",
-              "id": 488,
+              "id": 477,
               "name": "Percentage"
             }
           ]
         },
         {
-          "id": 233,
+          "id": 228,
           "name": "VOFloatOptions",
           "kind": 256,
           "kindString": "Interface",
@@ -3803,7 +3658,7 @@
           },
           "children": [
             {
-              "id": 235,
+              "id": 230,
               "name": "max",
               "kind": 1024,
               "kindString": "Property",
@@ -3836,7 +3691,7 @@
               }
             },
             {
-              "id": 234,
+              "id": 229,
               "name": "min",
               "kind": 1024,
               "kindString": "Property",
@@ -3869,7 +3724,7 @@
               }
             },
             {
-              "id": 236,
+              "id": 231,
               "name": "precision",
               "kind": 1024,
               "kindString": "Property",
@@ -3902,7 +3757,7 @@
               }
             },
             {
-              "id": 237,
+              "id": 232,
               "name": "precisionTrim",
               "kind": 1024,
               "kindString": "Property",
@@ -3943,7 +3798,7 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [235, 234, 236, 237]
+              "children": [230, 229, 231, 232]
             }
           ],
           "sources": [
@@ -3955,68 +3810,7 @@
           ]
         },
         {
-          "id": 249,
-          "name": "PRECISION_TRIM_SET",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/float.ts",
-              "line": 42,
-              "character": 24
-            }
-          ],
-          "type": {
-            "type": "reference",
-            "typeArguments": [
-              {
-                "type": "reference",
-                "typeArguments": [
-                  {
-                    "type": "indexedAccess",
-                    "indexType": {
-                      "type": "stringLiteral",
-                      "value": "precisionTrim"
-                    },
-                    "objectType": {
-                      "type": "reference",
-                      "name": "VOFloatOptions"
-                    }
-                  }
-                ],
-                "name": "NonNullable"
-              }
-            ],
-            "name": "Array"
-          },
-          "defaultValue": "['floor', 'ceil', 'round']"
-        },
-        {
-          "id": 250,
-          "name": "isPrecisionTrim",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/float.ts",
-              "line": 43,
-              "character": 21
-            }
-          ],
-          "type": {
-            "type": "reference",
-            "name": "(Anonymous function)"
-          },
-          "defaultValue": "makeIsInSet(PRECISION_TRIM_SET)"
-        },
-        {
-          "id": 251,
+          "id": 240,
           "name": "VOFloat",
           "kind": 64,
           "kindString": "Function",
@@ -4026,7 +3820,7 @@
           },
           "signatures": [
             {
-              "id": 252,
+              "id": 241,
               "name": "VOFloat",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4035,7 +3829,7 @@
               },
               "parameters": [
                 {
-                  "id": 253,
+                  "id": 242,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4044,7 +3838,7 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 233,
+                    "id": 228,
                     "name": "VOFloatOptions"
                   },
                   "defaultValue": "{}"
@@ -4052,7 +3846,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 241,
+                "id": 236,
                 "name": "VOFloatConstructor"
               }
             }
@@ -4064,88 +3858,18 @@
               "character": 20
             }
           ]
-        },
-        {
-          "id": 245,
-          "name": "makeIsInSet",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 246,
-              "name": "makeIsInSet",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "typeParameter": [
-                {
-                  "id": 247,
-                  "name": "T",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "string"
-                  }
-                }
-              ],
-              "parameters": [
-                {
-                  "id": 248,
-                  "name": "values",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "typeParameter",
-                        "name": "T",
-                        "constraint": {
-                          "type": "intrinsic",
-                          "name": "string"
-                        }
-                      }
-                    ],
-                    "name": "Array"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "name": "(Anonymous function)"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/float.ts",
-              "line": 37,
-              "character": 17
-            }
-          ]
         }
       ],
       "groups": [
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [241, 238, 233]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [249, 250]
+          "children": [236, 233, 228]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [251, 245]
+          "children": [240]
         }
       ],
       "sources": [
@@ -4157,224 +3881,7 @@
       ]
     },
     {
-      "id": 254,
-      "name": "\"core/float.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/float.spec.ts",
-      "children": [
-        {
-          "id": 255,
-          "name": "lengthTests",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/float.spec.ts",
-              "line": 185,
-              "character": 17
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "reflection",
-              "declaration": {
-                "id": 256,
-                "name": "__type",
-                "kind": 65536,
-                "kindString": "Type literal",
-                "flags": {},
-                "children": [
-                  {
-                    "id": 257,
-                    "name": "range",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/float.spec.ts",
-                        "line": 197,
-                        "character": 68
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    }
-                  }
-                ],
-                "groups": [
-                  {
-                    "title": "Variables",
-                    "kind": 32,
-                    "children": [257]
-                  }
-                ]
-              }
-            }
-          },
-          "defaultValue": "(() => {\n  const ranges = [-10, -7.5, -5, -0.999999999, -0.0000000001, 0, 0.0000000001, 0.9999999999, 5, 10]\n  const testsBase = [\n    { size: 10 },\n    { size: 99 },\n    { size: 287 },\n    { size: 573 },\n    { size: 904 },\n    { size: 2187 },\n    { size: 6700 },\n    { size: 68000 },\n  ]\n  return testsBase.map(test => ranges.map(range => ({ ...test, range }))).reduce((acc, curr) => acc.concat(curr), [])\n})()"
-        },
-        {
-          "id": 258,
-          "name": "precisionTests",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/float.spec.ts",
-              "line": 200,
-              "character": 20
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "reflection",
-              "declaration": {
-                "id": 259,
-                "name": "__type",
-                "kind": 65536,
-                "kindString": "Type literal",
-                "flags": {},
-                "children": [
-                  {
-                    "id": 263,
-                    "name": "ceil",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/float.spec.ts",
-                        "line": 201,
-                        "character": 49
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    },
-                    "defaultValue": "1.001"
-                  },
-                  {
-                    "id": 262,
-                    "name": "floor",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/float.spec.ts",
-                        "line": 201,
-                        "character": 38
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    },
-                    "defaultValue": "1"
-                  },
-                  {
-                    "id": 261,
-                    "name": "precision",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/float.spec.ts",
-                        "line": 201,
-                        "character": 28
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    },
-                    "defaultValue": "3"
-                  },
-                  {
-                    "id": 264,
-                    "name": "round",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/float.spec.ts",
-                        "line": 201,
-                        "character": 63
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    },
-                    "defaultValue": "1.001"
-                  },
-                  {
-                    "id": 260,
-                    "name": "value",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/float.spec.ts",
-                        "line": 201,
-                        "character": 9
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    },
-                    "defaultValue": "1.0006"
-                  }
-                ],
-                "groups": [
-                  {
-                    "title": "Variables",
-                    "kind": 32,
-                    "children": [263, 262, 261, 264, 260]
-                  }
-                ]
-              }
-            }
-          },
-          "defaultValue": "[\n  { value: 1.0006, precision: 3, floor: 1.0, ceil: 1.001, round: 1.001 },\n  { value: 1.0004, precision: 3, floor: 1.0, ceil: 1.001, round: 1.0 },\n  { value: 1.9599599954, precision: 9, floor: 1.959959995, ceil: 1.959959996, round: 1.959959995 },\n  { value: 1.9599599956, precision: 9, floor: 1.959959995, ceil: 1.959959996, round: 1.959959996 },\n  { value: 1.9599599956, precision: 0, floor: 1, ceil: 2, round: 2 },\n  { value: 1.9599599956, precision: 3, floor: 1.959, ceil: 1.96, round: 1.96 },\n\n  { value: -1.0006, precision: 3, floor: -1.001, ceil: -1.0, round: -1.001 },\n  { value: -1.0004, precision: 3, floor: -1.001, ceil: -1.0, round: -1.0 },\n  { value: -1.9599599954, precision: 9, floor: -1.959959996, ceil: -1.959959995, round: -1.959959995 },\n  { value: -1.9599599956, precision: 9, floor: -1.959959996, ceil: -1.959959995, round: -1.959959996 },\n  { value: -1.9599599956, precision: 0, floor: -2, ceil: -1, round: -2 },\n  { value: -1.9599599956, precision: 3, floor: -1.96, ceil: -1.959, round: -1.96 },\n]"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [255, 258]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/core/float.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 186,
+      "id": 185,
       "name": "\"core/functions\"",
       "kind": 1,
       "kindString": "Module",
@@ -4384,7 +3891,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/functions.ts",
       "children": [
         {
-          "id": 187,
+          "id": 186,
           "name": "ValueObjectFunctions",
           "kind": 256,
           "kindString": "Interface",
@@ -4393,7 +3900,7 @@
           },
           "typeParameter": [
             {
-              "id": 188,
+              "id": 187,
               "name": "VOC",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -4409,7 +3916,7 @@
           ],
           "children": [
             {
-              "id": 192,
+              "id": 191,
               "name": "fromRawInit",
               "kind": 2048,
               "kindString": "Method",
@@ -4418,7 +3925,7 @@
               },
               "signatures": [
                 {
-                  "id": 193,
+                  "id": 192,
                   "name": "fromRawInit",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -4427,7 +3934,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 194,
+                      "id": 193,
                       "name": "data",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -4454,7 +3961,6 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 157,
                     "typeArguments": [
                       {
                         "type": "reference",
@@ -4496,7 +4002,7 @@
               ]
             },
             {
-              "id": 189,
+              "id": 188,
               "name": "isValidRawInit",
               "kind": 2048,
               "kindString": "Method",
@@ -4505,7 +4011,7 @@
               },
               "signatures": [
                 {
-                  "id": 190,
+                  "id": 189,
                   "name": "isValidRawInit",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -4514,7 +4020,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 191,
+                      "id": 190,
                       "name": "v",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -4562,7 +4068,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [192, 189]
+              "children": [191, 188]
             }
           ],
           "sources": [
@@ -4574,7 +4080,7 @@
           ]
         },
         {
-          "id": 199,
+          "id": 198,
           "name": "makeFromRawInit",
           "kind": 64,
           "kindString": "Function",
@@ -4584,7 +4090,7 @@
           },
           "signatures": [
             {
-              "id": 200,
+              "id": 199,
               "name": "makeFromRawInit",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4593,7 +4099,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 201,
+                  "id": 200,
                   "name": "VOC",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -4609,7 +4115,7 @@
               ],
               "parameters": [
                 {
-                  "id": 202,
+                  "id": 201,
                   "name": "VO",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4642,7 +4148,7 @@
           ]
         },
         {
-          "id": 203,
+          "id": 202,
           "name": "makeFunctions",
           "kind": 64,
           "kindString": "Function",
@@ -4652,7 +4158,7 @@
           },
           "signatures": [
             {
-              "id": 204,
+              "id": 203,
               "name": "makeFunctions",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4661,7 +4167,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 205,
+                  "id": 204,
                   "name": "VOC",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -4677,7 +4183,7 @@
               ],
               "parameters": [
                 {
-                  "id": 206,
+                  "id": 205,
                   "name": "VO",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4697,7 +4203,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 187,
+                "id": 186,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
@@ -4722,7 +4228,7 @@
           ]
         },
         {
-          "id": 195,
+          "id": 194,
           "name": "makeIsValidRawInit",
           "kind": 64,
           "kindString": "Function",
@@ -4732,7 +4238,7 @@
           },
           "signatures": [
             {
-              "id": 196,
+              "id": 195,
               "name": "makeIsValidRawInit",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4741,7 +4247,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 197,
+                  "id": 196,
                   "name": "VOC",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -4757,7 +4263,7 @@
               ],
               "parameters": [
                 {
-                  "id": 198,
+                  "id": 197,
                   "name": "VO",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4794,12 +4300,12 @@
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [187]
+          "children": [186]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [199, 203, 195]
+          "children": [198, 202, 194]
         }
       ],
       "sources": [
@@ -4811,7 +4317,7 @@
       ]
     },
     {
-      "id": 381,
+      "id": 337,
       "name": "\"core/index\"",
       "kind": 1,
       "kindString": "Module",
@@ -4821,7 +4327,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/index.ts",
       "children": [
         {
-          "id": 398,
+          "id": 354,
           "name": "LogicError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4831,7 +4337,7 @@
           "target": 123
         },
         {
-          "id": 389,
+          "id": 345,
           "name": "MaxLengthError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4841,7 +4347,7 @@
           "target": 25
         },
         {
-          "id": 390,
+          "id": 346,
           "name": "MaxSizeError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4851,7 +4357,7 @@
           "target": 36
         },
         {
-          "id": 391,
+          "id": 347,
           "name": "MinLengthError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4861,7 +4367,7 @@
           "target": 47
         },
         {
-          "id": 392,
+          "id": 348,
           "name": "MinSizeError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4871,17 +4377,17 @@
           "target": 58
         },
         {
-          "id": 415,
+          "id": 371,
           "name": "Noneable",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 321
+          "target": 290
         },
         {
-          "id": 393,
+          "id": 349,
           "name": "NotInSetError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4891,7 +4397,7 @@
           "target": 69
         },
         {
-          "id": 394,
+          "id": 350,
           "name": "NotIntegerError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4901,7 +4407,7 @@
           "target": 82
         },
         {
-          "id": 395,
+          "id": 351,
           "name": "PatternError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4911,7 +4417,7 @@
           "target": 93
         },
         {
-          "id": 396,
+          "id": 352,
           "name": "RawTypeError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4921,17 +4427,17 @@
           "target": 100
         },
         {
-          "id": 420,
+          "id": 376,
           "name": "Setable",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 349
+          "target": 311
         },
         {
-          "id": 397,
+          "id": 353,
           "name": "UnknownError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4941,7 +4447,7 @@
           "target": 116
         },
         {
-          "id": 384,
+          "id": 340,
           "name": "VOAny",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4951,7 +4457,7 @@
           "target": 143
         },
         {
-          "id": 383,
+          "id": 339,
           "name": "VOAnyConstructor",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4961,7 +4467,7 @@
           "target": 138
         },
         {
-          "id": 382,
+          "id": 338,
           "name": "VOAnyInstance",
           "kind": 16777216,
           "kindString": "Reference",
@@ -4971,47 +4477,47 @@
           "target": 133
         },
         {
-          "id": 388,
+          "id": 344,
           "name": "VOArray",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 223
+          "target": 222
         },
         {
-          "id": 387,
+          "id": 343,
           "name": "VOArrayConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 218
+          "target": 217
         },
         {
-          "id": 386,
+          "id": 342,
           "name": "VOArrayInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 212
+          "target": 211
         },
         {
-          "id": 385,
+          "id": 341,
           "name": "VOArrayOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 208
+          "target": 207
         },
         {
-          "id": 434,
+          "id": 390,
           "name": "VOCRaw",
           "kind": 16777216,
           "kindString": "Reference",
@@ -5021,7 +4527,7 @@
           "target": 22
         },
         {
-          "id": 433,
+          "id": 389,
           "name": "VOCRawInit",
           "kind": 16777216,
           "kindString": "Reference",
@@ -5031,38 +4537,28 @@
           "target": 20
         },
         {
-          "id": 402,
+          "id": 358,
           "name": "VOFloat",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 251
+          "target": 240
         },
         {
-          "id": 401,
+          "id": 357,
           "name": "VOFloatConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 241
+          "target": 236
         },
         {
-          "id": 400,
+          "id": 356,
           "name": "VOFloatInstance",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 238
-        },
-        {
-          "id": 399,
-          "name": "VOFloatOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
@@ -5071,117 +4567,127 @@
           "target": 233
         },
         {
-          "id": 410,
+          "id": 355,
+          "name": "VOFloatOptions",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 228
+        },
+        {
+          "id": 366,
           "name": "VOInteger",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 276
+          "target": 254
         },
         {
-          "id": 409,
+          "id": 365,
           "name": "VOIntegerConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 272
+          "target": 250
         },
         {
-          "id": 408,
+          "id": 364,
           "name": "VOIntegerInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 269
+          "target": 247
         },
         {
-          "id": 407,
+          "id": 363,
           "name": "VOIntegerOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 266
+          "target": 244
         },
         {
-          "id": 414,
+          "id": 370,
           "name": "VOObject",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 299
+          "target": 268
         },
         {
-          "id": 413,
+          "id": 369,
           "name": "VOObjectConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 282
+          "target": 260
         },
         {
-          "id": 412,
+          "id": 368,
           "name": "VOObjectInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 296
+          "target": 265
         },
         {
-          "id": 411,
+          "id": 367,
           "name": "VOObjectOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 280
+          "target": 258
         },
         {
-          "id": 418,
+          "id": 374,
           "name": "VOOptional",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 329
+          "target": 291
         },
         {
-          "id": 417,
+          "id": 373,
           "name": "VOOptionalConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 315
+          "target": 284
         },
         {
-          "id": 416,
+          "id": 372,
           "name": "VOOptionalInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 305
+          "target": 274
         },
         {
-          "id": 432,
+          "id": 388,
           "name": "VORaw",
           "kind": 16777216,
           "kindString": "Reference",
@@ -5191,97 +4697,97 @@
           "target": 18
         },
         {
-          "id": 424,
+          "id": 380,
           "name": "VOSet",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 359
+          "target": 315
         },
         {
-          "id": 423,
+          "id": 379,
           "name": "VOSetConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 343
+          "target": 305
         },
         {
-          "id": 422,
+          "id": 378,
           "name": "VOSetInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 339
+          "target": 301
         },
         {
-          "id": 419,
+          "id": 375,
           "name": "VOSetOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 336
+          "target": 298
         },
         {
-          "id": 421,
+          "id": 377,
           "name": "VOSetRaw",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 350
+          "target": 312
         },
         {
-          "id": 428,
+          "id": 384,
           "name": "VOString",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 378
+          "target": 334
         },
         {
-          "id": 427,
+          "id": 383,
           "name": "VOStringConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 374
+          "target": 330
         },
         {
-          "id": 426,
+          "id": 382,
           "name": "VOStringInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 371
+          "target": 327
         },
         {
-          "id": 425,
+          "id": 381,
           "name": "VOStringOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 366
+          "target": 322
         },
         {
-          "id": 429,
+          "id": 385,
           "name": "ValueObject",
           "kind": 16777216,
           "kindString": "Reference",
@@ -5291,7 +4797,7 @@
           "target": 2
         },
         {
-          "id": 431,
+          "id": 387,
           "name": "ValueObjectContructor",
           "kind": 16777216,
           "kindString": "Reference",
@@ -5301,17 +4807,17 @@
           "target": 12
         },
         {
-          "id": 405,
+          "id": 361,
           "name": "ValueObjectFunctions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 187
+          "target": 186
         },
         {
-          "id": 430,
+          "id": 386,
           "name": "ValueObjectWorkAround",
           "kind": 16777216,
           "kindString": "Reference",
@@ -5321,34 +4827,34 @@
           "target": 6
         },
         {
-          "id": 404,
+          "id": 360,
           "name": "makeFromRawInit",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 199
+          "target": 198
         },
         {
-          "id": 406,
+          "id": 362,
           "name": "makeFunctions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 203
+          "target": 202
         },
         {
-          "id": 403,
+          "id": 359,
           "name": "makeIsValidRawInit",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 195
+          "target": 194
         }
       ],
       "groups": [
@@ -5356,59 +4862,59 @@
           "title": "References",
           "kind": 16777216,
           "children": [
-            398,
-            389,
+            354,
+            345,
+            346,
+            347,
+            348,
+            371,
+            349,
+            350,
+            351,
+            352,
+            376,
+            353,
+            340,
+            339,
+            338,
+            344,
+            343,
+            342,
+            341,
             390,
-            391,
-            392,
-            415,
-            393,
-            394,
-            395,
-            396,
-            420,
-            397,
+            389,
+            358,
+            357,
+            356,
+            355,
+            366,
+            365,
+            364,
+            363,
+            370,
+            369,
+            368,
+            367,
+            374,
+            373,
+            372,
+            388,
+            380,
+            379,
+            378,
+            375,
+            377,
             384,
             383,
             382,
-            388,
-            387,
-            386,
+            381,
             385,
-            434,
-            433,
-            402,
-            401,
-            400,
-            399,
-            410,
-            409,
-            408,
-            407,
-            414,
-            413,
-            412,
-            411,
-            418,
-            417,
-            416,
-            432,
-            424,
-            423,
-            422,
-            419,
-            421,
-            428,
-            427,
-            426,
-            425,
-            429,
-            431,
-            405,
-            430,
-            404,
-            406,
-            403
+            387,
+            361,
+            386,
+            360,
+            362,
+            359
           ]
         }
       ],
@@ -5421,7 +4927,7 @@
       ]
     },
     {
-      "id": 265,
+      "id": 243,
       "name": "\"core/integer\"",
       "kind": 1,
       "kindString": "Module",
@@ -5431,7 +4937,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/integer.ts",
       "children": [
         {
-          "id": 272,
+          "id": 250,
           "name": "VOIntegerConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -5440,7 +4946,7 @@
           },
           "children": [
             {
-              "id": 273,
+              "id": 251,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -5449,7 +4955,7 @@
               },
               "signatures": [
                 {
-                  "id": 274,
+                  "id": 252,
                   "name": "new VOIntegerConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -5458,7 +4964,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 275,
+                      "id": 253,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -5473,7 +4979,7 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 269,
+                    "id": 247,
                     "name": "VOIntegerInstance"
                   }
                 }
@@ -5491,7 +4997,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [273]
+              "children": [251]
             }
           ],
           "sources": [
@@ -5503,7 +5009,7 @@
           ]
         },
         {
-          "id": 269,
+          "id": 247,
           "name": "VOIntegerInstance",
           "kind": 256,
           "kindString": "Interface",
@@ -5512,7 +5018,7 @@
           },
           "children": [
             {
-              "id": 270,
+              "id": 248,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -5521,7 +5027,7 @@
               },
               "signatures": [
                 {
-                  "id": 271,
+                  "id": 249,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -5547,7 +5053,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [270]
+              "children": [248]
             }
           ],
           "sources": [
@@ -5560,13 +5066,13 @@
           "extendedBy": [
             {
               "type": "reference",
-              "id": 462,
+              "id": 454,
               "name": "NaturalNumber"
             }
           ]
         },
         {
-          "id": 266,
+          "id": 244,
           "name": "VOIntegerOptions",
           "kind": 256,
           "kindString": "Interface",
@@ -5575,7 +5081,7 @@
           },
           "children": [
             {
-              "id": 268,
+              "id": 246,
               "name": "max",
               "kind": 1024,
               "kindString": "Property",
@@ -5608,7 +5114,7 @@
               }
             },
             {
-              "id": 267,
+              "id": 245,
               "name": "min",
               "kind": 1024,
               "kindString": "Property",
@@ -5645,7 +5151,7 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [268, 267]
+              "children": [246, 245]
             }
           ],
           "sources": [
@@ -5657,7 +5163,7 @@
           ]
         },
         {
-          "id": 276,
+          "id": 254,
           "name": "VOInteger",
           "kind": 64,
           "kindString": "Function",
@@ -5667,7 +5173,7 @@
           },
           "signatures": [
             {
-              "id": 277,
+              "id": 255,
               "name": "VOInteger",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5676,7 +5182,7 @@
               },
               "parameters": [
                 {
-                  "id": 278,
+                  "id": 256,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5685,7 +5191,7 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 266,
+                    "id": 244,
                     "name": "VOIntegerOptions"
                   },
                   "defaultValue": "{}"
@@ -5693,7 +5199,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 272,
+                "id": 250,
                 "name": "VOIntegerConstructor"
               }
             }
@@ -5711,12 +5217,12 @@
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [272, 269, 266]
+          "children": [250, 247, 244]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [276]
+          "children": [254]
         }
       ],
       "sources": [
@@ -5728,90 +5234,7 @@
       ]
     },
     {
-      "id": 435,
-      "name": "\"core/integer.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/integer.spec.ts",
-      "children": [
-        {
-          "id": 436,
-          "name": "lengthTests",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/integer.spec.ts",
-              "line": 68,
-              "character": 17
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "reflection",
-              "declaration": {
-                "id": 437,
-                "name": "__type",
-                "kind": 65536,
-                "kindString": "Type literal",
-                "flags": {},
-                "children": [
-                  {
-                    "id": 438,
-                    "name": "range",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/integer.spec.ts",
-                        "line": 80,
-                        "character": 68
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    }
-                  }
-                ],
-                "groups": [
-                  {
-                    "title": "Variables",
-                    "kind": 32,
-                    "children": [438]
-                  }
-                ]
-              }
-            }
-          },
-          "defaultValue": "(() => {\n  const ranges = [-10, -5, 0, 5, 10]\n  const testsBase = [\n    { size: 10 },\n    { size: 99 },\n    { size: 287 },\n    { size: 573 },\n    { size: 904 },\n    { size: 2187 },\n    { size: 6700 },\n    { size: 68000 },\n  ]\n  return testsBase.map(test => ranges.map(range => ({ ...test, range }))).reduce((acc, curr) => acc.concat(curr), [])\n})()"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [436]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/core/integer.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 279,
+      "id": 257,
       "name": "\"core/object\"",
       "kind": 1,
       "kindString": "Module",
@@ -5821,7 +5244,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/object.ts",
       "children": [
         {
-          "id": 282,
+          "id": 260,
           "name": "VOObjectConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -5830,7 +5253,7 @@
           },
           "typeParameter": [
             {
-              "id": 283,
+              "id": 261,
               "name": "O",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -5839,7 +5262,6 @@
               },
               "type": {
                 "type": "reference",
-                "id": 287,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
@@ -5852,7 +5274,7 @@
           ],
           "children": [
             {
-              "id": 284,
+              "id": 262,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -5861,7 +5283,7 @@
               },
               "signatures": [
                 {
-                  "id": 285,
+                  "id": 263,
                   "name": "new VOObjectConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -5870,7 +5292,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 286,
+                      "id": 264,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -5879,14 +5301,12 @@
                       },
                       "type": {
                         "type": "reference",
-                        "id": 290,
                         "typeArguments": [
                           {
                             "type": "typeParameter",
                             "name": "O",
                             "constraint": {
                               "type": "reference",
-                              "id": 287,
                               "typeArguments": [
                                 {
                                   "type": "typeParameter",
@@ -5903,14 +5323,13 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 296,
+                    "id": 265,
                     "typeArguments": [
                       {
                         "type": "typeParameter",
                         "name": "O",
                         "constraint": {
                           "type": "reference",
-                          "id": 287,
                           "typeArguments": [
                             {
                               "type": "typeParameter",
@@ -5938,7 +5357,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [284]
+              "children": [262]
             }
           ],
           "sources": [
@@ -5950,7 +5369,7 @@
           ]
         },
         {
-          "id": 280,
+          "id": 258,
           "name": "VOObjectOptions",
           "kind": 256,
           "kindString": "Interface",
@@ -5959,7 +5378,7 @@
           },
           "children": [
             {
-              "id": 281,
+              "id": 259,
               "name": "maxErrors",
               "kind": 1024,
               "kindString": "Property",
@@ -5996,7 +5415,7 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [281]
+              "children": [259]
             }
           ],
           "sources": [
@@ -6008,7 +5427,7 @@
           ]
         },
         {
-          "id": 296,
+          "id": 265,
           "name": "VOObjectInstance",
           "kind": 4194304,
           "kindString": "Type alias",
@@ -6017,7 +5436,7 @@
           },
           "typeParameter": [
             {
-              "id": 297,
+              "id": 266,
               "name": "O",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -6026,7 +5445,6 @@
               },
               "type": {
                 "type": "reference",
-                "id": 287,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
@@ -6053,14 +5471,12 @@
                 "typeArguments": [
                   {
                     "type": "reference",
-                    "id": 293,
                     "typeArguments": [
                       {
                         "type": "typeParameter",
                         "name": "O",
                         "constraint": {
                           "type": "reference",
-                          "id": 287,
                           "typeArguments": [
                             {
                               "type": "typeParameter",
@@ -6079,7 +5495,7 @@
               {
                 "type": "reflection",
                 "declaration": {
-                  "id": 298,
+                  "id": 267,
                   "name": "__type",
                   "kind": 65536,
                   "kindString": "Type literal",
@@ -6099,149 +5515,7 @@
           }
         },
         {
-          "id": 290,
-          "name": "VOObjectRawInitSchema",
-          "kind": 4194304,
-          "kindString": "Type alias",
-          "flags": {},
-          "typeParameter": [
-            {
-              "id": 291,
-              "name": "O",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {},
-              "type": {
-                "type": "reference",
-                "id": 287,
-                "typeArguments": [
-                  {
-                    "type": "typeParameter",
-                    "name": "O"
-                  }
-                ],
-                "name": "VOObjectSchema"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/object.ts",
-              "line": 15,
-              "character": 26
-            }
-          ],
-          "type": {
-            "type": "reflection",
-            "declaration": {
-              "id": 292,
-              "name": "__type",
-              "kind": 65536,
-              "kindString": "Type literal",
-              "flags": {},
-              "sources": [
-                {
-                  "fileName": "src/core/object.ts",
-                  "line": 15,
-                  "character": 57
-                }
-              ]
-            }
-          }
-        },
-        {
-          "id": 293,
-          "name": "VOObjectRawSchema",
-          "kind": 4194304,
-          "kindString": "Type alias",
-          "flags": {},
-          "typeParameter": [
-            {
-              "id": 294,
-              "name": "O",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {},
-              "type": {
-                "type": "reference",
-                "id": 287,
-                "typeArguments": [
-                  {
-                    "type": "typeParameter",
-                    "name": "O"
-                  }
-                ],
-                "name": "VOObjectSchema"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/object.ts",
-              "line": 18,
-              "character": 22
-            }
-          ],
-          "type": {
-            "type": "reflection",
-            "declaration": {
-              "id": 295,
-              "name": "__type",
-              "kind": 65536,
-              "kindString": "Type literal",
-              "flags": {},
-              "sources": [
-                {
-                  "fileName": "src/core/object.ts",
-                  "line": 18,
-                  "character": 53
-                }
-              ]
-            }
-          }
-        },
-        {
-          "id": 287,
-          "name": "VOObjectSchema",
-          "kind": 4194304,
-          "kindString": "Type alias",
-          "flags": {},
-          "typeParameter": [
-            {
-              "id": 288,
-              "name": "O",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {}
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/object.ts",
-              "line": 14,
-              "character": 19
-            }
-          ],
-          "type": {
-            "type": "reflection",
-            "declaration": {
-              "id": 289,
-              "name": "__type",
-              "kind": 65536,
-              "kindString": "Type literal",
-              "flags": {},
-              "sources": [
-                {
-                  "fileName": "src/core/object.ts",
-                  "line": 14,
-                  "character": 24
-                }
-              ]
-            }
-          }
-        },
-        {
-          "id": 299,
+          "id": 268,
           "name": "VOObject",
           "kind": 64,
           "kindString": "Function",
@@ -6251,7 +5525,7 @@
           },
           "signatures": [
             {
-              "id": 300,
+              "id": 269,
               "name": "VOObject",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6260,7 +5534,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 301,
+                  "id": 270,
                   "name": "O",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -6269,7 +5543,6 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 287,
                     "typeArguments": [
                       {
                         "type": "typeParameter",
@@ -6282,7 +5555,7 @@
               ],
               "parameters": [
                 {
-                  "id": 302,
+                  "id": 271,
                   "name": "schema",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6294,7 +5567,6 @@
                     "name": "O",
                     "constraint": {
                       "type": "reference",
-                      "id": 287,
                       "typeArguments": [
                         {
                           "type": "typeParameter",
@@ -6306,7 +5578,7 @@
                   }
                 },
                 {
-                  "id": 303,
+                  "id": 272,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6315,7 +5587,7 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 280,
+                    "id": 258,
                     "name": "VOObjectOptions"
                   },
                   "defaultValue": "{}"
@@ -6323,14 +5595,13 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 282,
+                "id": 260,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
                     "name": "O",
                     "constraint": {
                       "type": "reference",
-                      "id": 287,
                       "typeArguments": [
                         {
                           "type": "typeParameter",
@@ -6358,17 +5629,17 @@
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [282, 280]
+          "children": [260, 258]
         },
         {
           "title": "Type aliases",
           "kind": 4194304,
-          "children": [296, 290, 293, 287]
+          "children": [265]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [299]
+          "children": [268]
         }
       ],
       "sources": [
@@ -6380,24 +5651,7 @@
       ]
     },
     {
-      "id": 439,
-      "name": "\"core/object.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/object.spec.ts",
-      "sources": [
-        {
-          "fileName": "src/core/object.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 304,
+      "id": 273,
       "name": "\"core/optional\"",
       "kind": 1,
       "kindString": "Module",
@@ -6407,7 +5661,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/optional.ts",
       "children": [
         {
-          "id": 315,
+          "id": 284,
           "name": "VOOptionalConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -6416,7 +5670,7 @@
           },
           "typeParameter": [
             {
-              "id": 316,
+              "id": 285,
               "name": "VOC",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -6430,7 +5684,7 @@
               }
             },
             {
-              "id": 317,
+              "id": 286,
               "name": "None",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -6439,14 +5693,14 @@
               },
               "type": {
                 "type": "reference",
-                "id": 321,
+                "id": 290,
                 "name": "Noneable"
               }
             }
           ],
           "children": [
             {
-              "id": 318,
+              "id": 287,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -6455,7 +5709,7 @@
               },
               "signatures": [
                 {
-                  "id": 319,
+                  "id": 288,
                   "name": "new VOOptionalConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -6464,7 +5718,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 320,
+                      "id": 289,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -6495,7 +5749,7 @@
                             "name": "None",
                             "constraint": {
                               "type": "reference",
-                              "id": 321,
+                              "id": 290,
                               "name": "Noneable"
                             }
                           }
@@ -6505,7 +5759,7 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 305,
+                    "id": 274,
                     "typeArguments": [
                       {
                         "type": "reference",
@@ -6527,7 +5781,7 @@
                         "name": "None",
                         "constraint": {
                           "type": "reference",
-                          "id": 321,
+                          "id": 290,
                           "name": "Noneable"
                         }
                       }
@@ -6549,7 +5803,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [318]
+              "children": [287]
             }
           ],
           "sources": [
@@ -6561,7 +5815,7 @@
           ]
         },
         {
-          "id": 305,
+          "id": 274,
           "name": "VOOptionalInstance",
           "kind": 256,
           "kindString": "Interface",
@@ -6570,7 +5824,7 @@
           },
           "typeParameter": [
             {
-              "id": 306,
+              "id": 275,
               "name": "VO",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -6590,7 +5844,7 @@
               }
             },
             {
-              "id": 307,
+              "id": 276,
               "name": "None",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -6599,14 +5853,14 @@
               },
               "type": {
                 "type": "reference",
-                "id": 321,
+                "id": 290,
                 "name": "Noneable"
               }
             }
           ],
           "children": [
             {
-              "id": 308,
+              "id": 277,
               "name": "value",
               "kind": 1024,
               "kindString": "Property",
@@ -6643,7 +5897,7 @@
                     "name": "None",
                     "constraint": {
                       "type": "reference",
-                      "id": 321,
+                      "id": 290,
                       "name": "Noneable"
                     }
                   }
@@ -6651,7 +5905,7 @@
               }
             },
             {
-              "id": 311,
+              "id": 280,
               "name": "isNone",
               "kind": 2048,
               "kindString": "Method",
@@ -6660,7 +5914,7 @@
               },
               "signatures": [
                 {
-                  "id": 312,
+                  "id": 281,
                   "name": "isNone",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -6682,7 +5936,7 @@
               ]
             },
             {
-              "id": 309,
+              "id": 278,
               "name": "isSome",
               "kind": 2048,
               "kindString": "Method",
@@ -6691,7 +5945,7 @@
               },
               "signatures": [
                 {
-                  "id": 310,
+                  "id": 279,
                   "name": "isSome",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -6713,7 +5967,7 @@
               ]
             },
             {
-              "id": 313,
+              "id": 282,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -6722,7 +5976,7 @@
               },
               "signatures": [
                 {
-                  "id": 314,
+                  "id": 283,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -6759,7 +6013,7 @@
                         "name": "None",
                         "constraint": {
                           "type": "reference",
-                          "id": 321,
+                          "id": 290,
                           "name": "Noneable"
                         }
                       }
@@ -6780,12 +6034,12 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [308]
+              "children": [277]
             },
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [311, 309, 313]
+              "children": [280, 278, 282]
             }
           ],
           "sources": [
@@ -6797,7 +6051,7 @@
           ]
         },
         {
-          "id": 321,
+          "id": 290,
           "name": "Noneable",
           "kind": 4194304,
           "kindString": "Type alias",
@@ -6826,35 +6080,7 @@
           }
         },
         {
-          "id": 322,
-          "name": "NONEABLES",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/optional.ts",
-              "line": 5,
-              "character": 15
-            }
-          ],
-          "type": {
-            "type": "reference",
-            "typeArguments": [
-              {
-                "type": "reference",
-                "id": 321,
-                "name": "Noneable"
-              }
-            ],
-            "name": "Array"
-          },
-          "defaultValue": "[undefined, null]"
-        },
-        {
-          "id": 329,
+          "id": 291,
           "name": "VOOptional",
           "kind": 64,
           "kindString": "Function",
@@ -6864,7 +6090,7 @@
           },
           "signatures": [
             {
-              "id": 330,
+              "id": 292,
               "name": "VOOptional",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6873,7 +6099,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 331,
+                  "id": 293,
                   "name": "VOC",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -6887,7 +6113,7 @@
                   }
                 },
                 {
-                  "id": 332,
+                  "id": 294,
                   "name": "None",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -6896,14 +6122,14 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 321,
+                    "id": 290,
                     "name": "Noneable"
                   }
                 }
               ],
               "parameters": [
                 {
-                  "id": 333,
+                  "id": 295,
                   "name": "VO",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6921,7 +6147,7 @@
                   }
                 },
                 {
-                  "id": 334,
+                  "id": 296,
                   "name": "nones",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6937,7 +6163,7 @@
                         "name": "None",
                         "constraint": {
                           "type": "reference",
-                          "id": 321,
+                          "id": 290,
                           "name": "Noneable"
                         }
                       }
@@ -6948,7 +6174,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 315,
+                "id": 284,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
@@ -6964,7 +6190,7 @@
                     "name": "None",
                     "constraint": {
                       "type": "reference",
-                      "id": 321,
+                      "id": 290,
                       "name": "Noneable"
                     }
                   }
@@ -6980,139 +6206,23 @@
               "character": 23
             }
           ]
-        },
-        {
-          "id": 326,
-          "name": "expectedNoneableTypes",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 327,
-              "name": "expectedNoneableTypes",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 328,
-                  "name": "nones",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "reference",
-                        "id": 321,
-                        "name": "Noneable"
-                      }
-                    ],
-                    "name": "Array"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "typeArguments": [
-                  {
-                    "type": "union",
-                    "types": [
-                      {
-                        "type": "stringLiteral",
-                        "value": "undefined"
-                      },
-                      {
-                        "type": "stringLiteral",
-                        "value": "null"
-                      }
-                    ]
-                  }
-                ],
-                "name": "Array"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/optional.ts",
-              "line": 19,
-              "character": 27
-            }
-          ]
-        },
-        {
-          "id": 323,
-          "name": "isNoneable",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 324,
-              "name": "isNoneable",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 325,
-                  "name": "v",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "predicate",
-                "name": "v",
-                "asserts": false,
-                "targetType": {
-                  "type": "reference",
-                  "name": "Noneable"
-                }
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/optional.ts",
-              "line": 6,
-              "character": 16
-            }
-          ]
         }
       ],
       "groups": [
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [315, 305]
+          "children": [284, 274]
         },
         {
           "title": "Type aliases",
           "kind": 4194304,
-          "children": [321]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [322]
+          "children": [290]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [329, 326, 323]
+          "children": [291]
         }
       ],
       "sources": [
@@ -7124,110 +6234,7 @@
       ]
     },
     {
-      "id": 440,
-      "name": "\"core/optional.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/optional.spec.ts",
-      "children": [
-        {
-          "id": 442,
-          "name": "nonNoneableValues",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/optional.spec.ts",
-              "line": 94,
-              "character": 23
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "union",
-              "types": [
-                {
-                  "type": "intrinsic",
-                  "name": "number"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "false"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "true"
-                },
-                {
-                  "type": "array",
-                  "elementType": {
-                    "type": "intrinsic",
-                    "name": "never"
-                  }
-                }
-              ]
-            }
-          },
-          "defaultValue": "[0, false, []]"
-        },
-        {
-          "id": 441,
-          "name": "noneableValues",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/optional.spec.ts",
-              "line": 93,
-              "character": 20
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "union",
-              "types": [
-                {
-                  "type": "intrinsic",
-                  "name": "undefined"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "null"
-                }
-              ]
-            }
-          },
-          "defaultValue": "[null, undefined]"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [442, 441]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/core/optional.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 335,
+      "id": 297,
       "name": "\"core/set\"",
       "kind": 1,
       "kindString": "Module",
@@ -7237,7 +6244,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/set.ts",
       "children": [
         {
-          "id": 343,
+          "id": 305,
           "name": "VOSetConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -7246,7 +6253,7 @@
           },
           "typeParameter": [
             {
-              "id": 344,
+              "id": 306,
               "name": "T",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -7255,12 +6262,12 @@
               },
               "type": {
                 "type": "reference",
-                "id": 349,
+                "id": 311,
                 "name": "Setable"
               }
             },
             {
-              "id": 345,
+              "id": 307,
               "name": "Strict",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -7275,7 +6282,7 @@
           ],
           "children": [
             {
-              "id": 346,
+              "id": 308,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -7284,7 +6291,7 @@
               },
               "signatures": [
                 {
-                  "id": 347,
+                  "id": 309,
                   "name": "new VOSetConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -7293,7 +6300,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 348,
+                      "id": 310,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -7302,14 +6309,14 @@
                       },
                       "type": {
                         "type": "reference",
-                        "id": 350,
+                        "id": 312,
                         "typeArguments": [
                           {
                             "type": "typeParameter",
                             "name": "T",
                             "constraint": {
                               "type": "reference",
-                              "id": 349,
+                              "id": 311,
                               "name": "Setable"
                             }
                           },
@@ -7328,14 +6335,14 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 339,
+                    "id": 301,
                     "typeArguments": [
                       {
                         "type": "typeParameter",
                         "name": "T",
                         "constraint": {
                           "type": "reference",
-                          "id": 349,
+                          "id": 311,
                           "name": "Setable"
                         }
                       }
@@ -7357,7 +6364,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [346]
+              "children": [308]
             }
           ],
           "sources": [
@@ -7369,7 +6376,7 @@
           ]
         },
         {
-          "id": 339,
+          "id": 301,
           "name": "VOSetInstance",
           "kind": 256,
           "kindString": "Interface",
@@ -7378,7 +6385,7 @@
           },
           "typeParameter": [
             {
-              "id": 340,
+              "id": 302,
               "name": "T",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -7387,14 +6394,14 @@
               },
               "type": {
                 "type": "reference",
-                "id": 349,
+                "id": 311,
                 "name": "Setable"
               }
             }
           ],
           "children": [
             {
-              "id": 341,
+              "id": 303,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -7403,7 +6410,7 @@
               },
               "signatures": [
                 {
-                  "id": 342,
+                  "id": 304,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -7415,7 +6422,7 @@
                     "name": "T",
                     "constraint": {
                       "type": "reference",
-                      "id": 349,
+                      "id": 311,
                       "name": "Setable"
                     }
                   }
@@ -7434,7 +6441,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [341]
+              "children": [303]
             }
           ],
           "sources": [
@@ -7446,7 +6453,7 @@
           ]
         },
         {
-          "id": 336,
+          "id": 298,
           "name": "VOSetOptions",
           "kind": 256,
           "kindString": "Interface",
@@ -7455,7 +6462,7 @@
           },
           "typeParameter": [
             {
-              "id": 337,
+              "id": 299,
               "name": "Strict",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -7470,7 +6477,7 @@
           ],
           "children": [
             {
-              "id": 338,
+              "id": 300,
               "name": "strict",
               "kind": 1024,
               "kindString": "Property",
@@ -7490,7 +6497,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 337,
+                "id": 299,
                 "name": "Strict"
               }
             }
@@ -7499,7 +6506,7 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [338]
+              "children": [300]
             }
           ],
           "sources": [
@@ -7511,7 +6518,7 @@
           ]
         },
         {
-          "id": 349,
+          "id": 311,
           "name": "Setable",
           "kind": 4194304,
           "kindString": "Type alias",
@@ -7544,7 +6551,7 @@
           }
         },
         {
-          "id": 350,
+          "id": 312,
           "name": "VOSetRaw",
           "kind": 4194304,
           "kindString": "Type alias",
@@ -7553,7 +6560,7 @@
           },
           "typeParameter": [
             {
-              "id": 351,
+              "id": 313,
               "name": "T",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -7562,12 +6569,12 @@
               },
               "type": {
                 "type": "reference",
-                "id": 349,
+                "id": 311,
                 "name": "Setable"
               }
             },
             {
-              "id": 352,
+              "id": 314,
               "name": "Strict",
               "kind": 131072,
               "kindString": "Type parameter",
@@ -7606,7 +6613,7 @@
               "name": "T",
               "constraint": {
                 "type": "reference",
-                "id": 349,
+                "id": 311,
                 "name": "Setable"
               }
             },
@@ -7617,7 +6624,7 @@
           }
         },
         {
-          "id": 359,
+          "id": 315,
           "name": "VOSet",
           "kind": 64,
           "kindString": "Function",
@@ -7627,7 +6634,7 @@
           },
           "signatures": [
             {
-              "id": 360,
+              "id": 316,
               "name": "VOSet",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7636,7 +6643,7 @@
               },
               "typeParameter": [
                 {
-                  "id": 361,
+                  "id": 317,
                   "name": "T",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -7645,12 +6652,12 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 349,
+                    "id": 311,
                     "name": "Setable"
                   }
                 },
                 {
-                  "id": 362,
+                  "id": 318,
                   "name": "Strict",
                   "kind": 131072,
                   "kindString": "Type parameter",
@@ -7665,7 +6672,7 @@
               ],
               "parameters": [
                 {
-                  "id": 363,
+                  "id": 319,
                   "name": "setValues",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7680,7 +6687,7 @@
                         "name": "T",
                         "constraint": {
                           "type": "reference",
-                          "id": 349,
+                          "id": 311,
                           "name": "Setable"
                         }
                       }
@@ -7689,7 +6696,7 @@
                   }
                 },
                 {
-                  "id": 364,
+                  "id": 320,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7698,7 +6705,7 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 336,
+                    "id": 298,
                     "typeArguments": [
                       {
                         "type": "typeParameter",
@@ -7716,14 +6723,14 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 343,
+                "id": 305,
                 "typeArguments": [
                   {
                     "type": "typeParameter",
                     "name": "T",
                     "constraint": {
                       "type": "reference",
-                      "id": 349,
+                      "id": 311,
                       "name": "Setable"
                     }
                   },
@@ -7747,138 +6754,23 @@
               "character": 18
             }
           ]
-        },
-        {
-          "id": 356,
-          "name": "expectedSetableTypes",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 357,
-              "name": "expectedSetableTypes",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 358,
-                  "name": "set",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "reference",
-                        "id": 349,
-                        "name": "Setable"
-                      }
-                    ],
-                    "name": "Array"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "typeArguments": [
-                  {
-                    "type": "union",
-                    "types": [
-                      {
-                        "type": "stringLiteral",
-                        "value": "number"
-                      },
-                      {
-                        "type": "stringLiteral",
-                        "value": "string"
-                      },
-                      {
-                        "type": "stringLiteral",
-                        "value": "boolean"
-                      }
-                    ]
-                  }
-                ],
-                "name": "Array"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/set.ts",
-              "line": 26,
-              "character": 26
-            }
-          ]
-        },
-        {
-          "id": 353,
-          "name": "isSetable",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 354,
-              "name": "isSetable",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 355,
-                  "name": "v",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "predicate",
-                "name": "v",
-                "asserts": false,
-                "targetType": {
-                  "type": "reference",
-                  "name": "Setable"
-                }
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/core/set.ts",
-              "line": 25,
-              "character": 15
-            }
-          ]
         }
       ],
       "groups": [
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [343, 339, 336]
+          "children": [305, 301, 298]
         },
         {
           "title": "Type aliases",
           "kind": 4194304,
-          "children": [349, 350]
+          "children": [311, 312]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [359, 356, 353]
+          "children": [315]
         }
       ],
       "sources": [
@@ -7890,117 +6782,7 @@
       ]
     },
     {
-      "id": 443,
-      "name": "\"core/set.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/set.spec.ts",
-      "children": [
-        {
-          "id": 445,
-          "name": "nonSetableValues",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/set.spec.ts",
-              "line": 72,
-              "character": 22
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "union",
-              "types": [
-                {
-                  "type": "intrinsic",
-                  "name": "undefined"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "null"
-                },
-                {
-                  "type": "reflection",
-                  "declaration": {
-                    "id": 446,
-                    "name": "__type",
-                    "kind": 65536,
-                    "kindString": "Type literal",
-                    "flags": {}
-                  }
-                }
-              ]
-            }
-          },
-          "defaultValue": "[new Date(), null, undefined, {}, [], /abc/]"
-        },
-        {
-          "id": 444,
-          "name": "setableValues",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/set.spec.ts",
-              "line": 71,
-              "character": 19
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "union",
-              "types": [
-                {
-                  "type": "intrinsic",
-                  "name": "string"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "number"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "false"
-                },
-                {
-                  "type": "intrinsic",
-                  "name": "true"
-                }
-              ]
-            }
-          },
-          "defaultValue": "[1, 2, 3, -1, -2, -3, 0, 'a', 'b', '\\t', '\\n', true, false]"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [445, 444]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/core/set.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 365,
+      "id": 321,
       "name": "\"core/string\"",
       "kind": 1,
       "kindString": "Module",
@@ -8010,7 +6792,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/string.ts",
       "children": [
         {
-          "id": 374,
+          "id": 330,
           "name": "VOStringConstructor",
           "kind": 256,
           "kindString": "Interface",
@@ -8019,7 +6801,7 @@
           },
           "children": [
             {
-              "id": 375,
+              "id": 331,
               "name": "constructor",
               "kind": 512,
               "kindString": "Constructor",
@@ -8028,7 +6810,7 @@
               },
               "signatures": [
                 {
-                  "id": 376,
+                  "id": 332,
                   "name": "new VOStringConstructor",
                   "kind": 16384,
                   "kindString": "Constructor signature",
@@ -8037,7 +6819,7 @@
                   },
                   "parameters": [
                     {
-                      "id": 377,
+                      "id": 333,
                       "name": "r",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -8052,7 +6834,7 @@
                   ],
                   "type": {
                     "type": "reference",
-                    "id": 371,
+                    "id": 327,
                     "name": "VOStringInstance"
                   }
                 }
@@ -8070,7 +6852,7 @@
             {
               "title": "Constructors",
               "kind": 512,
-              "children": [375]
+              "children": [331]
             }
           ],
           "sources": [
@@ -8082,7 +6864,7 @@
           ]
         },
         {
-          "id": 371,
+          "id": 327,
           "name": "VOStringInstance",
           "kind": 256,
           "kindString": "Interface",
@@ -8091,7 +6873,7 @@
           },
           "children": [
             {
-              "id": 372,
+              "id": 328,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -8100,7 +6882,7 @@
               },
               "signatures": [
                 {
-                  "id": 373,
+                  "id": 329,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -8126,7 +6908,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [372]
+              "children": [328]
             }
           ],
           "sources": [
@@ -8139,33 +6921,33 @@
           "extendedBy": [
             {
               "type": "reference",
-              "id": 452,
+              "id": 446,
               "name": "BrazilianPhone"
             },
             {
               "type": "reference",
-              "id": 457,
+              "id": 450,
               "name": "Email"
             },
             {
               "type": "reference",
-              "id": 466,
+              "id": 458,
               "name": "LongString"
             },
             {
               "type": "reference",
-              "id": 471,
+              "id": 462,
               "name": "MediumString"
             },
             {
               "type": "reference",
-              "id": 476,
+              "id": 466,
               "name": "ShortString"
             }
           ]
         },
         {
-          "id": 366,
+          "id": 322,
           "name": "VOStringOptions",
           "kind": 256,
           "kindString": "Interface",
@@ -8174,7 +6956,7 @@
           },
           "children": [
             {
-              "id": 369,
+              "id": 325,
               "name": "maxLength",
               "kind": 1024,
               "kindString": "Property",
@@ -8207,7 +6989,7 @@
               }
             },
             {
-              "id": 368,
+              "id": 324,
               "name": "minLength",
               "kind": 1024,
               "kindString": "Property",
@@ -8240,7 +7022,7 @@
               }
             },
             {
-              "id": 370,
+              "id": 326,
               "name": "pattern",
               "kind": 1024,
               "kindString": "Property",
@@ -8264,7 +7046,7 @@
               }
             },
             {
-              "id": 367,
+              "id": 323,
               "name": "trim",
               "kind": 1024,
               "kindString": "Property",
@@ -8305,7 +7087,7 @@
             {
               "title": "Properties",
               "kind": 1024,
-              "children": [369, 368, 370, 367]
+              "children": [325, 324, 326, 323]
             }
           ],
           "sources": [
@@ -8317,7 +7099,7 @@
           ]
         },
         {
-          "id": 378,
+          "id": 334,
           "name": "VOString",
           "kind": 64,
           "kindString": "Function",
@@ -8327,7 +7109,7 @@
           },
           "signatures": [
             {
-              "id": 379,
+              "id": 335,
               "name": "VOString",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8336,7 +7118,7 @@
               },
               "parameters": [
                 {
-                  "id": 380,
+                  "id": 336,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8345,7 +7127,7 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 366,
+                    "id": 322,
                     "name": "VOStringOptions"
                   },
                   "defaultValue": "{}"
@@ -8353,7 +7135,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 374,
+                "id": 330,
                 "name": "VOStringConstructor"
               }
             }
@@ -8371,100 +7153,17 @@
         {
           "title": "Interfaces",
           "kind": 256,
-          "children": [374, 371, 366]
+          "children": [330, 327, 322]
         },
         {
           "title": "Functions",
           "kind": 64,
-          "children": [378]
+          "children": [334]
         }
       ],
       "sources": [
         {
           "fileName": "src/core/string.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 447,
-      "name": "\"core/string.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/core/string.spec.ts",
-      "children": [
-        {
-          "id": 448,
-          "name": "lengthTests",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/core/string.spec.ts",
-              "line": 133,
-              "character": 17
-            }
-          ],
-          "type": {
-            "type": "array",
-            "elementType": {
-              "type": "reflection",
-              "declaration": {
-                "id": 449,
-                "name": "__type",
-                "kind": 65536,
-                "kindString": "Type literal",
-                "flags": {},
-                "children": [
-                  {
-                    "id": 450,
-                    "name": "range",
-                    "kind": 32,
-                    "kindString": "Variable",
-                    "flags": {},
-                    "sources": [
-                      {
-                        "fileName": "src/core/string.spec.ts",
-                        "line": 145,
-                        "character": 68
-                      }
-                    ],
-                    "type": {
-                      "type": "intrinsic",
-                      "name": "number"
-                    }
-                  }
-                ],
-                "groups": [
-                  {
-                    "title": "Variables",
-                    "kind": 32,
-                    "children": [450]
-                  }
-                ]
-              }
-            }
-          },
-          "defaultValue": "(() => {\n  const ranges = [-10, -5, 0, 5, 10]\n  const testsBase = [\n    { pattern: 'abc', length: 10 },\n    { pattern: ' abc ', length: 99 },\n    { pattern: ' a b c ', length: 287 },\n    { pattern: '  ', length: 573 },\n    { pattern: '\\t\\tabc\\t\\t', length: 904 },\n    { pattern: '\\n\\nabc\\n\\n', length: 2187 },\n    { pattern: '\\t abc \\t', length: 6700 },\n    { pattern: '\\n\\tabc\\t\\n', length: 68000 },\n  ]\n  return testsBase.map(test => ranges.map(range => ({ ...test, range }))).reduce((acc, curr) => acc.concat(curr), [])\n})()"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [448]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/core/string.spec.ts",
           "line": 1,
           "character": 0
         }
@@ -9048,7 +7747,7 @@
       ]
     },
     {
-      "id": 451,
+      "id": 445,
       "name": "\"lib/brazilian-phone\"",
       "kind": 1,
       "kindString": "Module",
@@ -9058,7 +7757,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/brazilian-phone.ts",
       "children": [
         {
-          "id": 452,
+          "id": 446,
           "name": "BrazilianPhone",
           "kind": 128,
           "kindString": "Class",
@@ -9067,7 +7766,7 @@
           },
           "children": [
             {
-              "id": 453,
+              "id": 447,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -9076,7 +7775,7 @@
               },
               "signatures": [
                 {
-                  "id": 454,
+                  "id": 448,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -9089,7 +7788,7 @@
                   },
                   "inheritedFrom": {
                     "type": "reference",
-                    "id": 372,
+                    "id": 328,
                     "name": "VOStringInstance.valueOf"
                   }
                 }
@@ -9103,7 +7802,7 @@
               ],
               "inheritedFrom": {
                 "type": "reference",
-                "id": 372,
+                "id": 328,
                 "name": "VOStringInstance.valueOf"
               }
             }
@@ -9112,7 +7811,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [453]
+              "children": [447]
             }
           ],
           "sources": [
@@ -9125,43 +7824,17 @@
           "extendedTypes": [
             {
               "type": "reference",
-              "id": 371,
+              "id": 327,
               "name": "VOStringInstance"
             }
           ]
-        },
-        {
-          "id": 455,
-          "name": "BRAZILIAN_PHONE_PATTERN",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/lib/brazilian-phone.ts",
-              "line": 3,
-              "character": 29
-            }
-          ],
-          "type": {
-            "type": "reference",
-            "name": "RegExp"
-          },
-          "defaultValue": "/^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/"
         }
       ],
       "groups": [
         {
           "title": "Classes",
           "kind": 128,
-          "children": [452]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [455]
+          "children": [446]
         }
       ],
       "sources": [
@@ -9173,7 +7846,7 @@
       ]
     },
     {
-      "id": 456,
+      "id": 449,
       "name": "\"lib/email\"",
       "kind": 1,
       "kindString": "Module",
@@ -9183,7 +7856,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/email.ts",
       "children": [
         {
-          "id": 457,
+          "id": 450,
           "name": "Email",
           "kind": 128,
           "kindString": "Class",
@@ -9192,7 +7865,7 @@
           },
           "children": [
             {
-              "id": 458,
+              "id": 451,
               "name": "valueOf",
               "kind": 2048,
               "kindString": "Method",
@@ -9201,7 +7874,7 @@
               },
               "signatures": [
                 {
-                  "id": 459,
+                  "id": 452,
                   "name": "valueOf",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -9214,7 +7887,7 @@
                   },
                   "inheritedFrom": {
                     "type": "reference",
-                    "id": 372,
+                    "id": 328,
                     "name": "VOStringInstance.valueOf"
                   }
                 }
@@ -9228,7 +7901,7 @@
               ],
               "inheritedFrom": {
                 "type": "reference",
-                "id": 372,
+                "id": 328,
                 "name": "VOStringInstance.valueOf"
               }
             }
@@ -9237,7 +7910,7 @@
             {
               "title": "Methods",
               "kind": 2048,
-              "children": [458]
+              "children": [451]
             }
           ],
           "sources": [
@@ -9250,43 +7923,17 @@
           "extendedTypes": [
             {
               "type": "reference",
-              "id": 371,
+              "id": 327,
               "name": "VOStringInstance"
             }
           ]
-        },
-        {
-          "id": 460,
-          "name": "EMAIL_PATTERN",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/lib/email.ts",
-              "line": 3,
-              "character": 19
-            }
-          ],
-          "type": {
-            "type": "reference",
-            "name": "RegExp"
-          },
-          "defaultValue": "/^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/"
         }
       ],
       "groups": [
         {
           "title": "Classes",
           "kind": 128,
-          "children": [457]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [460]
+          "children": [450]
         }
       ],
       "sources": [
@@ -9298,7 +7945,7 @@
       ]
     },
     {
-      "id": 480,
+      "id": 469,
       "name": "\"lib/index\"",
       "kind": 1,
       "kindString": "Module",
@@ -9308,48 +7955,38 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/index.ts",
       "children": [
         {
-          "id": 481,
+          "id": 470,
           "name": "BrazilianPhone",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 452
+          "target": 446
         },
         {
-          "id": 482,
+          "id": 471,
           "name": "Email",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 457
+          "target": 450
         },
         {
-          "id": 484,
+          "id": 473,
           "name": "LongString",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 466
+          "target": 458
         },
         {
-          "id": 485,
+          "id": 474,
           "name": "MediumString",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 471
-        },
-        {
-          "id": 483,
-          "name": "NaturalNumber",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
@@ -9358,21 +7995,31 @@
           "target": 462
         },
         {
-          "id": 486,
+          "id": 472,
+          "name": "NaturalNumber",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 454
+        },
+        {
+          "id": 475,
           "name": "ShortString",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 476
+          "target": 466
         }
       ],
       "groups": [
         {
           "title": "References",
           "kind": 16777216,
-          "children": [481, 482, 484, 485, 483, 486]
+          "children": [470, 471, 473, 474, 472, 475]
         }
       ],
       "sources": [
@@ -9384,7 +8031,7 @@
       ]
     },
     {
-      "id": 465,
+      "id": 457,
       "name": "\"lib/long-string\"",
       "kind": 1,
       "kindString": "Module",
@@ -9394,8 +8041,404 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/long-string.ts",
       "children": [
         {
-          "id": 466,
+          "id": 458,
           "name": "LongString",
+          "kind": 128,
+          "kindString": "Class",
+          "flags": {
+            "isExported": true
+          },
+          "children": [
+            {
+              "id": 459,
+              "name": "valueOf",
+              "kind": 2048,
+              "kindString": "Method",
+              "flags": {
+                "isExported": true
+              },
+              "signatures": [
+                {
+                  "id": 460,
+                  "name": "valueOf",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "string"
+                  },
+                  "inheritedFrom": {
+                    "type": "reference",
+                    "id": 328,
+                    "name": "VOStringInstance.valueOf"
+                  }
+                }
+              ],
+              "sources": [
+                {
+                  "fileName": "src/core/string.ts",
+                  "line": 38,
+                  "character": 9
+                }
+              ],
+              "inheritedFrom": {
+                "type": "reference",
+                "id": 328,
+                "name": "VOStringInstance.valueOf"
+              }
+            }
+          ],
+          "groups": [
+            {
+              "title": "Methods",
+              "kind": 2048,
+              "children": [459]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/lib/long-string.ts",
+              "line": 4,
+              "character": 23
+            }
+          ],
+          "extendedTypes": [
+            {
+              "type": "reference",
+              "id": 327,
+              "name": "VOStringInstance"
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Classes",
+          "kind": 128,
+          "children": [458]
+        }
+      ],
+      "sources": [
+        {
+          "fileName": "src/lib/long-string.ts",
+          "line": 1,
+          "character": 0
+        }
+      ]
+    },
+    {
+      "id": 461,
+      "name": "\"lib/medium-string\"",
+      "kind": 1,
+      "kindString": "Module",
+      "flags": {
+        "isExported": true
+      },
+      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/medium-string.ts",
+      "children": [
+        {
+          "id": 462,
+          "name": "MediumString",
+          "kind": 128,
+          "kindString": "Class",
+          "flags": {
+            "isExported": true
+          },
+          "children": [
+            {
+              "id": 463,
+              "name": "valueOf",
+              "kind": 2048,
+              "kindString": "Method",
+              "flags": {
+                "isExported": true
+              },
+              "signatures": [
+                {
+                  "id": 464,
+                  "name": "valueOf",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "string"
+                  },
+                  "inheritedFrom": {
+                    "type": "reference",
+                    "id": 328,
+                    "name": "VOStringInstance.valueOf"
+                  }
+                }
+              ],
+              "sources": [
+                {
+                  "fileName": "src/core/string.ts",
+                  "line": 38,
+                  "character": 9
+                }
+              ],
+              "inheritedFrom": {
+                "type": "reference",
+                "id": 328,
+                "name": "VOStringInstance.valueOf"
+              }
+            }
+          ],
+          "groups": [
+            {
+              "title": "Methods",
+              "kind": 2048,
+              "children": [463]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/lib/medium-string.ts",
+              "line": 4,
+              "character": 25
+            }
+          ],
+          "extendedTypes": [
+            {
+              "type": "reference",
+              "id": 327,
+              "name": "VOStringInstance"
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Classes",
+          "kind": 128,
+          "children": [462]
+        }
+      ],
+      "sources": [
+        {
+          "fileName": "src/lib/medium-string.ts",
+          "line": 1,
+          "character": 0
+        }
+      ]
+    },
+    {
+      "id": 453,
+      "name": "\"lib/natural-number\"",
+      "kind": 1,
+      "kindString": "Module",
+      "flags": {
+        "isExported": true
+      },
+      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/natural-number.ts",
+      "children": [
+        {
+          "id": 454,
+          "name": "NaturalNumber",
+          "kind": 128,
+          "kindString": "Class",
+          "flags": {
+            "isExported": true
+          },
+          "children": [
+            {
+              "id": 455,
+              "name": "valueOf",
+              "kind": 2048,
+              "kindString": "Method",
+              "flags": {
+                "isExported": true
+              },
+              "signatures": [
+                {
+                  "id": 456,
+                  "name": "valueOf",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "number"
+                  },
+                  "inheritedFrom": {
+                    "type": "reference",
+                    "id": 248,
+                    "name": "VOIntegerInstance.valueOf"
+                  }
+                }
+              ],
+              "sources": [
+                {
+                  "fileName": "src/core/integer.ts",
+                  "line": 18,
+                  "character": 9
+                }
+              ],
+              "inheritedFrom": {
+                "type": "reference",
+                "id": 248,
+                "name": "VOIntegerInstance.valueOf"
+              }
+            }
+          ],
+          "groups": [
+            {
+              "title": "Methods",
+              "kind": 2048,
+              "children": [455]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/lib/natural-number.ts",
+              "line": 3,
+              "character": 26
+            }
+          ],
+          "extendedTypes": [
+            {
+              "type": "reference",
+              "id": 247,
+              "name": "VOIntegerInstance"
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Classes",
+          "kind": 128,
+          "children": [454]
+        }
+      ],
+      "sources": [
+        {
+          "fileName": "src/lib/natural-number.ts",
+          "line": 1,
+          "character": 0
+        }
+      ]
+    },
+    {
+      "id": 476,
+      "name": "\"lib/percentage\"",
+      "kind": 1,
+      "kindString": "Module",
+      "flags": {
+        "isExported": true
+      },
+      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/percentage.ts",
+      "children": [
+        {
+          "id": 477,
+          "name": "Percentage",
+          "kind": 128,
+          "kindString": "Class",
+          "flags": {
+            "isExported": true
+          },
+          "children": [
+            {
+              "id": 478,
+              "name": "valueOf",
+              "kind": 2048,
+              "kindString": "Method",
+              "flags": {
+                "isExported": true
+              },
+              "signatures": [
+                {
+                  "id": 479,
+                  "name": "valueOf",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {
+                    "isExported": true
+                  },
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "number"
+                  },
+                  "inheritedFrom": {
+                    "type": "reference",
+                    "id": 234,
+                    "name": "VOFloatInstance.valueOf"
+                  }
+                }
+              ],
+              "sources": [
+                {
+                  "fileName": "src/core/float.ts",
+                  "line": 30,
+                  "character": 9
+                }
+              ],
+              "inheritedFrom": {
+                "type": "reference",
+                "id": 234,
+                "name": "VOFloatInstance.valueOf"
+              }
+            }
+          ],
+          "groups": [
+            {
+              "title": "Methods",
+              "kind": 2048,
+              "children": [478]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "src/lib/percentage.ts",
+              "line": 3,
+              "character": 23
+            }
+          ],
+          "extendedTypes": [
+            {
+              "type": "reference",
+              "id": 233,
+              "name": "VOFloatInstance"
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Classes",
+          "kind": 128,
+          "children": [477]
+        }
+      ],
+      "sources": [
+        {
+          "fileName": "src/lib/percentage.ts",
+          "line": 1,
+          "character": 0
+        }
+      ]
+    },
+    {
+      "id": 465,
+      "name": "\"lib/short-string\"",
+      "kind": 1,
+      "kindString": "Module",
+      "flags": {
+        "isExported": true
+      },
+      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/short-string.ts",
+      "children": [
+        {
+          "id": 466,
+          "name": "ShortString",
           "kind": 128,
           "kindString": "Class",
           "flags": {
@@ -9425,7 +8468,7 @@
                   },
                   "inheritedFrom": {
                     "type": "reference",
-                    "id": 372,
+                    "id": 328,
                     "name": "VOStringInstance.valueOf"
                   }
                 }
@@ -9439,7 +8482,7 @@
               ],
               "inheritedFrom": {
                 "type": "reference",
-                "id": 372,
+                "id": 328,
                 "name": "VOStringInstance.valueOf"
               }
             }
@@ -9453,454 +8496,6 @@
           ],
           "sources": [
             {
-              "fileName": "src/lib/long-string.ts",
-              "line": 4,
-              "character": 23
-            }
-          ],
-          "extendedTypes": [
-            {
-              "type": "reference",
-              "id": 371,
-              "name": "VOStringInstance"
-            }
-          ]
-        },
-        {
-          "id": 469,
-          "name": "maxLength",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/lib/long-string.ts",
-              "line": 3,
-              "character": 15
-            }
-          ],
-          "type": {
-            "type": "unknown",
-            "name": "65536"
-          },
-          "defaultValue": "65536"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Classes",
-          "kind": 128,
-          "children": [466]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [469]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/lib/long-string.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 470,
-      "name": "\"lib/medium-string\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/medium-string.ts",
-      "children": [
-        {
-          "id": 471,
-          "name": "MediumString",
-          "kind": 128,
-          "kindString": "Class",
-          "flags": {
-            "isExported": true
-          },
-          "children": [
-            {
-              "id": 472,
-              "name": "valueOf",
-              "kind": 2048,
-              "kindString": "Method",
-              "flags": {
-                "isExported": true
-              },
-              "signatures": [
-                {
-                  "id": 473,
-                  "name": "valueOf",
-                  "kind": 4096,
-                  "kindString": "Call signature",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "string"
-                  },
-                  "inheritedFrom": {
-                    "type": "reference",
-                    "id": 372,
-                    "name": "VOStringInstance.valueOf"
-                  }
-                }
-              ],
-              "sources": [
-                {
-                  "fileName": "src/core/string.ts",
-                  "line": 38,
-                  "character": 9
-                }
-              ],
-              "inheritedFrom": {
-                "type": "reference",
-                "id": 372,
-                "name": "VOStringInstance.valueOf"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Methods",
-              "kind": 2048,
-              "children": [472]
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/lib/medium-string.ts",
-              "line": 4,
-              "character": 25
-            }
-          ],
-          "extendedTypes": [
-            {
-              "type": "reference",
-              "id": 371,
-              "name": "VOStringInstance"
-            }
-          ]
-        },
-        {
-          "id": 474,
-          "name": "maxLength",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/lib/medium-string.ts",
-              "line": 3,
-              "character": 15
-            }
-          ],
-          "type": {
-            "type": "unknown",
-            "name": "4096"
-          },
-          "defaultValue": "4096"
-        }
-      ],
-      "groups": [
-        {
-          "title": "Classes",
-          "kind": 128,
-          "children": [471]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [474]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/lib/medium-string.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 461,
-      "name": "\"lib/natural-number\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/natural-number.ts",
-      "children": [
-        {
-          "id": 462,
-          "name": "NaturalNumber",
-          "kind": 128,
-          "kindString": "Class",
-          "flags": {
-            "isExported": true
-          },
-          "children": [
-            {
-              "id": 463,
-              "name": "valueOf",
-              "kind": 2048,
-              "kindString": "Method",
-              "flags": {
-                "isExported": true
-              },
-              "signatures": [
-                {
-                  "id": 464,
-                  "name": "valueOf",
-                  "kind": 4096,
-                  "kindString": "Call signature",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "number"
-                  },
-                  "inheritedFrom": {
-                    "type": "reference",
-                    "id": 270,
-                    "name": "VOIntegerInstance.valueOf"
-                  }
-                }
-              ],
-              "sources": [
-                {
-                  "fileName": "src/core/integer.ts",
-                  "line": 18,
-                  "character": 9
-                }
-              ],
-              "inheritedFrom": {
-                "type": "reference",
-                "id": 270,
-                "name": "VOIntegerInstance.valueOf"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Methods",
-              "kind": 2048,
-              "children": [463]
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/lib/natural-number.ts",
-              "line": 3,
-              "character": 26
-            }
-          ],
-          "extendedTypes": [
-            {
-              "type": "reference",
-              "id": 269,
-              "name": "VOIntegerInstance"
-            }
-          ]
-        }
-      ],
-      "groups": [
-        {
-          "title": "Classes",
-          "kind": 128,
-          "children": [462]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/lib/natural-number.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 487,
-      "name": "\"lib/percentage\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/percentage.ts",
-      "children": [
-        {
-          "id": 488,
-          "name": "Percentage",
-          "kind": 128,
-          "kindString": "Class",
-          "flags": {
-            "isExported": true
-          },
-          "children": [
-            {
-              "id": 489,
-              "name": "valueOf",
-              "kind": 2048,
-              "kindString": "Method",
-              "flags": {
-                "isExported": true
-              },
-              "signatures": [
-                {
-                  "id": 490,
-                  "name": "valueOf",
-                  "kind": 4096,
-                  "kindString": "Call signature",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "number"
-                  },
-                  "inheritedFrom": {
-                    "type": "reference",
-                    "id": 239,
-                    "name": "VOFloatInstance.valueOf"
-                  }
-                }
-              ],
-              "sources": [
-                {
-                  "fileName": "src/core/float.ts",
-                  "line": 30,
-                  "character": 9
-                }
-              ],
-              "inheritedFrom": {
-                "type": "reference",
-                "id": 239,
-                "name": "VOFloatInstance.valueOf"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Methods",
-              "kind": 2048,
-              "children": [489]
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/lib/percentage.ts",
-              "line": 3,
-              "character": 23
-            }
-          ],
-          "extendedTypes": [
-            {
-              "type": "reference",
-              "id": 238,
-              "name": "VOFloatInstance"
-            }
-          ]
-        }
-      ],
-      "groups": [
-        {
-          "title": "Classes",
-          "kind": 128,
-          "children": [488]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/lib/percentage.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 475,
-      "name": "\"lib/short-string\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/short-string.ts",
-      "children": [
-        {
-          "id": 476,
-          "name": "ShortString",
-          "kind": 128,
-          "kindString": "Class",
-          "flags": {
-            "isExported": true
-          },
-          "children": [
-            {
-              "id": 477,
-              "name": "valueOf",
-              "kind": 2048,
-              "kindString": "Method",
-              "flags": {
-                "isExported": true
-              },
-              "signatures": [
-                {
-                  "id": 478,
-                  "name": "valueOf",
-                  "kind": 4096,
-                  "kindString": "Call signature",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "intrinsic",
-                    "name": "string"
-                  },
-                  "inheritedFrom": {
-                    "type": "reference",
-                    "id": 372,
-                    "name": "VOStringInstance.valueOf"
-                  }
-                }
-              ],
-              "sources": [
-                {
-                  "fileName": "src/core/string.ts",
-                  "line": 38,
-                  "character": 9
-                }
-              ],
-              "inheritedFrom": {
-                "type": "reference",
-                "id": 372,
-                "name": "VOStringInstance.valueOf"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Methods",
-              "kind": 2048,
-              "children": [477]
-            }
-          ],
-          "sources": [
-            {
               "fileName": "src/lib/short-string.ts",
               "line": 4,
               "character": 24
@@ -9909,43 +8504,17 @@
           "extendedTypes": [
             {
               "type": "reference",
-              "id": 371,
+              "id": 327,
               "name": "VOStringInstance"
             }
           ]
-        },
-        {
-          "id": 479,
-          "name": "maxLength",
-          "kind": 32,
-          "kindString": "Variable",
-          "flags": {
-            "isConst": true
-          },
-          "sources": [
-            {
-              "fileName": "src/lib/short-string.ts",
-              "line": 3,
-              "character": 15
-            }
-          ],
-          "type": {
-            "type": "unknown",
-            "name": "256"
-          },
-          "defaultValue": "256"
         }
       ],
       "groups": [
         {
           "title": "Classes",
           "kind": 128,
-          "children": [476]
-        },
-        {
-          "title": "Variables",
-          "kind": 32,
-          "children": [479]
+          "children": [466]
         }
       ],
       "sources": [
@@ -9957,24 +8526,7 @@
       ]
     },
     {
-      "id": 491,
-      "name": "\"lib/short-string.spec\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/lib/short-string.spec.ts",
-      "sources": [
-        {
-          "fileName": "src/lib/short-string.spec.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 492,
+      "id": 391,
       "name": "\"main\"",
       "kind": 1,
       "kindString": "Module",
@@ -9984,7 +8536,7 @@
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/main.ts",
       "children": [
         {
-          "id": 509,
+          "id": 408,
           "name": "LogicError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -9994,7 +8546,7 @@
           "target": 123
         },
         {
-          "id": 500,
+          "id": 399,
           "name": "MaxLengthError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10004,7 +8556,7 @@
           "target": 25
         },
         {
-          "id": 501,
+          "id": 400,
           "name": "MaxSizeError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10014,7 +8566,7 @@
           "target": 36
         },
         {
-          "id": 502,
+          "id": 401,
           "name": "MinLengthError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10024,7 +8576,7 @@
           "target": 47
         },
         {
-          "id": 503,
+          "id": 402,
           "name": "MinSizeError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10034,17 +8586,17 @@
           "target": 58
         },
         {
-          "id": 526,
+          "id": 425,
           "name": "Noneable",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 321
+          "target": 290
         },
         {
-          "id": 504,
+          "id": 403,
           "name": "NotInSetError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10054,7 +8606,7 @@
           "target": 69
         },
         {
-          "id": 505,
+          "id": 404,
           "name": "NotIntegerError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10064,7 +8616,7 @@
           "target": 82
         },
         {
-          "id": 506,
+          "id": 405,
           "name": "PatternError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10074,7 +8626,7 @@
           "target": 93
         },
         {
-          "id": 507,
+          "id": 406,
           "name": "RawTypeError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10084,17 +8636,17 @@
           "target": 100
         },
         {
-          "id": 531,
+          "id": 430,
           "name": "Setable",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 349
+          "target": 311
         },
         {
-          "id": 508,
+          "id": 407,
           "name": "UnknownError",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10104,7 +8656,7 @@
           "target": 116
         },
         {
-          "id": 495,
+          "id": 394,
           "name": "VOAny",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10114,7 +8666,7 @@
           "target": 143
         },
         {
-          "id": 494,
+          "id": 393,
           "name": "VOAnyConstructor",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10124,7 +8676,7 @@
           "target": 138
         },
         {
-          "id": 493,
+          "id": 392,
           "name": "VOAnyInstance",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10134,47 +8686,47 @@
           "target": 133
         },
         {
-          "id": 499,
+          "id": 398,
           "name": "VOArray",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 223
+          "target": 222
         },
         {
-          "id": 498,
+          "id": 397,
           "name": "VOArrayConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 218
+          "target": 217
         },
         {
-          "id": 497,
+          "id": 396,
           "name": "VOArrayInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 212
+          "target": 211
         },
         {
-          "id": 496,
+          "id": 395,
           "name": "VOArrayOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 208
+          "target": 207
         },
         {
-          "id": 545,
+          "id": 444,
           "name": "VOCRaw",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10184,7 +8736,7 @@
           "target": 22
         },
         {
-          "id": 544,
+          "id": 443,
           "name": "VOCRawInit",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10194,38 +8746,28 @@
           "target": 20
         },
         {
-          "id": 513,
+          "id": 412,
           "name": "VOFloat",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 251
+          "target": 240
         },
         {
-          "id": 512,
+          "id": 411,
           "name": "VOFloatConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 241
+          "target": 236
         },
         {
-          "id": 511,
+          "id": 410,
           "name": "VOFloatInstance",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 238
-        },
-        {
-          "id": 510,
-          "name": "VOFloatOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
@@ -10234,117 +8776,127 @@
           "target": 233
         },
         {
-          "id": 521,
+          "id": 409,
+          "name": "VOFloatOptions",
+          "kind": 16777216,
+          "kindString": "Reference",
+          "flags": {
+            "isExported": true
+          },
+          "target": 228
+        },
+        {
+          "id": 420,
           "name": "VOInteger",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 276
+          "target": 254
         },
         {
-          "id": 520,
+          "id": 419,
           "name": "VOIntegerConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 272
+          "target": 250
         },
         {
-          "id": 519,
+          "id": 418,
           "name": "VOIntegerInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 269
+          "target": 247
         },
         {
-          "id": 518,
+          "id": 417,
           "name": "VOIntegerOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 266
+          "target": 244
         },
         {
-          "id": 525,
+          "id": 424,
           "name": "VOObject",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 299
+          "target": 268
         },
         {
-          "id": 524,
+          "id": 423,
           "name": "VOObjectConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 282
+          "target": 260
         },
         {
-          "id": 523,
+          "id": 422,
           "name": "VOObjectInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 296
+          "target": 265
         },
         {
-          "id": 522,
+          "id": 421,
           "name": "VOObjectOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 280
+          "target": 258
         },
         {
-          "id": 529,
+          "id": 428,
           "name": "VOOptional",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 329
+          "target": 291
         },
         {
-          "id": 528,
+          "id": 427,
           "name": "VOOptionalConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 315
+          "target": 284
         },
         {
-          "id": 527,
+          "id": 426,
           "name": "VOOptionalInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 305
+          "target": 274
         },
         {
-          "id": 543,
+          "id": 442,
           "name": "VORaw",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10354,97 +8906,97 @@
           "target": 18
         },
         {
-          "id": 535,
+          "id": 434,
           "name": "VOSet",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 359
+          "target": 315
         },
         {
-          "id": 534,
+          "id": 433,
           "name": "VOSetConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 343
+          "target": 305
         },
         {
-          "id": 533,
+          "id": 432,
           "name": "VOSetInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 339
+          "target": 301
         },
         {
-          "id": 530,
+          "id": 429,
           "name": "VOSetOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 336
+          "target": 298
         },
         {
-          "id": 532,
+          "id": 431,
           "name": "VOSetRaw",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 350
+          "target": 312
         },
         {
-          "id": 539,
+          "id": 438,
           "name": "VOString",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 378
+          "target": 334
         },
         {
-          "id": 538,
+          "id": 437,
           "name": "VOStringConstructor",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 374
+          "target": 330
         },
         {
-          "id": 537,
+          "id": 436,
           "name": "VOStringInstance",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 371
+          "target": 327
         },
         {
-          "id": 536,
+          "id": 435,
           "name": "VOStringOptions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 366
+          "target": 322
         },
         {
-          "id": 540,
+          "id": 439,
           "name": "ValueObject",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10454,7 +9006,7 @@
           "target": 2
         },
         {
-          "id": 542,
+          "id": 441,
           "name": "ValueObjectContructor",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10464,17 +9016,17 @@
           "target": 12
         },
         {
-          "id": 516,
+          "id": 415,
           "name": "ValueObjectFunctions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 187
+          "target": 186
         },
         {
-          "id": 541,
+          "id": 440,
           "name": "ValueObjectWorkAround",
           "kind": 16777216,
           "kindString": "Reference",
@@ -10484,34 +9036,34 @@
           "target": 6
         },
         {
-          "id": 515,
+          "id": 414,
           "name": "makeFromRawInit",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 199
+          "target": 198
         },
         {
-          "id": 517,
+          "id": 416,
           "name": "makeFunctions",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 203
+          "target": 202
         },
         {
-          "id": 514,
+          "id": 413,
           "name": "makeIsValidRawInit",
           "kind": 16777216,
           "kindString": "Reference",
           "flags": {
             "isExported": true
           },
-          "target": 195
+          "target": 194
         }
       ],
       "groups": [
@@ -10519,59 +9071,59 @@
           "title": "References",
           "kind": 16777216,
           "children": [
-            509,
-            500,
-            501,
-            502,
-            503,
-            526,
-            504,
-            505,
-            506,
-            507,
-            531,
-            508,
-            495,
-            494,
-            493,
-            499,
-            498,
-            497,
-            496,
-            545,
-            544,
-            513,
-            512,
-            511,
-            510,
-            521,
-            520,
-            519,
-            518,
-            525,
-            524,
-            523,
-            522,
-            529,
-            528,
-            527,
-            543,
-            535,
-            534,
-            533,
-            530,
-            532,
-            539,
-            538,
-            537,
-            536,
-            540,
-            542,
-            516,
-            541,
-            515,
-            517,
-            514
+            408,
+            399,
+            400,
+            401,
+            402,
+            425,
+            403,
+            404,
+            405,
+            406,
+            430,
+            407,
+            394,
+            393,
+            392,
+            398,
+            397,
+            396,
+            395,
+            444,
+            443,
+            412,
+            411,
+            410,
+            409,
+            420,
+            419,
+            418,
+            417,
+            424,
+            423,
+            422,
+            421,
+            428,
+            427,
+            426,
+            442,
+            434,
+            433,
+            432,
+            429,
+            431,
+            438,
+            437,
+            436,
+            435,
+            439,
+            441,
+            415,
+            440,
+            414,
+            416,
+            413
           ]
         }
       ],
@@ -10584,566 +9136,7 @@
       ]
     },
     {
-      "id": 148,
-      "name": "\"utils/either\"",
-      "kind": 1,
-      "kindString": "Module",
-      "flags": {
-        "isExported": true
-      },
-      "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/utils/either.ts",
-      "children": [
-        {
-          "id": 149,
-          "name": "Left",
-          "kind": 256,
-          "kindString": "Interface",
-          "flags": {
-            "isExported": true
-          },
-          "typeParameter": [
-            {
-              "id": 150,
-              "name": "L",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {
-                "isExported": true
-              }
-            }
-          ],
-          "children": [
-            {
-              "id": 151,
-              "name": "_tag",
-              "kind": 1024,
-              "kindString": "Property",
-              "flags": {
-                "isExported": true
-              },
-              "sources": [
-                {
-                  "fileName": "src/utils/either.ts",
-                  "line": 2,
-                  "character": 6
-                }
-              ],
-              "type": {
-                "type": "stringLiteral",
-                "value": "Left"
-              }
-            },
-            {
-              "id": 152,
-              "name": "left",
-              "kind": 1024,
-              "kindString": "Property",
-              "flags": {
-                "isExported": true
-              },
-              "sources": [
-                {
-                  "fileName": "src/utils/either.ts",
-                  "line": 3,
-                  "character": 6
-                }
-              ],
-              "type": {
-                "type": "typeParameter",
-                "name": "L"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Properties",
-              "kind": 1024,
-              "children": [151, 152]
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 1,
-              "character": 21
-            }
-          ]
-        },
-        {
-          "id": 153,
-          "name": "Right",
-          "kind": 256,
-          "kindString": "Interface",
-          "flags": {
-            "isExported": true
-          },
-          "typeParameter": [
-            {
-              "id": 154,
-              "name": "R",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {
-                "isExported": true
-              }
-            }
-          ],
-          "children": [
-            {
-              "id": 155,
-              "name": "_tag",
-              "kind": 1024,
-              "kindString": "Property",
-              "flags": {
-                "isExported": true
-              },
-              "sources": [
-                {
-                  "fileName": "src/utils/either.ts",
-                  "line": 7,
-                  "character": 6
-                }
-              ],
-              "type": {
-                "type": "stringLiteral",
-                "value": "Right"
-              }
-            },
-            {
-              "id": 156,
-              "name": "right",
-              "kind": 1024,
-              "kindString": "Property",
-              "flags": {
-                "isExported": true
-              },
-              "sources": [
-                {
-                  "fileName": "src/utils/either.ts",
-                  "line": 8,
-                  "character": 7
-                }
-              ],
-              "type": {
-                "type": "typeParameter",
-                "name": "R"
-              }
-            }
-          ],
-          "groups": [
-            {
-              "title": "Properties",
-              "kind": 1024,
-              "children": [155, 156]
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 6,
-              "character": 22
-            }
-          ]
-        },
-        {
-          "id": 157,
-          "name": "Either",
-          "kind": 4194304,
-          "kindString": "Type alias",
-          "flags": {
-            "isExported": true
-          },
-          "typeParameter": [
-            {
-              "id": 158,
-              "name": "L",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {
-                "isExported": true
-              }
-            },
-            {
-              "id": 159,
-              "name": "R",
-              "kind": 131072,
-              "kindString": "Type parameter",
-              "flags": {
-                "isExported": true
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 11,
-              "character": 18
-            }
-          ],
-          "type": {
-            "type": "union",
-            "types": [
-              {
-                "type": "reference",
-                "id": 149,
-                "typeArguments": [
-                  {
-                    "type": "typeParameter",
-                    "name": "L"
-                  }
-                ],
-                "name": "Left"
-              },
-              {
-                "type": "reference",
-                "id": 153,
-                "typeArguments": [
-                  {
-                    "type": "typeParameter",
-                    "name": "R"
-                  }
-                ],
-                "name": "Right"
-              }
-            ]
-          }
-        },
-        {
-          "id": 160,
-          "name": "isLeft",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isExported": true,
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 161,
-              "name": "isLeft",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {
-                "isExported": true
-              },
-              "typeParameter": [
-                {
-                  "id": 162,
-                  "name": "L",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {
-                    "isExported": true
-                  }
-                },
-                {
-                  "id": 163,
-                  "name": "R",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {
-                    "isExported": true
-                  }
-                }
-              ],
-              "parameters": [
-                {
-                  "id": 164,
-                  "name": "either",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "reference",
-                    "id": 157,
-                    "typeArguments": [
-                      {
-                        "type": "typeParameter",
-                        "name": "L"
-                      },
-                      {
-                        "type": "typeParameter",
-                        "name": "R"
-                      }
-                    ],
-                    "name": "Either"
-                  }
-                }
-              ],
-              "type": {
-                "type": "predicate",
-                "name": "either",
-                "asserts": false,
-                "targetType": {
-                  "type": "reference",
-                  "typeArguments": [
-                    {
-                      "type": "typeParameter",
-                      "name": "L"
-                    }
-                  ],
-                  "name": "Left"
-                }
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 13,
-              "character": 19
-            }
-          ]
-        },
-        {
-          "id": 165,
-          "name": "isRight",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isExported": true,
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 166,
-              "name": "isRight",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {
-                "isExported": true
-              },
-              "typeParameter": [
-                {
-                  "id": 167,
-                  "name": "L",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {
-                    "isExported": true
-                  }
-                },
-                {
-                  "id": 168,
-                  "name": "R",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {
-                    "isExported": true
-                  }
-                }
-              ],
-              "parameters": [
-                {
-                  "id": 169,
-                  "name": "either",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "reference",
-                    "id": 157,
-                    "typeArguments": [
-                      {
-                        "type": "typeParameter",
-                        "name": "L"
-                      },
-                      {
-                        "type": "typeParameter",
-                        "name": "R"
-                      }
-                    ],
-                    "name": "Either"
-                  }
-                }
-              ],
-              "type": {
-                "type": "predicate",
-                "name": "either",
-                "asserts": false,
-                "targetType": {
-                  "type": "reference",
-                  "typeArguments": [
-                    {
-                      "type": "typeParameter",
-                      "name": "R"
-                    }
-                  ],
-                  "name": "Right"
-                }
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 15,
-              "character": 20
-            }
-          ]
-        },
-        {
-          "id": 170,
-          "name": "left",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isExported": true,
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 171,
-              "name": "left",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {
-                "isExported": true
-              },
-              "typeParameter": [
-                {
-                  "id": 172,
-                  "name": "L",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {
-                    "isExported": true
-                  }
-                }
-              ],
-              "parameters": [
-                {
-                  "id": 173,
-                  "name": "value",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "typeParameter",
-                    "name": "L"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "id": 149,
-                "typeArguments": [
-                  {
-                    "type": "typeParameter",
-                    "name": "L"
-                  }
-                ],
-                "name": "Left"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 17,
-              "character": 17
-            }
-          ]
-        },
-        {
-          "id": 174,
-          "name": "right",
-          "kind": 64,
-          "kindString": "Function",
-          "flags": {
-            "isExported": true,
-            "isConst": true
-          },
-          "signatures": [
-            {
-              "id": 175,
-              "name": "right",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {
-                "isExported": true
-              },
-              "typeParameter": [
-                {
-                  "id": 176,
-                  "name": "R",
-                  "kind": 131072,
-                  "kindString": "Type parameter",
-                  "flags": {
-                    "isExported": true
-                  }
-                }
-              ],
-              "parameters": [
-                {
-                  "id": 177,
-                  "name": "value",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {
-                    "isExported": true
-                  },
-                  "type": {
-                    "type": "typeParameter",
-                    "name": "R"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "id": 153,
-                "typeArguments": [
-                  {
-                    "type": "typeParameter",
-                    "name": "R"
-                  }
-                ],
-                "name": "Right"
-              }
-            }
-          ],
-          "sources": [
-            {
-              "fileName": "src/utils/either.ts",
-              "line": 22,
-              "character": 18
-            }
-          ]
-        }
-      ],
-      "groups": [
-        {
-          "title": "Interfaces",
-          "kind": 256,
-          "children": [149, 153]
-        },
-        {
-          "title": "Type aliases",
-          "kind": 4194304,
-          "children": [157]
-        },
-        {
-          "title": "Functions",
-          "kind": 64,
-          "children": [160, 165, 170, 174]
-        }
-      ],
-      "sources": [
-        {
-          "fileName": "src/utils/either.ts",
-          "line": 1,
-          "character": 0
-        }
-      ]
-    },
-    {
-      "id": 178,
+      "id": 177,
       "name": "\"utils/index\"",
       "kind": 1,
       "kindString": "Module",
@@ -11151,85 +9144,6 @@
         "isExported": true
       },
       "originalName": "/Users/Lucas/Documents/dev/lucas-paganini/value-objects/src/utils/index.ts",
-      "children": [
-        {
-          "id": 181,
-          "name": "Either",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 157
-        },
-        {
-          "id": 179,
-          "name": "Left",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 149
-        },
-        {
-          "id": 180,
-          "name": "Right",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 153
-        },
-        {
-          "id": 182,
-          "name": "isLeft",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 160
-        },
-        {
-          "id": 183,
-          "name": "isRight",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 165
-        },
-        {
-          "id": 184,
-          "name": "left",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 170
-        },
-        {
-          "id": 185,
-          "name": "right",
-          "kind": 16777216,
-          "kindString": "Reference",
-          "flags": {
-            "isExported": true
-          },
-          "target": 174
-        }
-      ],
-      "groups": [
-        {
-          "title": "References",
-          "kind": 16777216,
-          "children": [181, 179, 180, 182, 183, 184, 185]
-        }
-      ],
       "sources": [
         {
           "fileName": "src/utils/index.ts",
@@ -11245,37 +9159,27 @@
       "kind": 1,
       "children": [
         132,
-        147,
-        207,
-        228,
+        206,
         24,
-        232,
-        254,
-        186,
-        381,
-        265,
-        435,
-        279,
-        439,
-        304,
-        440,
-        335,
-        443,
-        365,
-        447,
+        227,
+        185,
+        337,
+        243,
+        257,
+        273,
+        297,
+        321,
         1,
-        451,
-        456,
-        480,
-        465,
-        470,
+        445,
+        449,
+        469,
+        457,
         461,
-        487,
-        475,
-        491,
-        492,
-        148,
-        178
+        453,
+        476,
+        465,
+        391,
+        177
       ]
     }
   ]

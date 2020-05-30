@@ -1,0 +1,12 @@
+{
+  "inputFiles": ["./src"],
+  "exclude": "**/*.spec.ts",
+  "name": "@lucaspaganini/value-objects",
+  "mode": "modules",
+  "out": "tmp-website",
+  "json": "docs/docs.json",
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "stripInternal": true,
+  "includeVersion": true
+}
