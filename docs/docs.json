@@ -4977,7 +4977,7 @@
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 21,
+                  "line": 19,
                   "character": 39
                 }
               ]
@@ -4993,7 +4993,7 @@
           "sources": [
             {
               "fileName": "src/core/integer.ts",
-              "line": 21,
+              "line": 19,
               "character": 37
             }
           ]
@@ -5033,7 +5033,7 @@
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 18,
+                  "line": 16,
                   "character": 9
                 }
               ]
@@ -5049,7 +5049,7 @@
           "sources": [
             {
               "fileName": "src/core/integer.ts",
-              "line": 17,
+              "line": 15,
               "character": 34
             }
           ],
@@ -5080,12 +5080,12 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive acceptable value."
+                "shortText": "Maximum inclusive acceptable value. Can't be smaller than `min`."
               },
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 14,
+                  "line": 12,
                   "character": 5
                 }
               ],
@@ -5113,12 +5113,12 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Minimum inclusive acceptable value."
+                "shortText": "Minimum inclusive acceptable value. Can't be bigger than `max`."
               },
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 8,
+                  "line": 7,
                   "character": 5
                 }
               ],
@@ -5161,6 +5161,20 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create an integer number value object.\nReturns a class constructor that accepts a (integer) number for instantiation\nand returns that number when valueOf() is called.",
+            "text": "> NOTE: If you want to accept floating point numbers and convert them to\nintegers, you can use {@link VOFloat} and set the precision option to 0.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nconst int1 = new MyInteger(5); // OK\nint1.valueOf(); // 5\n\nconst int2 = new MyInteger(5.0); // OK\nint2.valueOf(); // 5\n\nconst int3 = new MyInteger(5.5); // Runtime error: Not an integer\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass NaturalNumber extends VOInteger({ min: 0 }) {} // OK\nnew NaturalNumber(0); // OK\nnew NaturalNumber(1000000); // Ok\nnew NaturalNumber(-1); // Runtime error: Too small\nnew NaturalNumber(1.5); // Runtime error: Not an integer\n\nclass MyFloatRangeInteger extends VOInteger({ min: -100.5, max: 100.5 }) {} // OK\nnew MyFloatRangeInteger(-100); // OK\nnew MyFloatRangeInteger(100); // Ok\nnew MyFloatRangeInteger(-101); // Runtime error: Too small\nnew MyFloatRangeInteger(101); // Runtime error: Too big\n\nclass MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 255,
@@ -5170,6 +5184,20 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create an integer number value object.\nReturns a class constructor that accepts a (integer) number for instantiation\nand returns that number when valueOf() is called.",
+                "text": "> NOTE: If you want to accept floating point numbers and convert them to\nintegers, you can use {@link VOFloat} and set the precision option to 0.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nconst int1 = new MyInteger(5); // OK\nint1.valueOf(); // 5\n\nconst int2 = new MyInteger(5.0); // OK\nint2.valueOf(); // 5\n\nconst int3 = new MyInteger(5.5); // Runtime error: Not an integer\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass NaturalNumber extends VOInteger({ min: 0 }) {} // OK\nnew NaturalNumber(0); // OK\nnew NaturalNumber(1000000); // Ok\nnew NaturalNumber(-1); // Runtime error: Too small\nnew NaturalNumber(1.5); // Runtime error: Not an integer\n\nclass MyFloatRangeInteger extends VOInteger({ min: -100.5, max: 100.5 }) {} // OK\nnew MyFloatRangeInteger(-100); // OK\nnew MyFloatRangeInteger(100); // Ok\nnew MyFloatRangeInteger(-101); // Runtime error: Too small\nnew MyFloatRangeInteger(101); // Runtime error: Too big\n\nclass MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
+                  }
+                ]
+              },
               "parameters": [
                 {
                   "id": 256,
@@ -5178,6 +5206,9 @@
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Customizations for the returned class constructor\n"
                   },
                   "type": {
                     "type": "reference",
@@ -5197,7 +5228,7 @@
           "sources": [
             {
               "fileName": "src/core/integer.ts",
-              "line": 25,
+              "line": 61,
               "character": 22
             }
           ]
@@ -7212,6 +7243,9 @@
                   "flags": {
                     "isExported": true
                   },
+                  "comment": {
+                    "shortText": "Returns the primitive(ish) value that represents this value object."
+                  },
                   "type": {
                     "type": "typeParameter",
                     "name": "Raw"
@@ -7221,7 +7255,7 @@
               "sources": [
                 {
                   "fileName": "src/core/value-object.ts",
-                  "line": 14,
+                  "line": 17,
                   "character": 9
                 }
               ]
@@ -7326,7 +7360,7 @@
               "sources": [
                 {
                   "fileName": "src/core/value-object.ts",
-                  "line": 31,
+                  "line": 34,
                   "character": 66
                 }
               ]
@@ -7342,7 +7376,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 31,
+              "line": 34,
               "character": 38
             }
           ]
@@ -7380,7 +7414,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 61,
+              "line": 64,
               "character": 18
             }
           ],
@@ -7454,7 +7488,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 53,
+              "line": 56,
               "character": 22
             }
           ],
@@ -7532,7 +7566,7 @@
           "sources": [
             {
               "fileName": "src/core/value-object.ts",
-              "line": 41,
+              "line": 44,
               "character": 17
             }
           ],
@@ -8171,7 +8205,7 @@
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 18,
+                  "line": 16,
                   "character": 9
                 }
               ],

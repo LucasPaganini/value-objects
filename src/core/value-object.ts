@@ -11,6 +11,9 @@
  * @template Raw Primitive(ish) representation of the value object.
  */
 export interface ValueObject<Raw> {
+  /**
+   * Returns the primitive(ish) value that represents this value object.
+   */
   valueOf(): Raw
 }
 
