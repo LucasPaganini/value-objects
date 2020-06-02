@@ -11,25 +11,24 @@ import {
 export interface VOStringOptions {
   /**
    * Whether it should trim the raw string.
-   * @type {boolean} Defaults to `false`
+   * @default false
    */
   trim?: boolean
 
   /**
    * Minimum inclusive acceptable length after trimming.
-   * @type {number (integer)} Can't be less than zero or bigger than `maxLength`
+   * Can't be less than zero or bigger than `maxLength`.
    */
   minLength?: number
 
   /**
    * Maximum inclusive acceptable length after trimming.
-   * @type {number (integer)} Can't be less than zero or smaller than `minLength`
+   * Can't be less than zero or smaller than `minLength`.
    */
   maxLength?: number
 
   /**
    * Regular expression pattern for the raw string after trimming.
-   * @type {RegExp}
    */
   pattern?: RegExp
 }
@@ -42,6 +41,79 @@ export interface VOStringConstructor {
   new (r: string): VOStringInstance
 }
 
+/**
+ * Function to create a formatted string value object constructor.
+ *
+ * > NOTE: If you have a list of strings and the value must be one
+ * of the strings, you should use {@link VOSet}.
+ *
+ * @param options Customizations for the returned class constructor
+ * @return Class constructor that accepts a string for instantiation
+ * and returns that string when {@link VOStringInstance.valueOf} is called.
+ *
+ * @example
+ * ```typescript
+ * class UselessString extends VOString() {}
+ *
+ * const string = new UselessString('abc'); // OK
+ * string.valueOf(); // "abc"
+ *
+ * new UselessString(5); // Compilation error: Not a string
+ * ```
+ *
+ * @example
+ * ```typescript
+ * class SuperShortString extends VOString({
+ *   trim: true,
+ *   minLength: 4,
+ *   maxLength: 8
+ * }) {}
+ * new SuperShortString('abcd'); // OK
+ * new SuperShortString(' ab '); // Runtime error: Too short (the length after trimming is 2 but the minLength is 4)
+ * new SuperShortString('123456789'); // Runtime error: Too long (the length after trimming is 9 but the maxLength is 8)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+ * class Email extends VOString({
+ *   trim: true,
+ *   maxLength: 256,
+ *   pattern: EMAIL_PATTERN
+ * }) {}
+ * new Email('test@example.com'); // OK
+ * new Email('test.example.com'); // Runtime error: Value doesn't match pattern
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$/; // One lowercase, one uppercase, one number
+ * class Password extends VOString({
+ *   trim: false,
+ *   minLength: 8,
+ *   maxLength: 256,
+ *   pattern: PASSWORD_PATTERN
+ * }) {}
+ * new Password('Secret123'); // OK
+ * new Password('abcd1234'); // Runtime error: Value doesn't match pattern
+ * new Password(' AB12ab '); // Runtime error: Too short (the length after trimming is 6 but the minLength is 8)
+ * ```
+ *
+ * @example
+ * ```typescript
+ * const PASSWORD_BLACKLIST = ['Secret123', 'abc123ABC'];
+ * class WhitelistedPassword extends Password {
+ *   constructor(raw: string) {
+ *     super(raw);
+ *     const trimmedRaw = this.valueOf();
+ *     if (PASSWORD_BLACKLIST.includes(trimmedRaw))
+ *       throw Error('This password is blacklisted');
+ *   }
+ * }
+ * new WhitelistedPassword('Secret123'); // Runtime error: This password is blacklisted
+ * new WhitelistedPassword('123Secret'); // OK
+ * ```
+ */
 export const VOString = (options: VOStringOptions = {}): VOStringConstructor => {
   if (options.trim !== undefined) {
     if (typeof options.trim !== 'boolean') throw new RawTypeError('boolean', typeof options.trim, 'options.trim')

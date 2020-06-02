@@ -46,7 +46,7 @@ const isPrecisionTrim = makeIsInSet(PRECISION_TRIM_SET)
  * Function to create a floating point number value object constructor.
  *
  * @param options Customizations for the returned class constructor
- * @return Class constructo that accepts a number for instantiation
+ * @return Class constructor that accepts a number for instantiation
  * and returns that number when {@link VOFloatInstance.valueOf} is called.
  *
  * @example

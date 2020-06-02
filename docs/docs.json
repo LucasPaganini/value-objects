@@ -3826,7 +3826,7 @@
           },
           "comment": {
             "shortText": "Function to create a floating point number value object constructor.",
-            "returns": "Class constructo that accepts a number for instantiation\nand returns that number when {@link VOFloatInstance.valueOf} is called.\n",
+            "returns": "Class constructor that accepts a number for instantiation\nand returns that number when {@link VOFloatInstance.valueOf} is called.\n",
             "tags": [
               {
                 "tag": "example",
@@ -3865,7 +3865,7 @@
               },
               "comment": {
                 "shortText": "Function to create a floating point number value object constructor.",
-                "returns": "Class constructo that accepts a number for instantiation\nand returns that number when {@link VOFloatInstance.valueOf} is called.\n",
+                "returns": "Class constructor that accepts a number for instantiation\nand returns that number when {@link VOFloatInstance.valueOf} is called.\n",
                 "tags": [
                   {
                     "tag": "example",
@@ -6949,7 +6949,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 41,
+                  "line": 40,
                   "character": 38
                 }
               ]
@@ -6965,7 +6965,7 @@
           "sources": [
             {
               "fileName": "src/core/string.ts",
-              "line": 41,
+              "line": 40,
               "character": 36
             }
           ]
@@ -7005,7 +7005,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 38,
+                  "line": 37,
                   "character": 9
                 }
               ]
@@ -7021,7 +7021,7 @@
           "sources": [
             {
               "fileName": "src/core/string.ts",
-              "line": 37,
+              "line": 36,
               "character": 33
             }
           ],
@@ -7072,7 +7072,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive acceptable length after trimming."
+                "shortText": "Maximum inclusive acceptable length after trimming.\nCan't be less than zero or smaller than `minLength`."
               },
               "sources": [
                 {
@@ -7105,7 +7105,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Minimum inclusive acceptable length after trimming."
+                "shortText": "Minimum inclusive acceptable length after trimming.\nCan't be less than zero or bigger than `maxLength`."
               },
               "sources": [
                 {
@@ -7143,7 +7143,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 34,
+                  "line": 33,
                   "character": 9
                 }
               ],
@@ -7162,7 +7162,13 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Whether it should trim the raw string."
+                "shortText": "Whether it should trim the raw string.",
+                "tags": [
+                  {
+                    "tag": "default",
+                    "text": "false\n"
+                  }
+                ]
               },
               "sources": [
                 {
@@ -7214,6 +7220,33 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create a formatted string value object constructor.",
+            "text": "> NOTE: If you have a list of strings and the value must be one\nof the strings, you should use {@link VOSet}.\n",
+            "returns": "Class constructor that accepts a string for instantiation\nand returns that string when {@link VOStringInstance.valueOf} is called.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass UselessString extends VOString() {}\n\nconst string = new UselessString('abc'); // OK\nstring.valueOf(); // \"abc\"\n\nnew UselessString(5); // Compilation error: Not a string\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass SuperShortString extends VOString({\n  trim: true,\n  minLength: 4,\n  maxLength: 8\n}) {}\nnew SuperShortString('abcd'); // OK\nnew SuperShortString(' ab '); // Runtime error: Too short (the length after trimming is 2 but the minLength is 4)\nnew SuperShortString('123456789'); // Runtime error: Too long (the length after trimming is 9 but the maxLength is 8)\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nconst EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;\nclass Email extends VOString({\n  trim: true,\n  maxLength: 256,\n  pattern: EMAIL_PATTERN\n}) {}\nnew Email('test@example.com'); // OK\nnew Email('test.example.com'); // Runtime error: Value doesn't match pattern\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nconst PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$/; // One lowercase, one uppercase, one number\nclass Password extends VOString({\n  trim: false,\n  minLength: 8,\n  maxLength: 256,\n  pattern: PASSWORD_PATTERN\n}) {}\nnew Password('Secret123'); // OK\nnew Password('abcd1234'); // Runtime error: Value doesn't match pattern\nnew Password(' AB12ab '); // Runtime error: Too short (the length after trimming is 6 but the minLength is 8)\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nconst PASSWORD_BLACKLIST = ['Secret123', 'abc123ABC'];\nclass WhitelistedPassword extends Password {\n  constructor(raw: string) {\n    super(raw);\n    const trimmedRaw = this.valueOf();\n    if (PASSWORD_BLACKLIST.includes(trimmedRaw))\n      throw Error('This password is blacklisted');\n  }\n}\nnew WhitelistedPassword('Secret123'); // Runtime error: This password is blacklisted\nnew WhitelistedPassword('123Secret'); // OK\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 335,
@@ -7223,6 +7256,33 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create a formatted string value object constructor.",
+                "text": "> NOTE: If you have a list of strings and the value must be one\nof the strings, you should use {@link VOSet}.\n",
+                "returns": "Class constructor that accepts a string for instantiation\nand returns that string when {@link VOStringInstance.valueOf} is called.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass UselessString extends VOString() {}\n\nconst string = new UselessString('abc'); // OK\nstring.valueOf(); // \"abc\"\n\nnew UselessString(5); // Compilation error: Not a string\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass SuperShortString extends VOString({\n  trim: true,\n  minLength: 4,\n  maxLength: 8\n}) {}\nnew SuperShortString('abcd'); // OK\nnew SuperShortString(' ab '); // Runtime error: Too short (the length after trimming is 2 but the minLength is 4)\nnew SuperShortString('123456789'); // Runtime error: Too long (the length after trimming is 9 but the maxLength is 8)\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nconst EMAIL_PATTERN = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;\nclass Email extends VOString({\n  trim: true,\n  maxLength: 256,\n  pattern: EMAIL_PATTERN\n}) {}\nnew Email('test@example.com'); // OK\nnew Email('test.example.com'); // Runtime error: Value doesn't match pattern\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nconst PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]*$/; // One lowercase, one uppercase, one number\nclass Password extends VOString({\n  trim: false,\n  minLength: 8,\n  maxLength: 256,\n  pattern: PASSWORD_PATTERN\n}) {}\nnew Password('Secret123'); // OK\nnew Password('abcd1234'); // Runtime error: Value doesn't match pattern\nnew Password(' AB12ab '); // Runtime error: Too short (the length after trimming is 6 but the minLength is 8)\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nconst PASSWORD_BLACKLIST = ['Secret123', 'abc123ABC'];\nclass WhitelistedPassword extends Password {\n  constructor(raw: string) {\n    super(raw);\n    const trimmedRaw = this.valueOf();\n    if (PASSWORD_BLACKLIST.includes(trimmedRaw))\n      throw Error('This password is blacklisted');\n  }\n}\nnew WhitelistedPassword('Secret123'); // Runtime error: This password is blacklisted\nnew WhitelistedPassword('123Secret'); // OK\n```\n"
+                  }
+                ]
+              },
               "parameters": [
                 {
                   "id": 336,
@@ -7231,6 +7291,9 @@
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Customizations for the returned class constructor"
                   },
                   "type": {
                     "type": "reference",
@@ -7250,7 +7313,7 @@
           "sources": [
             {
               "fileName": "src/core/string.ts",
-              "line": 45,
+              "line": 117,
               "character": 21
             }
           ]
@@ -7810,7 +7873,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 38,
+                  "line": 37,
                   "character": 9
                 }
               ],
@@ -7909,7 +7972,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 38,
+                  "line": 37,
                   "character": 9
                 }
               ],
@@ -8094,7 +8157,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 38,
+                  "line": 37,
                   "character": 9
                 }
               ],
@@ -8193,7 +8256,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 38,
+                  "line": 37,
                   "character": 9
                 }
               ],
@@ -8490,7 +8553,7 @@
               "sources": [
                 {
                   "fileName": "src/core/string.ts",
-                  "line": 38,
+                  "line": 37,
                   "character": 9
                 }
               ],
