@@ -3667,7 +3667,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive acceptable value."
+                "shortText": "Maximum inclusive acceptable value.\nCan't be smaller than `min`."
               },
               "sources": [
                 {
@@ -3700,7 +3700,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Minimum inclusive acceptable value."
+                "shortText": "Minimum inclusive acceptable value.\nCan't be bigger than `max`."
               },
               "sources": [
                 {
@@ -3733,7 +3733,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Floating point precision."
+                "shortText": "Floating point precision.\nCan't be less than zero."
               },
               "sources": [
                 {
@@ -3766,7 +3766,13 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Trimming strategy for numbers with more precision than `precision`."
+                "shortText": "Trimming strategy for numbers with more precision than `precision`.",
+                "tags": [
+                  {
+                    "tag": "default",
+                    "text": "\"round\"\n"
+                  }
+                ]
               },
               "sources": [
                 {
@@ -3818,6 +3824,36 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create a floating point number value object constructor.",
+            "returns": "Class constructo that accepts a number for instantiation\nand returns that number when {@link VOFloatInstance.valueOf} is called.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass MyFloat extends VOFloat() {}\n\nconst float1 = new MyFloat(5); // OK\nfloat1.valueOf(); // 5\n\nconst float2 = new MyFloat(5.0); // OK\nfloat2.valueOf(); // 5\n\nconst float3 = new MyFloat(5.5); // OK\nfloat3.valueOf(); // 5.5\n\nconst float4 = new MyFloat('5.5'); // Compilation error: Not a number\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass PositiveNumber extends VOFloat({ min: 0 }) {} // OK\nnew PositiveNumber(0); // OK\nnew PositiveNumber(1000000); // Ok\nnew PositiveNumber(-1); // Runtime error: Too small\nnew PositiveNumber(1.5); // OK\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass FloatWithValidRange extends VOFloat({ min: -100.5, max: 100.5 }) {} // OK\nnew FloatWithValidRange(-100); // OK\nnew FloatWithValidRange(100); // Ok\nnew FloatWithValidRange(-100.5); // OK\nnew FloatWithValidRange(-101); // Runtime error: Too small\nnew FloatWithValidRange(101); // Runtime error: Too big\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass FloatWithInvalidRange extends VOFloat({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass LimitedPrecisionFloat extends VOFloat({\n  precision: 5,\n  precisionTrim: 'round'\n}) {} // OK\nconst limited1 = new LimitedPrecisionFloat(0.123456789);\nlimited1.valueOf(); // 0.12346 => Only 5 precision digits and it's rounded\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass LimitedPrecisionFloatWithRange extends VOFloat({\n  min: 1,\n  max: 999.999,\n  precision: 2,\n  precisionTrim: 'ceil'\n}) {} // OK\nnew LimitedPrecisionFloatWithRange(-100); // Runtime error: Too small\nnew LimitedPrecisionFloatWithRange(100); // Ok\nnew LimitedPrecisionFloatWithRange(0.9999); // OK (rounds to 1 and passes the minimum)\nnew LimitedPrecisionFloatWithRange(999.999); // Runtime error: Too big (rounds to 1000 and doesn't pass the maximum)\nconst limited2 = new LimitedPrecisionFloatWithRange(0.123456789);\nlimited2.valueOf(); // 0.13 => Only 2 precision digits and it's rounded up because we're using \"ceil\"\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 241,
@@ -3827,6 +3863,36 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create a floating point number value object constructor.",
+                "returns": "Class constructo that accepts a number for instantiation\nand returns that number when {@link VOFloatInstance.valueOf} is called.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass MyFloat extends VOFloat() {}\n\nconst float1 = new MyFloat(5); // OK\nfloat1.valueOf(); // 5\n\nconst float2 = new MyFloat(5.0); // OK\nfloat2.valueOf(); // 5\n\nconst float3 = new MyFloat(5.5); // OK\nfloat3.valueOf(); // 5.5\n\nconst float4 = new MyFloat('5.5'); // Compilation error: Not a number\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass PositiveNumber extends VOFloat({ min: 0 }) {} // OK\nnew PositiveNumber(0); // OK\nnew PositiveNumber(1000000); // Ok\nnew PositiveNumber(-1); // Runtime error: Too small\nnew PositiveNumber(1.5); // OK\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass FloatWithValidRange extends VOFloat({ min: -100.5, max: 100.5 }) {} // OK\nnew FloatWithValidRange(-100); // OK\nnew FloatWithValidRange(100); // Ok\nnew FloatWithValidRange(-100.5); // OK\nnew FloatWithValidRange(-101); // Runtime error: Too small\nnew FloatWithValidRange(101); // Runtime error: Too big\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass FloatWithInvalidRange extends VOFloat({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass LimitedPrecisionFloat extends VOFloat({\n  precision: 5,\n  precisionTrim: 'round'\n}) {} // OK\nconst limited1 = new LimitedPrecisionFloat(0.123456789);\nlimited1.valueOf(); // 0.12346 => Only 5 precision digits and it's rounded\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass LimitedPrecisionFloatWithRange extends VOFloat({\n  min: 1,\n  max: 999.999,\n  precision: 2,\n  precisionTrim: 'ceil'\n}) {} // OK\nnew LimitedPrecisionFloatWithRange(-100); // Runtime error: Too small\nnew LimitedPrecisionFloatWithRange(100); // Ok\nnew LimitedPrecisionFloatWithRange(0.9999); // OK (rounds to 1 and passes the minimum)\nnew LimitedPrecisionFloatWithRange(999.999); // Runtime error: Too big (rounds to 1000 and doesn't pass the maximum)\nconst limited2 = new LimitedPrecisionFloatWithRange(0.123456789);\nlimited2.valueOf(); // 0.13 => Only 2 precision digits and it's rounded up because we're using \"ceil\"\n```\n"
+                  }
+                ]
+              },
               "parameters": [
                 {
                   "id": 242,
@@ -3835,6 +3901,9 @@
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Customizations for the returned class constructor"
                   },
                   "type": {
                     "type": "reference",
@@ -3854,7 +3923,7 @@
           "sources": [
             {
               "fileName": "src/core/float.ts",
-              "line": 45,
+              "line": 118,
               "character": 20
             }
           ]
@@ -4977,7 +5046,7 @@
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 19,
+                  "line": 21,
                   "character": 39
                 }
               ]
@@ -4993,7 +5062,7 @@
           "sources": [
             {
               "fileName": "src/core/integer.ts",
-              "line": 19,
+              "line": 21,
               "character": 37
             }
           ]
@@ -5033,7 +5102,7 @@
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 16,
+                  "line": 18,
                   "character": 9
                 }
               ]
@@ -5049,7 +5118,7 @@
           "sources": [
             {
               "fileName": "src/core/integer.ts",
-              "line": 15,
+              "line": 17,
               "character": 34
             }
           ],
@@ -5080,12 +5149,12 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive acceptable value. Can't be smaller than `min`."
+                "shortText": "Maximum inclusive acceptable value.\nCan't be smaller than `min`."
               },
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 12,
+                  "line": 14,
                   "character": 5
                 }
               ],
@@ -5113,12 +5182,12 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Minimum inclusive acceptable value. Can't be bigger than `max`."
+                "shortText": "Minimum inclusive acceptable value.\nCan't be bigger than `max`."
               },
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 7,
+                  "line": 8,
                   "character": 5
                 }
               ],
@@ -5162,16 +5231,25 @@
             "isConst": true
           },
           "comment": {
-            "shortText": "Function to create an integer number value object.\nReturns a class constructor that accepts a (integer) number for instantiation\nand returns that number when valueOf() is called.",
+            "shortText": "Function to create an integer number value object constructor.",
             "text": "> NOTE: If you want to accept floating point numbers and convert them to\nintegers, you can use {@link VOFloat} and set the precision option to 0.\n",
+            "returns": "Class constructor that accepts a (integer) number for instantiation\nand returns that number when {@link VOIntegerInstance.valueOf} is called.\n",
             "tags": [
               {
                 "tag": "example",
-                "text": "\n```typescript\nconst int1 = new MyInteger(5); // OK\nint1.valueOf(); // 5\n\nconst int2 = new MyInteger(5.0); // OK\nint2.valueOf(); // 5\n\nconst int3 = new MyInteger(5.5); // Runtime error: Not an integer\n```\n"
+                "text": "\n```typescript\nclass MyInteger extends VOInteger() {}\n\nconst int1 = new MyInteger(5); // OK\nint1.valueOf(); // 5\n\nconst int2 = new MyInteger(5.0); // OK\nint2.valueOf(); // 5\n\nconst int3 = new MyInteger(5.5); // Runtime error: Not an integer\n```\n"
               },
               {
                 "tag": "example",
-                "text": "\n```typescript\nclass NaturalNumber extends VOInteger({ min: 0 }) {} // OK\nnew NaturalNumber(0); // OK\nnew NaturalNumber(1000000); // Ok\nnew NaturalNumber(-1); // Runtime error: Too small\nnew NaturalNumber(1.5); // Runtime error: Not an integer\n\nclass MyFloatRangeInteger extends VOInteger({ min: -100.5, max: 100.5 }) {} // OK\nnew MyFloatRangeInteger(-100); // OK\nnew MyFloatRangeInteger(100); // Ok\nnew MyFloatRangeInteger(-101); // Runtime error: Too small\nnew MyFloatRangeInteger(101); // Runtime error: Too big\n\nclass MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
+                "text": "\n```typescript\nclass NaturalNumber extends VOInteger({ min: 0 }) {} // OK\nnew NaturalNumber(0); // OK\nnew NaturalNumber(1000000); // Ok\nnew NaturalNumber(-1); // Runtime error: Too small\nnew NaturalNumber(1.5); // Runtime error: Not an integer\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass MyFloatRangeInteger extends VOInteger({ min: -100.5, max: 100.5 }) {} // OK\nnew MyFloatRangeInteger(-100); // OK\nnew MyFloatRangeInteger(100); // Ok\nnew MyFloatRangeInteger(-101); // Runtime error: Too small\nnew MyFloatRangeInteger(101); // Runtime error: Too big\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
               }
             ]
           },
@@ -5185,16 +5263,25 @@
                 "isExported": true
               },
               "comment": {
-                "shortText": "Function to create an integer number value object.\nReturns a class constructor that accepts a (integer) number for instantiation\nand returns that number when valueOf() is called.",
+                "shortText": "Function to create an integer number value object constructor.",
                 "text": "> NOTE: If you want to accept floating point numbers and convert them to\nintegers, you can use {@link VOFloat} and set the precision option to 0.\n",
+                "returns": "Class constructor that accepts a (integer) number for instantiation\nand returns that number when {@link VOIntegerInstance.valueOf} is called.\n",
                 "tags": [
                   {
                     "tag": "example",
-                    "text": "\n```typescript\nconst int1 = new MyInteger(5); // OK\nint1.valueOf(); // 5\n\nconst int2 = new MyInteger(5.0); // OK\nint2.valueOf(); // 5\n\nconst int3 = new MyInteger(5.5); // Runtime error: Not an integer\n```\n"
+                    "text": "\n```typescript\nclass MyInteger extends VOInteger() {}\n\nconst int1 = new MyInteger(5); // OK\nint1.valueOf(); // 5\n\nconst int2 = new MyInteger(5.0); // OK\nint2.valueOf(); // 5\n\nconst int3 = new MyInteger(5.5); // Runtime error: Not an integer\n```\n"
                   },
                   {
                     "tag": "example",
-                    "text": "\n```typescript\nclass NaturalNumber extends VOInteger({ min: 0 }) {} // OK\nnew NaturalNumber(0); // OK\nnew NaturalNumber(1000000); // Ok\nnew NaturalNumber(-1); // Runtime error: Too small\nnew NaturalNumber(1.5); // Runtime error: Not an integer\n\nclass MyFloatRangeInteger extends VOInteger({ min: -100.5, max: 100.5 }) {} // OK\nnew MyFloatRangeInteger(-100); // OK\nnew MyFloatRangeInteger(100); // Ok\nnew MyFloatRangeInteger(-101); // Runtime error: Too small\nnew MyFloatRangeInteger(101); // Runtime error: Too big\n\nclass MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
+                    "text": "\n```typescript\nclass NaturalNumber extends VOInteger({ min: 0 }) {} // OK\nnew NaturalNumber(0); // OK\nnew NaturalNumber(1000000); // Ok\nnew NaturalNumber(-1); // Runtime error: Too small\nnew NaturalNumber(1.5); // Runtime error: Not an integer\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass MyFloatRangeInteger extends VOInteger({ min: -100.5, max: 100.5 }) {} // OK\nnew MyFloatRangeInteger(-100); // OK\nnew MyFloatRangeInteger(100); // Ok\nnew MyFloatRangeInteger(-101); // Runtime error: Too small\nnew MyFloatRangeInteger(101); // Runtime error: Too big\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass MyInvalidInteger extends VOInteger({ min: 100, max: -100 }) {} // Runtime error: Invalid logic (options.min should not be bigger than options.max)\n```\n"
                   }
                 ]
               },
@@ -5208,7 +5295,7 @@
                     "isExported": true
                   },
                   "comment": {
-                    "shortText": "Customizations for the returned class constructor\n"
+                    "shortText": "Customizations for the returned class constructor"
                   },
                   "type": {
                     "type": "reference",
@@ -5228,7 +5315,7 @@
           "sources": [
             {
               "fileName": "src/core/integer.ts",
-              "line": 61,
+              "line": 71,
               "character": 22
             }
           ]
@@ -8205,7 +8292,7 @@
               "sources": [
                 {
                   "fileName": "src/core/integer.ts",
-                  "line": 16,
+                  "line": 18,
                   "character": 9
                 }
               ],
