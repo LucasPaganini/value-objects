@@ -6195,6 +6195,20 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create an optional value object constructor.",
+            "returns": "Class constructor that accepts a None or the given\nvalue object raw initial value for instantiation and returns\nthat value or the None value when {@link VOOptionalInstance.valueOf} is called.\n\n\nThe class created by `VOOptional` ({@link VOOptionalInstance}) wraps the\ninner class and exposes it through the `value` property when it's instantiated.\nCalling {@link VOOptionalInstance.valueOf} will either return the `None` value\nor the `valueOf()` from the inner class.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}\nnew Name('Lucas Paganini'); // OK\nnew Name(undefined); // Compilation error: Not a string\nnew Name(null); // Compilation error: Not a string\n\nclass OptionalName extends VOOptional(Name) {}\nnew OptionalName('Lucas Paganini'); // OK\nnew OptionalName(undefined); // OK\nnew OptionalName(null); // Compilation error: Expects string | undefined\n\nconst name = new Name('Lucas Paganini'); // OK\nname.valueOf(); // \"Lucas Paganini\"\n\nconst optional1 = new OptionalName('Lucas Paganini'); // OK\noptional1.value; // Name instance\noptional1.valueOf(); // \"Lucas Paganini\"\n\nconst optional2 = new OptionalName(undefined); // OK\noptional2.value; // undefined\noptional2.valueOf(); // undefined\n```\n\nThis function has no options but it does accept a second parameter which\nindicates what values should be considered nothing.\nFor default, it only accepts `undefined`, but you can change that to\n_also_ accept `null` or maybe to _just_ accept `null`.\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}\nnew Name('Lucas Paganini'); // OK\nnew Name(undefined); // Compilation error: Not a string\nnew Name(null); // Compilation error: Not a string\n\nclass OptionalName1 extends VOOptional(Name) {}\nnew OptionalName1('Lucas Paganini'); // OK\nnew OptionalName1(undefined); // OK\nnew OptionalName1(null); // Compilation error: Expects string | undefined\n\nclass OptionalName2 extends VOOptional(Name, [undefined, null]) {}\nnew OptionalName2('Lucas Paganini'); // OK\nnew OptionalName2(undefined); // OK\nnew OptionalName2(null); // OK\n\nclass OptionalName3 extends VOOptional(Name, [null]) {}\nnew OptionalName3('Lucas Paganini'); // OK\nnew OptionalName3(undefined); // Compilation error: Expects string | null\nnew OptionalName3(null); // OK\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 292,
@@ -6204,6 +6218,20 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create an optional value object constructor.",
+                "returns": "Class constructor that accepts a None or the given\nvalue object raw initial value for instantiation and returns\nthat value or the None value when {@link VOOptionalInstance.valueOf} is called.\n\n\nThe class created by `VOOptional` ({@link VOOptionalInstance}) wraps the\ninner class and exposes it through the `value` property when it's instantiated.\nCalling {@link VOOptionalInstance.valueOf} will either return the `None` value\nor the `valueOf()` from the inner class.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}\nnew Name('Lucas Paganini'); // OK\nnew Name(undefined); // Compilation error: Not a string\nnew Name(null); // Compilation error: Not a string\n\nclass OptionalName extends VOOptional(Name) {}\nnew OptionalName('Lucas Paganini'); // OK\nnew OptionalName(undefined); // OK\nnew OptionalName(null); // Compilation error: Expects string | undefined\n\nconst name = new Name('Lucas Paganini'); // OK\nname.valueOf(); // \"Lucas Paganini\"\n\nconst optional1 = new OptionalName('Lucas Paganini'); // OK\noptional1.value; // Name instance\noptional1.valueOf(); // \"Lucas Paganini\"\n\nconst optional2 = new OptionalName(undefined); // OK\noptional2.value; // undefined\noptional2.valueOf(); // undefined\n```\n\nThis function has no options but it does accept a second parameter which\nindicates what values should be considered nothing.\nFor default, it only accepts `undefined`, but you can change that to\n_also_ accept `null` or maybe to _just_ accept `null`.\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}\nnew Name('Lucas Paganini'); // OK\nnew Name(undefined); // Compilation error: Not a string\nnew Name(null); // Compilation error: Not a string\n\nclass OptionalName1 extends VOOptional(Name) {}\nnew OptionalName1('Lucas Paganini'); // OK\nnew OptionalName1(undefined); // OK\nnew OptionalName1(null); // Compilation error: Expects string | undefined\n\nclass OptionalName2 extends VOOptional(Name, [undefined, null]) {}\nnew OptionalName2('Lucas Paganini'); // OK\nnew OptionalName2(undefined); // OK\nnew OptionalName2(null); // OK\n\nclass OptionalName3 extends VOOptional(Name, [null]) {}\nnew OptionalName3('Lucas Paganini'); // OK\nnew OptionalName3(undefined); // Compilation error: Expects string | null\nnew OptionalName3(null); // OK\n```\n"
+                  }
+                ]
+              },
               "typeParameter": [
                 {
                   "id": 293,
@@ -6212,6 +6240,9 @@
                   "kindString": "Type parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "text": "Value object constructor to make optional."
                   },
                   "type": {
                     "type": "reference",
@@ -6227,6 +6258,9 @@
                   "flags": {
                     "isExported": true
                   },
+                  "comment": {
+                    "text": "Values that represent nothing. Defaults to `undefined`."
+                  },
                   "type": {
                     "type": "reference",
                     "id": 290,
@@ -6237,11 +6271,14 @@
               "parameters": [
                 {
                   "id": 295,
-                  "name": "VO",
+                  "name": "VOC",
                   "kind": 32768,
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Value object constructor to make optional."
                   },
                   "type": {
                     "type": "typeParameter",
@@ -6261,6 +6298,9 @@
                   "flags": {
                     "isExported": true,
                     "isOptional": true
+                  },
+                  "comment": {
+                    "shortText": "Values that represent nothing. Defaults to `[undefined]`."
                   },
                   "type": {
                     "type": "reference",
@@ -6309,7 +6349,7 @@
           "sources": [
             {
               "fileName": "src/core/optional.ts",
-              "line": 22,
+              "line": 91,
               "character": 23
             }
           ]
@@ -6905,7 +6945,7 @@
           "sources": [
             {
               "fileName": "src/core/set.ts",
-              "line": 78,
+              "line": 77,
               "character": 18
             }
           ]

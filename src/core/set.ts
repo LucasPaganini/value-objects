@@ -31,7 +31,6 @@ const expectedSetableTypes = (set: Array<Setable>): Array<'number' | 'string' | 
   Array.from(new Set(set.map(v => <'number' | 'string' | 'boolean'>typeof v)))
 
 /**
- *
  * Function to create a set of elements value object constructor.
  *
  * @template Element Literal type of the set elements.

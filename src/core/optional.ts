@@ -19,8 +19,77 @@ export interface VOOptionalConstructor<VOC extends ValueObjectContructor, None e
 const expectedNoneableTypes = (nones: Array<Noneable>): Array<'undefined' | 'null'> =>
   Array.from(new Set(nones.map(v => (v === undefined ? 'undefined' : 'null'))))
 
+/**
+ * Function to create an optional value object constructor.
+ *
+ * @template VOC Value object constructor to make optional.
+ * @template None Values that represent nothing. Defaults to `undefined`.
+ * @param VOC Value object constructor to make optional.
+ * @param nones Values that represent nothing. Defaults to `[undefined]`.
+ * @returns Class constructor that accepts a None or the given
+ * value object raw initial value for instantiation and returns
+ * that value or the None value when {@link VOOptionalInstance.valueOf} is called.
+ *
+ *
+ * The class created by `VOOptional` ({@link VOOptionalInstance}) wraps the
+ * inner class and exposes it through the `value` property when it's instantiated.
+ * Calling {@link VOOptionalInstance.valueOf} will either return the `None` value
+ * or the `valueOf()` from the inner class.
+ *
+ * @example
+ * ```typescript
+ * class Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}
+ * new Name('Lucas Paganini'); // OK
+ * new Name(undefined); // Compilation error: Not a string
+ * new Name(null); // Compilation error: Not a string
+ *
+ * class OptionalName extends VOOptional(Name) {}
+ * new OptionalName('Lucas Paganini'); // OK
+ * new OptionalName(undefined); // OK
+ * new OptionalName(null); // Compilation error: Expects string | undefined
+ *
+ * const name = new Name('Lucas Paganini'); // OK
+ * name.valueOf(); // "Lucas Paganini"
+ *
+ * const optional1 = new OptionalName('Lucas Paganini'); // OK
+ * optional1.value; // Name instance
+ * optional1.valueOf(); // "Lucas Paganini"
+ *
+ * const optional2 = new OptionalName(undefined); // OK
+ * optional2.value; // undefined
+ * optional2.valueOf(); // undefined
+ * ```
+ *
+ * This function has no options but it does accept a second parameter which
+ * indicates what values should be considered nothing.
+ * For default, it only accepts `undefined`, but you can change that to
+ * _also_ accept `null` or maybe to _just_ accept `null`.
+ *
+ * @example
+ * ```typescript
+ * class Name extends VOString({ trim: true, maxLength: 256, minLength: 1 }) {}
+ * new Name('Lucas Paganini'); // OK
+ * new Name(undefined); // Compilation error: Not a string
+ * new Name(null); // Compilation error: Not a string
+ *
+ * class OptionalName1 extends VOOptional(Name) {}
+ * new OptionalName1('Lucas Paganini'); // OK
+ * new OptionalName1(undefined); // OK
+ * new OptionalName1(null); // Compilation error: Expects string | undefined
+ *
+ * class OptionalName2 extends VOOptional(Name, [undefined, null]) {}
+ * new OptionalName2('Lucas Paganini'); // OK
+ * new OptionalName2(undefined); // OK
+ * new OptionalName2(null); // OK
+ *
+ * class OptionalName3 extends VOOptional(Name, [null]) {}
+ * new OptionalName3('Lucas Paganini'); // OK
+ * new OptionalName3(undefined); // Compilation error: Expects string | null
+ * new OptionalName3(null); // OK
+ * ```
+ */
 export const VOOptional = <VOC extends ValueObjectContructor, None extends Noneable = undefined>(
-  VO: VOC,
+  VOC: VOC,
   nones?: Array<None>,
 ): VOOptionalConstructor<VOC, None> => {
   const _nones = nones ?? [<None>undefined]
@@ -39,7 +108,7 @@ export const VOOptional = <VOC extends ValueObjectContructor, None extends Nonea
     }
 
     public isNone(): boolean {
-      return _nones.some(none => none === this.value)
+      return isInNones(this.value)
     }
 
     constructor(raw: VOCRawInit<VOC> | None) {
@@ -49,7 +118,7 @@ export const VOOptional = <VOC extends ValueObjectContructor, None extends Nonea
       }
 
       try {
-        const valueObject = <InstanceType<VOC>>new VO(raw)
+        const valueObject = <InstanceType<VOC>>new VOC(raw)
         this.value = valueObject
       } catch (err) {
         if (RawTypeError.is(err)) {
