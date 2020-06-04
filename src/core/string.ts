@@ -47,7 +47,7 @@ export interface VOStringConstructor {
  * > NOTE: If you have a list of strings and the value must be one
  * of the strings, you should use {@link VOSet}.
  *
- * @param options Customizations for the returned class constructor
+ * @param options Customizations for the returned class constructor.
  * @return Class constructor that accepts a string for instantiation
  * and returns that string when {@link VOStringInstance.valueOf} is called.
  *

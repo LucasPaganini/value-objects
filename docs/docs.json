@@ -6361,7 +6361,7 @@
           "typeParameter": [
             {
               "id": 306,
-              "name": "T",
+              "name": "Element",
               "kind": 131072,
               "kindString": "Type parameter",
               "flags": {
@@ -6420,7 +6420,7 @@
                         "typeArguments": [
                           {
                             "type": "typeParameter",
-                            "name": "T",
+                            "name": "Element",
                             "constraint": {
                               "type": "reference",
                               "id": 311,
@@ -6446,7 +6446,7 @@
                     "typeArguments": [
                       {
                         "type": "typeParameter",
-                        "name": "T",
+                        "name": "Element",
                         "constraint": {
                           "type": "reference",
                           "id": 311,
@@ -6461,8 +6461,8 @@
               "sources": [
                 {
                   "fileName": "src/core/set.ts",
-                  "line": 21,
-                  "character": 78
+                  "line": 25,
+                  "character": 84
                 }
               ]
             }
@@ -6477,7 +6477,7 @@
           "sources": [
             {
               "fileName": "src/core/set.ts",
-              "line": 21,
+              "line": 25,
               "character": 33
             }
           ]
@@ -6493,7 +6493,7 @@
           "typeParameter": [
             {
               "id": 302,
-              "name": "T",
+              "name": "Element",
               "kind": 131072,
               "kindString": "Type parameter",
               "flags": {
@@ -6526,7 +6526,7 @@
                   },
                   "type": {
                     "type": "typeParameter",
-                    "name": "T",
+                    "name": "Element",
                     "constraint": {
                       "type": "reference",
                       "id": 311,
@@ -6538,7 +6538,7 @@
               "sources": [
                 {
                   "fileName": "src/core/set.ts",
-                  "line": 18,
+                  "line": 22,
                   "character": 9
                 }
               ]
@@ -6554,7 +6554,7 @@
           "sources": [
             {
               "fileName": "src/core/set.ts",
-              "line": 17,
+              "line": 21,
               "character": 30
             }
           ]
@@ -6593,12 +6593,12 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Whether it expects the set literal types for instantiation."
+                "shortText": "Whether it should expect the set elements literal types or their closest\nsupersets (eg. `true => boolean` and `\"abc\" => string`) for instantiation.\nDefaults to false."
               },
               "sources": [
                 {
                   "fileName": "src/core/set.ts",
-                  "line": 8,
+                  "line": 9,
                   "character": 8
                 }
               ],
@@ -6635,7 +6635,7 @@
           "sources": [
             {
               "fileName": "src/core/set.ts",
-              "line": 11,
+              "line": 12,
               "character": 19
             }
           ],
@@ -6668,7 +6668,7 @@
           "typeParameter": [
             {
               "id": 313,
-              "name": "T",
+              "name": "Element",
               "kind": 131072,
               "kindString": "Type parameter",
               "flags": {
@@ -6697,7 +6697,7 @@
           "sources": [
             {
               "fileName": "src/core/set.ts",
-              "line": 13,
+              "line": 14,
               "character": 20
             }
           ],
@@ -6717,7 +6717,7 @@
             },
             "trueType": {
               "type": "typeParameter",
-              "name": "T",
+              "name": "Element",
               "constraint": {
                 "type": "reference",
                 "id": 311,
@@ -6739,6 +6739,24 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create a set of elements value object constructor.",
+            "returns": "Class constructor that accepts a set element for instantiation\nand returns that element when {@link VOSetInstance.valueOf} is called.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass TestSet extends VOSet([123, 'abc']) {}\nnew TestSet('abc'); // OK\nnew TestSet(''); // Runtime error: Not in set\nnew TestSet(1); // Runtime error: Not in set\nnew TestSet(false); // Compilation error: Expects string | number\n```\n\nThe coolest part of `VOSet` are definitely the conditional types\nin {@link VOSetRaw} that decide what is expected for instantiation and\nthe customization of this behaviour using the `options.strict` flag.\nSee the examples below.\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass NonStrictSet extends VOSet([123, true]) {}\nnew NonStrictSet(true); // OK\nnew NonStrictSet('abc'); // Compilation error: Expects number | boolean\nnew NonStrictSet(''); // Compilation error: Expects number | boolean\nnew NonStrictSet(1); // Runtime error: Not in set\nnew NonStrictSet(false); // Runtime error: Not in set\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass StrictSet extends VOSet([123, true], { strict: true }) {}\nnew StrictSet(true); // OK\nnew StrictSet('abc'); // Compilation error: Expects true | 123\nnew StrictSet(''); // Compilation error: Expects true | 123\nnew StrictSet(1); // Compilation error: Expects true | 123\nnew StrictSet(false); // Compilation error: Expects true | 123\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 316,
@@ -6748,14 +6766,35 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create a set of elements value object constructor.",
+                "returns": "Class constructor that accepts a set element for instantiation\nand returns that element when {@link VOSetInstance.valueOf} is called.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass TestSet extends VOSet([123, 'abc']) {}\nnew TestSet('abc'); // OK\nnew TestSet(''); // Runtime error: Not in set\nnew TestSet(1); // Runtime error: Not in set\nnew TestSet(false); // Compilation error: Expects string | number\n```\n\nThe coolest part of `VOSet` are definitely the conditional types\nin {@link VOSetRaw} that decide what is expected for instantiation and\nthe customization of this behaviour using the `options.strict` flag.\nSee the examples below.\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass NonStrictSet extends VOSet([123, true]) {}\nnew NonStrictSet(true); // OK\nnew NonStrictSet('abc'); // Compilation error: Expects number | boolean\nnew NonStrictSet(''); // Compilation error: Expects number | boolean\nnew NonStrictSet(1); // Runtime error: Not in set\nnew NonStrictSet(false); // Runtime error: Not in set\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass StrictSet extends VOSet([123, true], { strict: true }) {}\nnew StrictSet(true); // OK\nnew StrictSet('abc'); // Compilation error: Expects true | 123\nnew StrictSet(''); // Compilation error: Expects true | 123\nnew StrictSet(1); // Compilation error: Expects true | 123\nnew StrictSet(false); // Compilation error: Expects true | 123\n```\n"
+                  }
+                ]
+              },
               "typeParameter": [
                 {
                   "id": 317,
-                  "name": "T",
+                  "name": "Element",
                   "kind": 131072,
                   "kindString": "Type parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "text": "Literal type of the set elements."
                   },
                   "type": {
                     "type": "reference",
@@ -6771,6 +6810,9 @@
                   "flags": {
                     "isExported": true
                   },
+                  "comment": {
+                    "text": "Literal boolean indicating the `options.strict` flag."
+                  },
                   "type": {
                     "type": "intrinsic",
                     "name": "boolean"
@@ -6780,18 +6822,21 @@
               "parameters": [
                 {
                   "id": 319,
-                  "name": "setValues",
+                  "name": "elements",
                   "kind": 32768,
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Elements in the set, they must be {@link Setable}."
                   },
                   "type": {
                     "type": "reference",
                     "typeArguments": [
                       {
                         "type": "typeParameter",
-                        "name": "T",
+                        "name": "Element",
                         "constraint": {
                           "type": "reference",
                           "id": 311,
@@ -6809,6 +6854,9 @@
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Customizations for the returned class constructor."
                   },
                   "type": {
                     "type": "reference",
@@ -6834,7 +6882,7 @@
                 "typeArguments": [
                   {
                     "type": "typeParameter",
-                    "name": "T",
+                    "name": "Element",
                     "constraint": {
                       "type": "reference",
                       "id": 311,
@@ -6857,7 +6905,7 @@
           "sources": [
             {
               "fileName": "src/core/set.ts",
-              "line": 29,
+              "line": 78,
               "character": 18
             }
           ]
@@ -7293,7 +7341,7 @@
                     "isExported": true
                   },
                   "comment": {
-                    "shortText": "Customizations for the returned class constructor"
+                    "shortText": "Customizations for the returned class constructor."
                   },
                   "type": {
                     "type": "reference",
