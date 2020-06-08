@@ -427,7 +427,7 @@
                   "parameters": [
                     {
                       "id": 221,
-                      "name": "r",
+                      "name": "rawInit",
                       "kind": 32768,
                       "kindString": "Parameter",
                       "flags": {
@@ -484,7 +484,7 @@
               "sources": [
                 {
                   "fileName": "src/core/array.ts",
-                  "line": 31,
+                  "line": 32,
                   "character": 72
                 }
               ]
@@ -500,7 +500,7 @@
           "sources": [
             {
               "fileName": "src/core/array.ts",
-              "line": 31,
+              "line": 32,
               "character": 35
             }
           ]
@@ -579,7 +579,7 @@
               "sources": [
                 {
                   "fileName": "src/core/array.ts",
-                  "line": 27,
+                  "line": 28,
                   "character": 9
                 }
               ]
@@ -634,7 +634,7 @@
               "sources": [
                 {
                   "fileName": "src/core/array.ts",
-                  "line": 28,
+                  "line": 29,
                   "character": 9
                 }
               ]
@@ -650,7 +650,7 @@
           "sources": [
             {
               "fileName": "src/core/array.ts",
-              "line": 26,
+              "line": 27,
               "character": 32
             }
           ]
@@ -674,12 +674,18 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive errors to acumulate before throwing."
+                "shortText": "Maximum inclusive errors to acumulate before throwing.\nCan't be less than zero.",
+                "tags": [
+                  {
+                    "tag": "default",
+                    "text": "1\n"
+                  }
+                ]
               },
               "sources": [
                 {
                   "fileName": "src/core/array.ts",
-                  "line": 23,
+                  "line": 24,
                   "character": 11
                 }
               ],
@@ -707,7 +713,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive length."
+                "shortText": "Maximum inclusive length.\nCan't be less than zero or smaller than `minLength`"
               },
               "sources": [
                 {
@@ -740,7 +746,7 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Minimum inclusive length."
+                "shortText": "Minimum inclusive length.\nCan't be less than zero or bigger than `maxLength`"
               },
               "sources": [
                 {
@@ -788,6 +794,20 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create an array wrapper over a given value object constructor.\nUseful if you already have a class and you need an array of it.",
+            "returns": "Class constructor that accepts an array of what the given\nvalue object constructor would accept. Calling {@link VOArrayInstance.valueOf}\ncalls `valueOf()` for all it's inner instances and returns an array of the results.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Email extends VOString({ ... }) {\n  getHost(): string { ... }\n}\n\nclass EmailsArray extends VOArray(Email) {}\nnew EmailsArray(['me@lucaspaganini.com', 'test@example.com']); // OK\nnew EmailsArray([123]); // Compilation error: Expects Array<string>\nnew EmailsArray(['invalid-email']); // Runtime error: Value doesn't match pattern\n\nconst emails = new EmailsArray(['me@lucaspaganini.com', 'test@example.com']);\nemails.valueOf(); // ['me@lucaspaganini.com', 'test@example.com']\nemails.toArray(); // [Email, Email]\nemails.toArray().map((email) => email.getHost()); // ['lucaspaganini.com', 'example.com']\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Test {\n  constructor(shouldThrow: boolean) {\n    if (shouldThrow) throw Error('I was instructed to throw');\n  }\n}\nnew Test(false); // OK\nnew Test(true); // Runtime error: I was instructed to throw\n\nclass TestsArray extends VOArray(Test, {\n  minLength: 1,\n  maxLength: 5,\n  maxErrors: 2\n}) {}\nnew TestsArray([false]); // OK\nnew TestsArray([]); // Runtime error: Too short\nnew TestsArray([false, false, false, false, false, false]); // Runtime error: Too long\nnew TestsArray([true, true, true, true]); // Runtime error: [\"I was instructed to throw\", \"I was instructed to throw\"]\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 223,
@@ -797,6 +817,20 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create an array wrapper over a given value object constructor.\nUseful if you already have a class and you need an array of it.",
+                "returns": "Class constructor that accepts an array of what the given\nvalue object constructor would accept. Calling {@link VOArrayInstance.valueOf}\ncalls `valueOf()` for all it's inner instances and returns an array of the results.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Email extends VOString({ ... }) {\n  getHost(): string { ... }\n}\n\nclass EmailsArray extends VOArray(Email) {}\nnew EmailsArray(['me@lucaspaganini.com', 'test@example.com']); // OK\nnew EmailsArray([123]); // Compilation error: Expects Array<string>\nnew EmailsArray(['invalid-email']); // Runtime error: Value doesn't match pattern\n\nconst emails = new EmailsArray(['me@lucaspaganini.com', 'test@example.com']);\nemails.valueOf(); // ['me@lucaspaganini.com', 'test@example.com']\nemails.toArray(); // [Email, Email]\nemails.toArray().map((email) => email.getHost()); // ['lucaspaganini.com', 'example.com']\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Test {\n  constructor(shouldThrow: boolean) {\n    if (shouldThrow) throw Error('I was instructed to throw');\n  }\n}\nnew Test(false); // OK\nnew Test(true); // Runtime error: I was instructed to throw\n\nclass TestsArray extends VOArray(Test, {\n  minLength: 1,\n  maxLength: 5,\n  maxErrors: 2\n}) {}\nnew TestsArray([false]); // OK\nnew TestsArray([]); // Runtime error: Too short\nnew TestsArray([false, false, false, false, false, false]); // Runtime error: Too long\nnew TestsArray([true, true, true, true]); // Runtime error: [\"I was instructed to throw\", \"I was instructed to throw\"]\n```\n"
+                  }
+                ]
+              },
               "typeParameter": [
                 {
                   "id": 224,
@@ -805,6 +839,9 @@
                   "kindString": "Type parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "text": "Value object constructor to make an array wrapper of."
                   },
                   "type": {
                     "type": "reference",
@@ -816,11 +853,14 @@
               "parameters": [
                 {
                   "id": 225,
-                  "name": "VO",
+                  "name": "VOC",
                   "kind": 32768,
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Value object constructor to make an array wrapper of."
                   },
                   "type": {
                     "type": "typeParameter",
@@ -839,6 +879,9 @@
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Customizations for the returned class constructor."
                   },
                   "type": {
                     "type": "reference",
@@ -869,7 +912,7 @@
           "sources": [
             {
               "fileName": "src/core/array.ts",
-              "line": 35,
+              "line": 85,
               "character": 20
             }
           ]

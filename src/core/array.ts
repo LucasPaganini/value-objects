@@ -6,19 +6,20 @@ import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-o
 export interface VOArrayOptions {
   /**
    * Minimum inclusive length.
-   * @type {number (integer)} Can't be less than zero or bigger than `maxLength`
+   * Can't be less than zero or bigger than `maxLength`
    */
   minLength?: number
 
   /**
    * Maximum inclusive length.
-   * @type {number (integer)} Can't be less than zero or smaller than `minLength`
+   * Can't be less than zero or smaller than `minLength`
    */
   maxLength?: number
 
   /**
    * Maximum inclusive errors to acumulate before throwing.
-   * @type {number (integer)} Can't be less than zero, defaults to `1`
+   * Can't be less than zero.
+   * @default 1
    */
   maxErrors?: number
 }
@@ -29,11 +30,60 @@ export interface VOArrayInstance<VO extends ValueObject<any>> {
 }
 
 export interface VOArrayConstructor<VOC extends ValueObjectContructor> {
-  new (r: Array<VOCRawInit<VOC>>): VOArrayInstance<InstanceType<VOC>>
+  new (rawInit: Array<VOCRawInit<VOC>>): VOArrayInstance<InstanceType<VOC>>
 }
 
+/**
+ * Function to create an array wrapper over a given value object constructor.
+ * Useful if you already have a class and you need an array of it.
+ *
+ * @template VOC Value object constructor to make an array wrapper of.
+ * @param VOC Value object constructor to make an array wrapper of.
+ * @param options Customizations for the returned class constructor.
+ * @return Class constructor that accepts an array of what the given
+ * value object constructor would accept. Calling {@link VOArrayInstance.valueOf}
+ * calls `valueOf()` for all it's inner instances and returns an array of the results.
+ *
+ * @example
+ * ```typescript
+ * class Email extends VOString({ ... }) {
+ *   getHost(): string { ... }
+ * }
+ *
+ * class EmailsArray extends VOArray(Email) {}
+ * new EmailsArray(['me@lucaspaganini.com', 'test@example.com']); // OK
+ * new EmailsArray([123]); // Compilation error: Expects Array<string>
+ * new EmailsArray(['invalid-email']); // Runtime error: Value doesn't match pattern
+ *
+ * const emails = new EmailsArray(['me@lucaspaganini.com', 'test@example.com']);
+ * emails.valueOf(); // ['me@lucaspaganini.com', 'test@example.com']
+ * emails.toArray(); // [Email, Email]
+ * emails.toArray().map((email) => email.getHost()); // ['lucaspaganini.com', 'example.com']
+ * ```
+ *
+ * @example
+ * ```typescript
+ * class Test {
+ *   constructor(shouldThrow: boolean) {
+ *     if (shouldThrow) throw Error('I was instructed to throw');
+ *   }
+ * }
+ * new Test(false); // OK
+ * new Test(true); // Runtime error: I was instructed to throw
+ *
+ * class TestsArray extends VOArray(Test, {
+ *   minLength: 1,
+ *   maxLength: 5,
+ *   maxErrors: 2
+ * }) {}
+ * new TestsArray([false]); // OK
+ * new TestsArray([]); // Runtime error: Too short
+ * new TestsArray([false, false, false, false, false, false]); // Runtime error: Too long
+ * new TestsArray([true, true, true, true]); // Runtime error: ["I was instructed to throw", "I was instructed to throw"]
+ * ```
+ */
 export const VOArray = <VOC extends ValueObjectContructor>(
-  VO: VOC,
+  VOC: VOC,
   options: VOArrayOptions = {},
 ): VOArrayConstructor<VOC> => {
   if (options.minLength !== undefined) {
@@ -78,7 +128,7 @@ export const VOArray = <VOC extends ValueObjectContructor>(
         throw new MaxLengthError(options.maxLength, raw.length)
 
       const errors: Array<Error> = []
-      const fromRaw = makeFromRawInit(VO)
+      const fromRaw = makeFromRawInit(VOC)
 
       for (const [_i, _raw] of Object.entries(raw)) {
         const index = parseInt(_i)
