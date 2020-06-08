@@ -5405,7 +5405,7 @@
           "typeParameter": [
             {
               "id": 261,
-              "name": "O",
+              "name": "Schema",
               "kind": 131072,
               "kindString": "Type parameter",
               "flags": {
@@ -5416,7 +5416,7 @@
                 "typeArguments": [
                   {
                     "type": "typeParameter",
-                    "name": "O"
+                    "name": "Schema"
                   }
                 ],
                 "name": "VOObjectSchema"
@@ -5444,7 +5444,7 @@
                   "parameters": [
                     {
                       "id": 264,
-                      "name": "r",
+                      "name": "rawInit",
                       "kind": 32768,
                       "kindString": "Parameter",
                       "flags": {
@@ -5455,13 +5455,13 @@
                         "typeArguments": [
                           {
                             "type": "typeParameter",
-                            "name": "O",
+                            "name": "Schema",
                             "constraint": {
                               "type": "reference",
                               "typeArguments": [
                                 {
                                   "type": "typeParameter",
-                                  "name": "O"
+                                  "name": "Schema"
                                 }
                               ],
                               "name": "VOObjectSchema"
@@ -5478,13 +5478,13 @@
                     "typeArguments": [
                       {
                         "type": "typeParameter",
-                        "name": "O",
+                        "name": "Schema",
                         "constraint": {
                           "type": "reference",
                           "typeArguments": [
                             {
                               "type": "typeParameter",
-                              "name": "O"
+                              "name": "Schema"
                             }
                           ],
                           "name": "VOObjectSchema"
@@ -5498,8 +5498,8 @@
               "sources": [
                 {
                   "fileName": "src/core/object.ts",
-                  "line": 25,
-                  "character": 67
+                  "line": 26,
+                  "character": 77
                 }
               ]
             }
@@ -5514,7 +5514,7 @@
           "sources": [
             {
               "fileName": "src/core/object.ts",
-              "line": 25,
+              "line": 26,
               "character": 36
             }
           ]
@@ -5538,12 +5538,18 @@
                 "isOptional": true
               },
               "comment": {
-                "shortText": "Maximum inclusive errors to acumulate before throwing."
+                "shortText": "Maximum inclusive errors to acumulate before throwing.\nCan't be less than zero.",
+                "tags": [
+                  {
+                    "tag": "default",
+                    "text": "1\n"
+                  }
+                ]
               },
               "sources": [
                 {
                   "fileName": "src/core/object.ts",
-                  "line": 11,
+                  "line": 12,
                   "character": 11
                 }
               ],
@@ -5588,7 +5594,7 @@
           "typeParameter": [
             {
               "id": 266,
-              "name": "O",
+              "name": "Schema",
               "kind": 131072,
               "kindString": "Type parameter",
               "flags": {
@@ -5599,7 +5605,7 @@
                 "typeArguments": [
                   {
                     "type": "typeParameter",
-                    "name": "O"
+                    "name": "Schema"
                   }
                 ],
                 "name": "VOObjectSchema"
@@ -5609,7 +5615,7 @@
           "sources": [
             {
               "fileName": "src/core/object.ts",
-              "line": 22,
+              "line": 23,
               "character": 28
             }
           ],
@@ -5624,13 +5630,13 @@
                     "typeArguments": [
                       {
                         "type": "typeParameter",
-                        "name": "O",
+                        "name": "Schema",
                         "constraint": {
                           "type": "reference",
                           "typeArguments": [
                             {
                               "type": "typeParameter",
-                              "name": "O"
+                              "name": "Schema"
                             }
                           ],
                           "name": "VOObjectSchema"
@@ -5655,8 +5661,8 @@
                   "sources": [
                     {
                       "fileName": "src/core/object.ts",
-                      "line": 22,
-                      "character": 105
+                      "line": 23,
+                      "character": 120
                     }
                   ]
                 }
@@ -5673,6 +5679,20 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create an object wrapper over a given map of value\nobject constructors. Useful if you have different classes and\nwant to aggregate them.",
+            "returns": "Class constructor that accepts an object mapping it's keys\nand values to what the inner value object constructors expect.\nCalling {@link VOObjectInstance.valueOf} calls `valueOf()` for all it's inner instances\nand returns them in an object.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Email extends VOString({ ... }) {\n  getHost(): string { ... }\n}\n\nclass Name extends VOString({ ... }) {}\n\nclass Password extends VOString({ ... }) {}\n\nclass User extends VOObject({\n  name: Name,\n  email: Email,\n  password: Password\n}) {}\n\nnew User({\n  name: 'Lucas',\n  email: 'me@lucaspaganini.com',\n  password: 'Secret123'\n}); // OK\n\nnew User({\n  name: 'Lucas',\n  email: 123,\n  password: 'Secret123'\n}); // Compilation error: `.email` expects a string\n\nnew User({\n  name: 'Lucas',\n  email: 'lucaspaganini.com',\n  password: 'Secret123'\n}); // Runtime error: `.email` Value doesn't match pattern\n\nconst user = new User({\nname: 'Lucas',\nemail: 'me@lucaspaganini.com',\npassword: 'Secret123'\n});\n\nuser.valueOf(); // { name: 'Lucas', email: 'me@lucaspaganini.com', password: 'Secret123' }\nuser.email.getHost(); // lucaspaganini.com\n```\n"
+              },
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Test {\n  constructor(shouldThrow: boolean) {\n    if (shouldThrow) throw Error('I was instructed to throw');\n  }\n}\nnew Test(false); // OK\nnew Test(true); // Runtime error: I was instructed to throw\n\nclass TestsObject extends VoObject({\n  aaa: Test,\n  bbb: Test,\n  ccc: Test\n}, { maxErrors: 2 }) {}\nnew TestsArray({ aaa: false, bbb: false, ccc: false }); // OK\nnew TestsArray({ aaa: true, bbb: true, ccc: true }); // Runtime error: [\"I was instructed to throw\", \"I was instructed to throw\"]\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 269,
@@ -5682,21 +5702,38 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create an object wrapper over a given map of value\nobject constructors. Useful if you have different classes and\nwant to aggregate them.",
+                "returns": "Class constructor that accepts an object mapping it's keys\nand values to what the inner value object constructors expect.\nCalling {@link VOObjectInstance.valueOf} calls `valueOf()` for all it's inner instances\nand returns them in an object.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Email extends VOString({ ... }) {\n  getHost(): string { ... }\n}\n\nclass Name extends VOString({ ... }) {}\n\nclass Password extends VOString({ ... }) {}\n\nclass User extends VOObject({\n  name: Name,\n  email: Email,\n  password: Password\n}) {}\n\nnew User({\n  name: 'Lucas',\n  email: 'me@lucaspaganini.com',\n  password: 'Secret123'\n}); // OK\n\nnew User({\n  name: 'Lucas',\n  email: 123,\n  password: 'Secret123'\n}); // Compilation error: `.email` expects a string\n\nnew User({\n  name: 'Lucas',\n  email: 'lucaspaganini.com',\n  password: 'Secret123'\n}); // Runtime error: `.email` Value doesn't match pattern\n\nconst user = new User({\nname: 'Lucas',\nemail: 'me@lucaspaganini.com',\npassword: 'Secret123'\n});\n\nuser.valueOf(); // { name: 'Lucas', email: 'me@lucaspaganini.com', password: 'Secret123' }\nuser.email.getHost(); // lucaspaganini.com\n```\n"
+                  },
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Test {\n  constructor(shouldThrow: boolean) {\n    if (shouldThrow) throw Error('I was instructed to throw');\n  }\n}\nnew Test(false); // OK\nnew Test(true); // Runtime error: I was instructed to throw\n\nclass TestsObject extends VoObject({\n  aaa: Test,\n  bbb: Test,\n  ccc: Test\n}, { maxErrors: 2 }) {}\nnew TestsArray({ aaa: false, bbb: false, ccc: false }); // OK\nnew TestsArray({ aaa: true, bbb: true, ccc: true }); // Runtime error: [\"I was instructed to throw\", \"I was instructed to throw\"]\n```\n"
+                  }
+                ]
+              },
               "typeParameter": [
                 {
                   "id": 270,
-                  "name": "O",
+                  "name": "Schema",
                   "kind": 131072,
                   "kindString": "Type parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "text": "Object mapping to value object constructors."
                   },
                   "type": {
                     "type": "reference",
                     "typeArguments": [
                       {
                         "type": "typeParameter",
-                        "name": "O"
+                        "name": "Schema"
                       }
                     ],
                     "name": "VOObjectSchema"
@@ -5712,15 +5749,18 @@
                   "flags": {
                     "isExported": true
                   },
+                  "comment": {
+                    "shortText": "Object mapping to value object constructors."
+                  },
                   "type": {
                     "type": "typeParameter",
-                    "name": "O",
+                    "name": "Schema",
                     "constraint": {
                       "type": "reference",
                       "typeArguments": [
                         {
                           "type": "typeParameter",
-                          "name": "O"
+                          "name": "Schema"
                         }
                       ],
                       "name": "VOObjectSchema"
@@ -5734,6 +5774,9 @@
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Customizations for the returned class constructor."
                   },
                   "type": {
                     "type": "reference",
@@ -5749,13 +5792,13 @@
                 "typeArguments": [
                   {
                     "type": "typeParameter",
-                    "name": "O",
+                    "name": "Schema",
                     "constraint": {
                       "type": "reference",
                       "typeArguments": [
                         {
                           "type": "typeParameter",
-                          "name": "O"
+                          "name": "Schema"
                         }
                       ],
                       "name": "VOObjectSchema"
@@ -5769,7 +5812,7 @@
           "sources": [
             {
               "fileName": "src/core/object.ts",
-              "line": 29,
+              "line": 106,
               "character": 21
             }
           ]
