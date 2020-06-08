@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.2.1](https://github.com/LucasPaganini/value-objects/releases/tag/v1.2.1) - 2020-06-08
+
+## Added
+
+- Script to generate a JSON API docs
+- Angular app structure for the API docs
+- Generate a temporary website for the API docs
+- Add the API docs to the actual code
+
 ## [1.2.0](https://github.com/LucasPaganini/value-objects/releases/tag/v1.2.0) - 2020-05-27
 
 ### Added

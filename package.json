@@ -1,6 +1,6 @@
 {
   "name": "@lucaspaganini/value-objects",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "TypeScript first validation and class creation library",
   "main": "dist/main.js",
   "files": [
@@ -13,6 +13,8 @@
     "build": "scripts/build",
     "lint": "scripts/lint",
     "format": "scripts/format",
+    "docs": "typedoc",
+    "serve-docs": "serve tmp-website",
     "calculate-bundles": "scripts/calculate-bundles",
     "prepublishOnly": "npm run format && npm run lint && npm test && npm run build",
     "prepare": "npm run build"
@@ -67,6 +69,8 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
+    "serve": "^11.3.1",
+    "typedoc": "^0.17.7",
     "typescript": "^3.9.3"
   },
   "dependencies": {}
