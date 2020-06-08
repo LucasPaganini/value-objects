@@ -23,7 +23,6 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 
 ## Roadmap
 
-- Move the API docs to the actual code
 - Remove the `lib` module (?)
 - Figure out how to generate a website for the API docs
 - Write gamified guides for common use cases

@@ -274,6 +274,16 @@
             "isExported": true,
             "isConst": true
           },
+          "comment": {
+            "shortText": "Function to create a value object constructor with many inner value\nobject constructors to attempt instantiation.\nUseful if you're expecting one of many value objects.",
+            "returns": "Class constructor that accepts all that the inner value object\nconstructors would accept and tries to instantiate one of the inner\nvalue object constructors in the order that they were given.\nThe class created by `VOAny` wraps the inner classes and\nexposes the one used for instantiation through the `.value`\nproperty. Calling {@link VOAnyInstance.valueOf} will call\n`valueOf()` for that inner class.\n",
+            "tags": [
+              {
+                "tag": "example",
+                "text": "\n```typescript\nclass Email { ... }\nclass UserName { ... }\nclass EmailOrUserName extends VOAny([Email, UserName]) {}\n\nnew EmailOrUserName('lucas@example.com').value // Email\nnew EmailOrUserName('lucas').value // UserName\n```\n"
+              }
+            ]
+          },
           "signatures": [
             {
               "id": 144,
@@ -283,6 +293,16 @@
               "flags": {
                 "isExported": true
               },
+              "comment": {
+                "shortText": "Function to create a value object constructor with many inner value\nobject constructors to attempt instantiation.\nUseful if you're expecting one of many value objects.",
+                "returns": "Class constructor that accepts all that the inner value object\nconstructors would accept and tries to instantiate one of the inner\nvalue object constructors in the order that they were given.\nThe class created by `VOAny` wraps the inner classes and\nexposes the one used for instantiation through the `.value`\nproperty. Calling {@link VOAnyInstance.valueOf} will call\n`valueOf()` for that inner class.\n",
+                "tags": [
+                  {
+                    "tag": "example",
+                    "text": "\n```typescript\nclass Email { ... }\nclass UserName { ... }\nclass EmailOrUserName extends VOAny([Email, UserName]) {}\n\nnew EmailOrUserName('lucas@example.com').value // Email\nnew EmailOrUserName('lucas').value // UserName\n```\n"
+                  }
+                ]
+              },
               "typeParameter": [
                 {
                   "id": 145,
@@ -291,6 +311,9 @@
                   "kindString": "Type parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "text": "Value object constructor type to make an wrapper of."
                   },
                   "type": {
                     "type": "reference",
@@ -302,11 +325,14 @@
               "parameters": [
                 {
                   "id": 146,
-                  "name": "VOs",
+                  "name": "VOCs",
                   "kind": 32768,
                   "kindString": "Parameter",
                   "flags": {
                     "isExported": true
+                  },
+                  "comment": {
+                    "shortText": "Array of value object constructor to attempt instantiation in order."
                   },
                   "type": {
                     "type": "reference",
@@ -346,7 +372,7 @@
           "sources": [
             {
               "fileName": "src/core/any.ts",
-              "line": 13,
+              "line": 38,
               "character": 18
             }
           ]
