@@ -24,7 +24,6 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 ## Roadmap
 
 - Remove the `lib` module (?)
-- Figure out how to generate a website for the API docs
 - Write gamified guides for common use cases
 - Youtube video for the quickstart
 - Youtube tutorials for how I built this library

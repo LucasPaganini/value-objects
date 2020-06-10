@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Clean old docs
+npx rimraf website/api &&
+
+# Build new docs
+npm run docs &&
+
+# Build angular website
+cd website &&
+npm run build
