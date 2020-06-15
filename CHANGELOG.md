@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Generate a website for the API docs
+- Use Docker for the website
 
 ## [1.2.1](https://github.com/LucasPaganini/value-objects/releases/tag/v1.2.1) - 2020-06-08
 
