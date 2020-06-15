@@ -140,16 +140,13 @@ const userSuccess = new User({
 ### Validating / instantiating objects
 
 ```typescript
-import { makeFromAny, makeFromRaw } from '@lucaspaganini/value-objects';
+import { makeFromRawInit } from '@lucaspaganini/value-objects';
 
-const userFromRaw = makeFromRaw(User);
-const userFromAny = makeFromAny(User);
-
+const userFromRaw = makeFromRawInit(User);
 userFromRaw({}); // COMPILATION ERROR: It expects a correct raw user structure
-userFromAny({}); // It expects `any` and will return a `Left<Error[]>`
 
 app.post('/api/create-user', (req, res) => {
-  const userEither = userFromAny(req.body);
+  const userEither = userFromRaw(req.body as any);
   if (userEither._tag === 'Left')
     return res.status(400).json({ errors: userEither.left });
   const user = userEither.right;
