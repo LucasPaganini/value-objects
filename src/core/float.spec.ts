@@ -1,3 +1,4 @@
+import { isNull } from '../utils'
 import { VOFloat, VOFloatOptions } from './float'
 
 describe('VOFloat', () => {
@@ -62,7 +63,7 @@ describe('VOFloat', () => {
 
     for (const test of tests) {
       const fn = () => VOFloat(test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })

@@ -1,9 +1,11 @@
+import { isNull } from '../utils'
+import { VOError } from './errors'
 import { VOObject, VOObjectOptions } from './object'
 
 describe('VOObject', () => {
   class AAA {
     constructor(raw: 123) {
-      if (raw === null) throw Error('AAA test error')
+      if (isNull(raw)) throw new VOError('AAA test error')
     }
     valueOf(): 'aaa' {
       return 'aaa'
@@ -12,7 +14,7 @@ describe('VOObject', () => {
 
   class BBB {
     constructor(raw: 456) {
-      if (raw === null) throw Error('BBB test error')
+      if (isNull(raw)) throw new VOError('BBB test error')
     }
     valueOf(): 'bbb' {
       return 'bbb'
@@ -21,7 +23,7 @@ describe('VOObject', () => {
 
   class CCC {
     constructor(raw: 789) {
-      if (raw === null) throw Error('CCC test error')
+      if (isNull(raw)) throw new VOError('CCC test error')
     }
     valueOf(): 'ccc' {
       return 'ccc'
@@ -81,9 +83,8 @@ describe('VOObject', () => {
         (errArray): boolean =>
           Array.isArray(errArray) &&
           errArray.length === test.props.length &&
-          errArray.every(err => err instanceof Error) &&
-          errArray.every(err => typeof err.prop === 'string') &&
-          errArray.every(err => test.props.includes(err.prop)),
+          errArray.every(VOError.is) &&
+          errArray.every(err => test.props.includes(<string>err.path.toArray().pop())),
       )
     }
   })
@@ -100,7 +101,7 @@ describe('VOObject', () => {
 
     for (const test of tests) {
       const fn = () => VOObject({ aaa: AAA }, test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })
@@ -110,7 +111,7 @@ describe('VOObject', () => {
 
     class Base {
       constructor(raw: number) {
-        throw Error('Test error')
+        throw new VOError('Test error')
       }
       valueOf(): 'base test' {
         return 'base test'
@@ -140,9 +141,8 @@ describe('VOObject', () => {
         return (
           Array.isArray(errArray) &&
           errArray.length === maxErrors &&
-          errArray.every(err => err instanceof Error) &&
-          errArray.every(err => typeof err.prop === 'string') &&
-          errArray.every(err => props.has(err.prop))
+          errArray.every(VOError.is) &&
+          errArray.every(err => props.has(<string>err.path.toArray().pop()))
         )
       })
     }

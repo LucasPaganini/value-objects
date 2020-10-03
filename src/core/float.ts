@@ -1,3 +1,4 @@
+import { isDefined, isNotNumber } from '../utils'
 import { LogicError, MaxSizeError, MinSizeError, NotInSetError, NotIntegerError, RawTypeError } from './errors'
 
 export interface VOFloatOptions {
@@ -116,22 +117,21 @@ const isPrecisionTrim = makeIsInSet(PRECISION_TRIM_SET)
  * ```
  */
 export const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
-  if (options.min !== undefined) {
-    if (typeof options.min !== 'number') throw new RawTypeError('number', typeof options.min, 'options.min')
+  if (isDefined(options.min)) {
+    if (isNotNumber(options.min)) throw new RawTypeError('number', typeof options.min, 'options.min')
   }
-  if (options.max !== undefined) {
-    if (typeof options.max !== 'number') throw new RawTypeError('number', typeof options.max, 'options.max')
+  if (isDefined(options.max)) {
+    if (isNotNumber(options.max)) throw new RawTypeError('number', typeof options.max, 'options.max')
   }
-  if (options.min !== undefined && options.max !== undefined) {
+  if (isDefined(options.min) && isDefined(options.max)) {
     if (options.min > options.max) throw new LogicError('options.min should not be bigger than options.max')
   }
-  if (options.precision !== undefined) {
-    if (typeof options.precision !== 'number')
-      throw new RawTypeError('number', typeof options.precision, 'options.precision')
+  if (isDefined(options.precision)) {
+    if (isNotNumber(options.precision)) throw new RawTypeError('number', typeof options.precision, 'options.precision')
     if (!Number.isInteger(options.precision)) throw new NotIntegerError(options.precision, 'options.precision')
     if (options.precision < 0) throw new MinSizeError(options.precision, 0)
   }
-  if (options.precisionTrim !== undefined) {
+  if (isDefined(options.precisionTrim)) {
     if (!isPrecisionTrim(options.precisionTrim))
       throw new NotInSetError(PRECISION_TRIM_SET, options.precisionTrim, 'options.precisionTrim')
   }
@@ -143,10 +143,10 @@ export const VOFloat = (options: VOFloatOptions = {}): VOFloatConstructor => {
     protected _value: number
 
     constructor(raw: number) {
-      if (typeof raw !== 'number') throw new RawTypeError('number', typeof raw, 'raw')
-      if (options.precision !== undefined) raw = Math[precisionTrim](raw * precisionPower) / precisionPower
-      if (options.min !== undefined && raw < options.min) throw new MinSizeError(options.min, raw)
-      if (options.max !== undefined && raw > options.max) throw new MaxSizeError(options.max, raw)
+      if (isNotNumber(raw)) throw new RawTypeError('number', typeof raw, 'raw')
+      if (isDefined(options.precision)) raw = Math[precisionTrim](raw * precisionPower) / precisionPower
+      if (isDefined(options.min) && raw < options.min) throw new MinSizeError(options.min, raw)
+      if (isDefined(options.max) && raw > options.max) throw new MaxSizeError(options.max, raw)
       this._value = raw
     }
 
