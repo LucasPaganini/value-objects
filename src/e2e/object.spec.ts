@@ -1,6 +1,5 @@
+import { VOError, VOObject, VOObjectOptions } from '../..'
 import { isNull } from '../utils'
-import { VOError } from './errors'
-import { VOObject, VOObjectOptions } from './object'
 
 describe('VOObject', () => {
   class AAA {

@@ -1,6 +1,5 @@
+import { VOArray, VOArrayOptions, VOError } from '../..'
 import { isNull, isNumber } from '../utils'
-import { VOArray, VOArrayOptions } from './array'
-import { VOError } from './errors'
 
 describe('VOArray', () => {
   it('Should return a class that can be extended', () => {

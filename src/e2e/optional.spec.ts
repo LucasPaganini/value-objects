@@ -1,5 +1,4 @@
-import { VOOptional } from './optional'
-import { RawTypeError } from './errors'
+import { Noneable, RawTypeError, VOOptional } from '../..'
 
 describe('VOOptional', () => {
   class Base {
@@ -90,5 +89,5 @@ describe('VOOptional', () => {
   })
 })
 
-const noneableValues = [null, undefined]
+const noneableValues: Array<Noneable> = [null, undefined]
 const nonNoneableValues = [0, false, []]

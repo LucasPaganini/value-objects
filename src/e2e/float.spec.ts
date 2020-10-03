@@ -1,5 +1,5 @@
+import { VOFloat, VOFloatOptions } from '../..'
 import { isNull } from '../utils'
-import { VOFloat, VOFloatOptions } from './float'
 
 describe('VOFloat', () => {
   it('Should return a class that can be extended', () => {

@@ -1,4 +1,4 @@
-import { VOSet } from './set'
+import { VOSet } from '../..'
 
 describe('VOSet', () => {
   it('Should return a class that can be extended', () => {

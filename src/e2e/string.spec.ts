@@ -1,4 +1,4 @@
-import { VOString, VOStringOptions } from './string'
+import { VOString, VOStringOptions } from '../..'
 
 describe('VOString', () => {
   it('Should return a class that can be extended', () => {
