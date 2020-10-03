@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 type PredicateFn<T> = (v: any) => v is T
 const makeIsNot = <T>(fn: PredicateFn<T>) => <V extends any>(v: V): v is Exclude<V, T> => !fn(v)
 
@@ -14,3 +16,5 @@ export const isNull = (v: any): v is null => v === null
 export const isNotNull = makeIsNot(isNull)
 
 export const isNil = (v: any): v is null | undefined => isNull(v) || isUndefined(v)
+
+export const isError = (v: any): v is Error => v instanceof Error
