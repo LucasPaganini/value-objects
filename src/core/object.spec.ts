@@ -1,9 +1,10 @@
+import { isNull, isString } from '../utils'
 import { VOObject, VOObjectOptions } from './object'
 
 describe('VOObject', () => {
   class AAA {
     constructor(raw: 123) {
-      if (raw === null) throw Error('AAA test error')
+      if (isNull(raw)) throw Error('AAA test error')
     }
     valueOf(): 'aaa' {
       return 'aaa'
@@ -12,7 +13,7 @@ describe('VOObject', () => {
 
   class BBB {
     constructor(raw: 456) {
-      if (raw === null) throw Error('BBB test error')
+      if (isNull(raw)) throw Error('BBB test error')
     }
     valueOf(): 'bbb' {
       return 'bbb'
@@ -21,7 +22,7 @@ describe('VOObject', () => {
 
   class CCC {
     constructor(raw: 789) {
-      if (raw === null) throw Error('CCC test error')
+      if (isNull(raw)) throw Error('CCC test error')
     }
     valueOf(): 'ccc' {
       return 'ccc'
@@ -82,7 +83,7 @@ describe('VOObject', () => {
           Array.isArray(errArray) &&
           errArray.length === test.props.length &&
           errArray.every(err => err instanceof Error) &&
-          errArray.every(err => typeof err.prop === 'string') &&
+          errArray.every(err => isString(err.prop)) &&
           errArray.every(err => test.props.includes(err.prop)),
       )
     }
@@ -100,7 +101,7 @@ describe('VOObject', () => {
 
     for (const test of tests) {
       const fn = () => VOObject({ aaa: AAA }, test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })
@@ -141,7 +142,7 @@ describe('VOObject', () => {
           Array.isArray(errArray) &&
           errArray.length === maxErrors &&
           errArray.every(err => err instanceof Error) &&
-          errArray.every(err => typeof err.prop === 'string') &&
+          errArray.every(err => isString(err.prop)) &&
           errArray.every(err => props.has(err.prop))
         )
       })

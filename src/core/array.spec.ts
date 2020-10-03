@@ -1,3 +1,4 @@
+import { isNull, isNumber } from '../utils'
 import { VOArray, VOArrayOptions } from './array'
 
 describe('VOArray', () => {
@@ -74,7 +75,7 @@ describe('VOArray', () => {
       (errArray): boolean =>
         Array.isArray(errArray) &&
         errArray.every(err => err instanceof Error) &&
-        errArray.every(err => typeof err.index === 'number'),
+        errArray.every(err => isNumber(err.index)),
     )
   })
 
@@ -109,7 +110,7 @@ describe('VOArray', () => {
 
     for (const test of tests) {
       const fn = () => VOArray(Base, test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })
@@ -172,7 +173,7 @@ describe('VOArray', () => {
           Array.isArray(errArray) &&
           errArray.length === maxErrors &&
           errArray.every(err => err instanceof Error) &&
-          errArray.every(err => typeof err.index === 'number') &&
+          errArray.every(err => isNumber(err.index)) &&
           errArray.every((err, i) => err.index === i),
       )
     }

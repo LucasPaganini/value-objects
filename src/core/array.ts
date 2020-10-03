@@ -1,4 +1,4 @@
-import { isLeft } from '../utils'
+import { isLeft, isNotNumber, isDefined } from '../utils'
 import { LogicError, MaxLengthError, MinLengthError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
 import { makeFromRawInit } from './functions'
 import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
@@ -86,25 +86,22 @@ export const VOArray = <VOC extends ValueObjectContructor>(
   VOC: VOC,
   options: VOArrayOptions = {},
 ): VOArrayConstructor<VOC> => {
-  if (options.minLength !== undefined) {
-    if (typeof options.minLength !== 'number')
-      throw new RawTypeError('number', typeof options.minLength, 'options.minLength')
+  if (isDefined(options.minLength)) {
+    if (isNotNumber(options.minLength)) throw new RawTypeError('number', typeof options.minLength, 'options.minLength')
     if (!Number.isInteger(options.minLength)) throw new NotIntegerError(options.minLength, 'options.minLength')
     if (options.minLength < 0) throw new MinSizeError(options.minLength, 0)
   }
-  if (options.maxLength !== undefined) {
-    if (typeof options.maxLength !== 'number')
-      throw new RawTypeError('number', typeof options.maxLength, 'options.maxLength')
+  if (isDefined(options.maxLength)) {
+    if (isNotNumber(options.maxLength)) throw new RawTypeError('number', typeof options.maxLength, 'options.maxLength')
     if (!Number.isInteger(options.maxLength)) throw new NotIntegerError(options.maxLength, 'options.maxLength')
     if (options.maxLength < 0) throw new MinSizeError(options.maxLength, 0)
   }
-  if (options.minLength !== undefined && options.maxLength !== undefined) {
+  if (isDefined(options.minLength) && isDefined(options.maxLength)) {
     if (options.minLength > options.maxLength)
       throw new LogicError('options.minLength should not be bigger than options.maxLength')
   }
-  if (options.maxErrors !== undefined) {
-    if (typeof options.maxErrors !== 'number')
-      throw new RawTypeError('number', typeof options.maxErrors, 'options.maxErrors')
+  if (isDefined(options.maxErrors)) {
+    if (isNotNumber(options.maxErrors)) throw new RawTypeError('number', typeof options.maxErrors, 'options.maxErrors')
     if (!Number.isInteger(options.maxErrors)) throw new NotIntegerError(options.maxErrors, 'options.maxErrors')
     if (options.maxErrors < 0) throw new MinSizeError(options.maxErrors, 0)
   }
@@ -122,9 +119,9 @@ export const VOArray = <VOC extends ValueObjectContructor>(
         throw err
       }
 
-      if (options.minLength !== undefined && raw.length < options.minLength)
+      if (isDefined(options.minLength) && raw.length < options.minLength)
         throw new MinLengthError(options.minLength, raw.length)
-      if (options.maxLength !== undefined && raw.length > options.maxLength)
+      if (isDefined(options.maxLength) && raw.length > options.maxLength)
         throw new MaxLengthError(options.maxLength, raw.length)
 
       const errors: Array<Error> = []

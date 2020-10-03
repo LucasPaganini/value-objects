@@ -1,7 +1,7 @@
-import { isLeft } from '../utils'
+import { isDefined, isLeft, isNil } from '../utils'
 import { MinSizeError, NotIntegerError, RawTypeError } from './errors'
 import { makeFromRawInit } from './functions'
-import { ValueObjectWorkAround, ValueObjectContructor, VOCRaw, VOCRawInit } from './value-object'
+import { ValueObjectContructor, ValueObjectWorkAround, VOCRaw, VOCRawInit } from './value-object'
 
 export interface VOObjectOptions {
   /**
@@ -107,7 +107,7 @@ export const VOObject = <Schema extends VOObjectSchema<Schema>>(
   schema: Schema,
   options: VOObjectOptions = {},
 ): VOObjectConstructor<Schema> => {
-  if (options.maxErrors !== undefined) {
+  if (isDefined(options.maxErrors)) {
     if (typeof options.maxErrors !== 'number')
       throw new RawTypeError('number', typeof options.maxErrors, 'options.maxErrors')
     if (!Number.isInteger(options.maxErrors)) throw new NotIntegerError(options.maxErrors, 'options.maxErrors')
@@ -118,7 +118,7 @@ export const VOObject = <Schema extends VOObjectSchema<Schema>>(
 
   return <any>class {
     constructor(raw: VOObjectRawInitSchema<Schema>) {
-      if (raw === undefined || raw === null) throw new RawTypeError('object', typeof raw, 'raw')
+      if (isNil(raw)) throw new RawTypeError('object', typeof raw, 'raw')
 
       const errors: Array<Error> = []
 

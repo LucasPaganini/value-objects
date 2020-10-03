@@ -1,3 +1,4 @@
+import { isNull } from '../utils'
 import { VOInteger, VOIntegerOptions } from './integer'
 
 describe('VOInteger', () => {
@@ -37,7 +38,7 @@ describe('VOInteger', () => {
 
     for (const test of tests) {
       const fn = () => VOInteger(test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })
