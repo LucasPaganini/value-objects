@@ -1,4 +1,4 @@
-import { VOAny } from './any'
+import { VOAny } from '../..'
 
 describe('VOAny', () => {
   class BaseA {

@@ -12,7 +12,7 @@ const specReporter = new SpecReporter({
 
 const jasmine = new Jasmine()
 
-jasmine.loadConfig({ spec_dir: 'dist', spec_files: ['**/*.spec.js'] })
+jasmine.loadConfig({ spec_dir: 'dist-spec', spec_files: ['**/*.spec.js'] })
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
 
 jasmine.clearReporters()

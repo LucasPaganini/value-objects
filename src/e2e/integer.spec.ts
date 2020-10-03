@@ -1,5 +1,5 @@
+import { VOInteger, VOIntegerOptions } from '../..'
 import { isNull } from '../utils'
-import { VOInteger, VOIntegerOptions } from './integer'
 
 describe('VOInteger', () => {
   it('Should return a class that can be extended', () => {

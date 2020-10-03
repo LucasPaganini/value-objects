@@ -129,7 +129,7 @@ export const VOOptional = <VOC extends ValueObjectContructor, None extends Nonea
       }
     }
 
-    valueOf(): VOCRaw<VOC> | None {
+    public valueOf(): VOCRaw<VOC> | None {
       return this.isNone() ? this.value : this.value?.valueOf()
     }
   }

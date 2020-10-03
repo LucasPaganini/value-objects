@@ -4,6 +4,6 @@
   "compilerOptions": {
     "types": ["jasmine"]
   },
-  "include": ["src/@types/**/*", "src/**/*.spec.ts"],
+  "include": ["src/**/*.spec.ts", "src/e2e/**/*"],
   "exclude": ["node_modules"]
 }
