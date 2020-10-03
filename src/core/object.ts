@@ -1,5 +1,5 @@
 import { isDefined, isLeft, isNil } from '../utils'
-import { MinSizeError, NotIntegerError, RawTypeError } from './errors'
+import { MinSizeError, NotIntegerError, RawTypeError, VOError } from './errors'
 import { makeFromRawInit } from './functions'
 import { ValueObjectContructor, ValueObjectWorkAround, VOCRaw, VOCRawInit } from './value-object'
 
@@ -128,7 +128,7 @@ export const VOObject = <Schema extends VOObjectSchema<Schema>>(
 
         if (isLeft(either)) {
           const errorsWithProp = either.left.map(e => {
-            ;(e as any).prop = prop
+            if (VOError.is(e)) e.path.push(prop)
             return e
           })
           errors.push(...errorsWithProp)

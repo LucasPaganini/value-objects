@@ -1,5 +1,13 @@
-import { isLeft, isNotNumber, isDefined } from '../utils'
-import { LogicError, MaxLengthError, MinLengthError, MinSizeError, NotIntegerError, RawTypeError } from './errors'
+import { isDefined, isLeft, isNotNumber } from '../utils'
+import {
+  LogicError,
+  MaxLengthError,
+  MinLengthError,
+  MinSizeError,
+  NotIntegerError,
+  RawTypeError,
+  VOError,
+} from './errors'
 import { makeFromRawInit } from './functions'
 import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw } from './value-object'
 
@@ -112,14 +120,8 @@ export const VOArray = <VOC extends ValueObjectContructor>(
     private _valueObjects: Array<InstanceType<VOC>> = []
 
     constructor(raw: Array<VOCRawInit<VOC>>) {
-      if (!Array.isArray(raw)) {
-        const err = Error(`Invalid raw value`)
-        ;(err as any).expected = 'Array<Raw>'
-        ;(err as any).actual = typeof raw
-        throw err
-      }
-
-      if (isDefined(options.minLength) && raw.length < options.minLength)
+      if (!Array.isArray(raw)) throw new RawTypeError('Array<Raw>', typeof raw)
+      if (options.minLength !== undefined && raw.length < options.minLength)
         throw new MinLengthError(options.minLength, raw.length)
       if (isDefined(options.maxLength) && raw.length > options.maxLength)
         throw new MaxLengthError(options.maxLength, raw.length)
@@ -132,7 +134,7 @@ export const VOArray = <VOC extends ValueObjectContructor>(
         const either = fromRaw(_raw)
         if (isLeft(either)) {
           const errorsWithIndex = either.left.map(e => {
-            ;(e as any).index = index
+            if (VOError.is(e)) e.path.push(index)
             return e
           })
           errors.push(...errorsWithIndex)
@@ -143,7 +145,7 @@ export const VOArray = <VOC extends ValueObjectContructor>(
       }
       if (errors.length > 0) throw errors
 
-      if (raw.length !== this._valueObjects.length) throw Error(`Unknown error`)
+      if (raw.length !== this._valueObjects.length) throw new VOError(`Unknown error`)
     }
 
     valueOf(): Array<VORaw<InstanceType<VOC>>> {

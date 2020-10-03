@@ -1,5 +1,6 @@
 import { isNull, isNumber } from '../utils'
 import { VOArray, VOArrayOptions } from './array'
+import { VOError } from './errors'
 
 describe('VOArray', () => {
   it('Should return a class that can be extended', () => {
@@ -61,7 +62,7 @@ describe('VOArray', () => {
 
     class Base {
       constructor(error: boolean) {
-        if (error) throw Error('Test error')
+        if (error) throw new VOError('Test error')
       }
       valueOf(): 456 {
         return 456
@@ -74,8 +75,8 @@ describe('VOArray', () => {
     expect(fn).toThrowMatching(
       (errArray): boolean =>
         Array.isArray(errArray) &&
-        errArray.every(err => err instanceof Error) &&
-        errArray.every(err => isNumber(err.index)),
+        errArray.every(VOError.is) &&
+        errArray.every(err => isNumber(err.path.toArray().pop())),
     )
   })
 
@@ -157,7 +158,7 @@ describe('VOArray', () => {
 
     class Base {
       constructor(raw: number) {
-        throw Error('Test error')
+        throw new VOError('Test error')
       }
       valueOf(): 456 {
         return 456
@@ -172,9 +173,8 @@ describe('VOArray', () => {
         (errArray): boolean =>
           Array.isArray(errArray) &&
           errArray.length === maxErrors &&
-          errArray.every(err => err instanceof Error) &&
-          errArray.every(err => isNumber(err.index)) &&
-          errArray.every((err, i) => err.index === i),
+          errArray.every(VOError.is) &&
+          errArray.every((err, i) => err.path.toArray().pop() === i),
       )
     }
   })
