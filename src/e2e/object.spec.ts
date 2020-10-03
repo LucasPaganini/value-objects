@@ -1,5 +1,7 @@
+import { expectTypeOf } from 'expect-type'
 import { VOError, VOObject, VOObjectOptions } from '../..'
 import { isNull } from '../utils'
+import { constructorFn } from './utils'
 
 describe('VOObject', () => {
   class AAA {
@@ -145,5 +147,17 @@ describe('VOObject', () => {
         )
       })
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test extends VOObject({ aaa: AAA, bbb: BBB, ccc: CCC }) {}
+    const instance = new Test({ aaa: 123, bbb: 456, ccc: 789 })
+
+    expectTypeOf(constructorFn(Test)).toEqualTypeOf<(r: { aaa: 123; bbb: 456; ccc: 789 }) => Test>()
+    expectTypeOf(instance.aaa).toEqualTypeOf<AAA>()
+    expectTypeOf(instance.bbb).toEqualTypeOf<BBB>()
+    expectTypeOf(instance.ccc).toEqualTypeOf<CCC>()
+    expectTypeOf(instance.valueOf()).toEqualTypeOf<{ aaa: 'aaa'; bbb: 'bbb'; ccc: 'ccc' }>()
+    expectTypeOf(instance.toRaw()).toEqualTypeOf<{ aaa: 'aaa'; bbb: 'bbb'; ccc: 'ccc' }>()
   })
 })

@@ -1,3 +1,4 @@
+import { expectTypeOf } from 'expect-type'
 import { Noneable, RawTypeError, VOOptional } from '../..'
 
 describe('VOOptional', () => {
@@ -86,6 +87,23 @@ describe('VOOptional', () => {
       expect(instance.value instanceof Base).toBe(false)
       expect(instance.value).toBe(test.raw)
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test {
+      constructor(raw: number) {}
+      valueOf(): string {
+        return ''
+      }
+    }
+
+    // !WARNING: Removing `undefined` from some expected types due to https://github.com/mmkal/ts/issues/187
+    // TODO: Enable `undefined` once https://github.com/mmkal/ts/issues/187 is fixed
+    expectTypeOf(new (VOOptional(Test, [null, undefined]))(434).valueOf()).toEqualTypeOf<string | null>()
+    expectTypeOf(new (VOOptional(Test, [null]))(123).valueOf()).toEqualTypeOf<string | null>()
+    expectTypeOf(new (VOOptional(Test, [undefined]))(434).valueOf()).toEqualTypeOf<string>()
+    expectTypeOf(new (VOOptional(Test, []))(434).valueOf()).toEqualTypeOf<string>()
+    expectTypeOf(new (VOOptional(Test))(434).valueOf()).toEqualTypeOf<string>()
   })
 })
 

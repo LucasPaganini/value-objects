@@ -1,4 +1,6 @@
+import { expectTypeOf } from 'expect-type'
 import { VOAny } from '../..'
+import { constructorFn } from './utils'
 
 describe('VOAny', () => {
   class BaseA {
@@ -60,5 +62,13 @@ describe('VOAny', () => {
       const fn = () => new Test(test as any)
       expect(fn).toThrow()
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test extends VOAny([BaseA, BaseB]) {}
+
+    expectTypeOf(constructorFn(Test)).toEqualTypeOf<(r: 123 | 456) => Test>()
+    expectTypeOf(new Test(123).valueOf()).toEqualTypeOf<'baseA' | 'baseB'>()
+    expectTypeOf(new Test(123).value).toEqualTypeOf<BaseA | BaseB>()
   })
 })
