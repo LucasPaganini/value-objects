@@ -1,6 +1,7 @@
-import { Either, left, right } from '../utils'
+import { Either, isError, left, right } from '../utils'
 import { ValueObjectContructor, VOCRawInit } from './value-object'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const makeIsValidRawInit = <VOC extends ValueObjectContructor>(VO: VOC) => (v: any): v is VOCRawInit<VOC> => {
   try {
     new VO(v)
@@ -13,8 +14,6 @@ export const makeIsValidRawInit = <VOC extends ValueObjectContructor>(VO: VOC) =
 export const makeFromRawInit = <VOC extends ValueObjectContructor>(VO: VOC) => (
   data: VOCRawInit<VOC>,
 ): Either<Array<Error>, InstanceType<VOC>> => {
-  const isError = (v: any): v is Error => v instanceof Error
-
   try {
     return right(new VO(data) as any)
   } catch (err) {
