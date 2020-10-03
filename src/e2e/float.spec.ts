@@ -1,5 +1,7 @@
+import { expectTypeOf } from 'expect-type'
 import { VOFloat, VOFloatOptions } from '../..'
 import { isNull } from '../utils'
+import { constructorFn } from './utils'
 
 describe('VOFloat', () => {
   it('Should return a class that can be extended', () => {
@@ -180,6 +182,13 @@ describe('VOFloat', () => {
       if (test.errors.includes('round')) expect(round).toThrowError('Too big')
       else expect(round).not.toThrow()
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test extends VOFloat() {}
+
+    expectTypeOf(constructorFn(Test)).toEqualTypeOf<(r: number) => Test>()
+    expectTypeOf(new Test(123).valueOf()).toEqualTypeOf<number>()
   })
 })
 
