@@ -33,3 +33,5 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           tag: alpha
+          access: public
+          check-version: false
