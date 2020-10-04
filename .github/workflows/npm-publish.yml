@@ -27,7 +27,7 @@ jobs:
       - if: github.event.ref_type == 'branch' && github.event.ref == 'feature/20'
         run: NPM_TAG="testing"
 
-      - run: echo "unchecked $(NPM_TAG)"
+      - run: echo "$NPM_TAG"
 
       # - uses: JS-DevTools/npm-publish@v1
       #   with:
