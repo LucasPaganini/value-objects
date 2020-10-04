@@ -20,7 +20,17 @@ jobs:
           node-version: 12
       - run: npm run prepublishOnly
       - run: echo "${{ toJson(github.event) }}"
-      - run: echo "${{ github.event.release.tag_name }}"
+
+      - if: github.event.ref_type == 'branch' && github.event.ref == 'dev'
+        run: NPM_TAG="alpha"
+
+      - if: github.event.ref_type == 'branch' && github.event.ref == 'feature/20'
+        run: NPM_TAG="testing"
+
+      - if: NPM_TAG != ''
+        run: echo "checked $(NPM_TAG)"
+      - run: echo "unchecked $(NPM_TAG)"
+
       # - uses: JS-DevTools/npm-publish@v1
       #   with:
       #     token: ${{ secrets.NPM_TOKEN }}
