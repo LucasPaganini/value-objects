@@ -18,8 +18,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      # - run: npm run prepublishOnly
+
       - run: echo "${{ toJson(github.event) }}"
+      - run: npm run prepublishOnly
 
       - if: github.event.ref_type == 'branch' && github.event.ref == 'dev'
         run: echo "NPM_TAG=alpha" >> $GITHUB_ENV
