@@ -7,8 +7,6 @@ on:
   push:
     branches: [master, dev, '*']
     tags: ['v*.*.*']
-  create:
-    tags: ['v*.*.*']
 
 jobs:
   publish:
@@ -25,8 +23,8 @@ jobs:
       - if: github.event.ref_type == 'branch' && github.event.ref == 'dev'
         run: echo "NPM_TAG=alpha" >> $GITHUB_ENV
 
-      - if: github.event.ref_type == 'branch' && github.event.ref == 'feature/20'
-        run: echo "NPM_TAG=testing" >> $GITHUB_ENV
+      - if: github.event.ref_type == 'tag'
+        run: echo "NPM_TAG=${{ github.event.ref }}" >> $GITHUB_ENV
 
       - run: echo "$NPM_TAG"
 
