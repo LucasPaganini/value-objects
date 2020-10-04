@@ -1,6 +1,6 @@
 # Contributing guide
 
-Before starting any work, make sure there's a github issue describing what will be done (if there's none, [create one](https://github.com/LucasPaganini/value-objects/issues/new)). In that issue, assign yourself as the responsible and tag it with `"In progress"`. With an existing issue associated with your work, create a branch for your work using the following convention:
+Before starting any work, make sure there's a github issue describing what will be done (if there's none, [create one](https://github.com/LucasPaganini/value-objects/issues/new)). In that issue, assign yourself as the responsible and tag it with `"in progress"`. With an existing issue associated with your work, create a branch for your work using the following convention:
 
 - `fix/{issue}` for fixes and hotfixes
 - `feature/{issue}` for features
@@ -15,15 +15,14 @@ Once your work is done and [conforms with our style conventions](#style-conventi
 
 1. Create a pull request (PR)
 2. Link the issue
-3. Tag the issue with `"To verify"`
-4. Untag the issue with `"In progress"`
+3. Tag the issue with `"to verify"`
+4. Untag the issue with `"in progress"`
 5. Assign yourself as the responsible for the PR
 6. At least one contributor will review you work
 7. Once it's approved, we'll merge it
 
 ## Roadmap
 
-- Remove the `lib` module (?)
 - Write gamified guides for common use cases
 - Youtube video for the quickstart
 - Youtube tutorials for how I built this library
@@ -218,3 +217,5 @@ Exceptions:
 - `README.md`
 - `CONTRIBUTING.md`
 - `CHANGELOG.md`
+- `LICENSE.md`
+- `Dockerfile`

@@ -1,13 +1,26 @@
-import { VOArray, VOArrayOptions } from './array'
+import { expectTypeOf } from 'expect-type'
+import { VOArray, VOArrayOptions, VOError } from '../..'
+import { isNull, isNumber } from '../utils'
+import { constructorFn } from './utils'
 
 describe('VOArray', () => {
-  it('Should return a class that can be extended', () => {
-    class Base {
-      constructor(raw: 123) {}
-      valueOf(): 456 {
-        return 456
-      }
+  class Base {
+    constructor(raw: 123) {}
+    valueOf(): 456 {
+      return 456
     }
+  }
+
+  class Failure {
+    constructor(raw: boolean) {
+      throw new VOError('Test error')
+    }
+    valueOf(): 456 {
+      return 456
+    }
+  }
+
+  it('Should return a class that can be extended', () => {
     class Test extends VOArray(Base) {
       test() {
         return 'test'
@@ -20,12 +33,6 @@ describe('VOArray', () => {
   })
 
   it('toArray() should return an array of instantiated inner classes', () => {
-    class Base {
-      constructor(raw: 123) {}
-      valueOf(): 456 {
-        return 456
-      }
-    }
     class Test extends VOArray(Base) {}
 
     const instance = new Test([123, 123])
@@ -36,12 +43,6 @@ describe('VOArray', () => {
   it("Should call each inner class' valueOf() when it's valueOf() is called", () => {
     const quantity = 15
 
-    class Base {
-      constructor(raw: 123) {}
-      valueOf(): 456 {
-        return 456
-      }
-    }
     class Test extends VOArray(Base) {
       test() {
         return 'test'
@@ -58,23 +59,15 @@ describe('VOArray', () => {
   it("Should add a .index property to errors thrown by the instantiation of it's inner classes", () => {
     const quantity = 15
 
-    class Base {
-      constructor(error: boolean) {
-        if (error) throw Error('Test error')
-      }
-      valueOf(): 456 {
-        return 456
-      }
-    }
-    class Test extends VOArray(Base) {}
+    class Test extends VOArray(Failure) {}
 
     const rawValues = Array.from({ length: quantity }).map((_, i) => !!(i % 2))
     const fn = () => new Test(rawValues)
     expect(fn).toThrowMatching(
       (errArray): boolean =>
         Array.isArray(errArray) &&
-        errArray.every(err => err instanceof Error) &&
-        errArray.every(err => typeof err.index === 'number'),
+        errArray.every(VOError.is) &&
+        errArray.every(err => isNumber(err.path.toArray().pop())),
     )
   })
 
@@ -100,28 +93,14 @@ describe('VOArray', () => {
       { maxErrors: '123' as any, error: 'Wrong raw value type' },
     ]
 
-    class Base {
-      constructor(raw: '123') {}
-      valueOf(): 789 {
-        return 789
-      }
-    }
-
     for (const test of tests) {
       const fn = () => VOArray(Base, test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })
 
   it("Should be able to set a min length and throw if it's shorter than that", () => {
-    class Base {
-      constructor(raw: string) {}
-      valueOf(): string {
-        return 'base'
-      }
-    }
-
     for (const test of lengthTests) {
       const Test = VOArray(Base, { minLength: test.size })
       const raw = new Array(test.size + test.range).fill('')
@@ -133,13 +112,6 @@ describe('VOArray', () => {
   })
 
   it("Should be able to set a max length and throw if it's larger than that", () => {
-    class Base {
-      constructor(raw: string) {}
-      valueOf(): string {
-        return 'base'
-      }
-    }
-
     for (const test of lengthTests) {
       const Test = VOArray(Base, { maxLength: test.size })
       const raw = new Array(test.size + test.range).fill('')
@@ -152,30 +124,28 @@ describe('VOArray', () => {
 
   it('Should be able to set a max errors and throw when the limit is reached or when there are no more values to instantiate', () => {
     const tests = Array.from(new Set(lengthTests.map(t => t.size))).filter(size => size <= 5000)
-    const rawValues = new Array<number>(Math.max(...tests) * 2).fill(0)
-
-    class Base {
-      constructor(raw: number) {
-        throw Error('Test error')
-      }
-      valueOf(): 456 {
-        return 456
-      }
-    }
+    const rawValues = new Array<number>(Math.max(...tests) * 2).fill(0).map(() => true)
 
     for (const maxErrors of tests) {
-      class Test extends VOArray(Base, { maxErrors }) {}
+      class Test extends VOArray(Failure, { maxErrors }) {}
       const fn = () => new Test(rawValues)
 
       expect(fn).toThrowMatching(
         (errArray): boolean =>
           Array.isArray(errArray) &&
           errArray.length === maxErrors &&
-          errArray.every(err => err instanceof Error) &&
-          errArray.every(err => typeof err.index === 'number') &&
-          errArray.every((err, i) => err.index === i),
+          errArray.every(VOError.is) &&
+          errArray.every((err, i) => err.path.toArray().pop() === i),
       )
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test extends VOArray(Base) {}
+
+    expectTypeOf(constructorFn(Test)).toEqualTypeOf<(r: Array<123>) => Test>()
+    expectTypeOf(new Test([]).valueOf()).toEqualTypeOf<Array<456>>()
+    expectTypeOf(new Test([]).toArray()).toEqualTypeOf<Array<Base>>()
   })
 })
 

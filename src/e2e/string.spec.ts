@@ -1,4 +1,6 @@
-import { VOString, VOStringOptions } from './string'
+import { expectTypeOf } from 'expect-type'
+import { VOString, VOStringOptions } from '../..'
+import { constructorFn } from './utils'
 
 describe('VOString', () => {
   it('Should return a class that can be extended', () => {
@@ -127,6 +129,13 @@ describe('VOString', () => {
       for (const raw of test.successes) expect(makeFn(raw)).not.toThrow()
       for (const raw of test.failures) expect(makeFn(raw)).toThrow()
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test extends VOString() {}
+
+    expectTypeOf(constructorFn(Test)).toEqualTypeOf<(r: string) => Test>()
+    expectTypeOf(new Test('').valueOf()).toEqualTypeOf<string>()
   })
 })
 

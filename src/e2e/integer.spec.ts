@@ -1,4 +1,7 @@
-import { VOInteger, VOIntegerOptions } from './integer'
+import { expectTypeOf } from 'expect-type'
+import { VOInteger, VOIntegerOptions } from '../..'
+import { isNull } from '../utils'
+import { constructorFn } from './utils'
 
 describe('VOInteger', () => {
   it('Should return a class that can be extended', () => {
@@ -37,7 +40,7 @@ describe('VOInteger', () => {
 
     for (const test of tests) {
       const fn = () => VOInteger(test)
-      if (test.error === null) expect(fn).not.toThrow()
+      if (isNull(test.error)) expect(fn).not.toThrow()
       else expect(fn).toThrowError(test.error)
     }
   })
@@ -62,6 +65,13 @@ describe('VOInteger', () => {
       if (test.range <= 0) expect(fn).not.toThrow()
       else expect(fn).toThrow()
     }
+  })
+
+  it('Should have the correct types', () => {
+    class Test extends VOInteger() {}
+
+    expectTypeOf(constructorFn(Test)).toEqualTypeOf<(r: number) => Test>()
+    expectTypeOf(new Test(123).valueOf()).toEqualTypeOf<number>()
   })
 })
 

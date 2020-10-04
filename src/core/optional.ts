@@ -1,5 +1,6 @@
-import { ValueObject, ValueObjectContructor, VOCRawInit, VORaw, VOCRaw } from './value-object'
+import { isUndefined } from '../utils'
 import { RawTypeError } from './errors'
+import { ValueObject, ValueObjectContructor, VOCRaw, VOCRawInit, VORaw } from './value-object'
 
 export type Noneable = undefined | null
 const NONEABLES: Array<Noneable> = [undefined, null]
@@ -17,7 +18,7 @@ export interface VOOptionalConstructor<VOC extends ValueObjectContructor, None e
 }
 
 const expectedNoneableTypes = (nones: Array<Noneable>): Array<'undefined' | 'null'> =>
-  Array.from(new Set(nones.map(v => (v === undefined ? 'undefined' : 'null'))))
+  Array.from(new Set(nones.map(v => (isUndefined(v) ? 'undefined' : 'null'))))
 
 /**
  * Function to create an optional value object constructor.
@@ -128,7 +129,7 @@ export const VOOptional = <VOC extends ValueObjectContructor, None extends Nonea
       }
     }
 
-    valueOf(): VOCRaw<VOC> | None {
+    public valueOf(): VOCRaw<VOC> | None {
       return this.isNone() ? this.value : this.value?.valueOf()
     }
   }

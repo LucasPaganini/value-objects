@@ -1,6 +1,0 @@
-export * from './brazilian-phone'
-export * from './email'
-export * from './natural-number'
-export * from './long-string'
-export * from './medium-string'
-export * from './short-string'

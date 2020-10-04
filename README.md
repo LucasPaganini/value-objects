@@ -10,13 +10,13 @@ A TypeScript first validation and class creation library. [Learn in 10 minutes w
 
 ## IMPORTANT: About the package size
 
-NPM's "Unpacked Size" is innacurate because the package includes the source maps and source files for easier debugging. Also, The `lib/` folder is a module aside, it includes some common use cases for the library but it's not included in the main bundle, it's just there for your convenience. I'd bet that most users won't touch the `lib/`, so, the accurate size of this library for most users is this:
+NPM's "Unpacked Size" is innacurate because the package includes source maps and source files for easier debugging. So, the accurate size of this library for most users is this:
 
-| Version 1.2.1           |     Size |
+| Version 1.3.0           |     Size |
 | :---------------------- | -------: |
-| Unpacked                | 42.90 KB |
-| Minified bundle         | 17.54 KB |
-| Gzipped minified bundle |  3.99 KB |
+| Unpacked                | 46.27 KB |
+| Minified bundle         | 19.68 KB |
+| Gzipped minified bundle |  4.58 KB |
 
 ## Motivation
 

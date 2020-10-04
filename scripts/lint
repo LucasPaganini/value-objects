@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-prettier --check . && 
-eslint src/**/*.ts
+npx prettier --check . &&
+npx eslint src/**/*.ts

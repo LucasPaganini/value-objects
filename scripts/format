@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-prettier --write . && 
-eslint --fix src/**/*.ts
+npx prettier --write . &&
+npx eslint --fix src/**/*.ts

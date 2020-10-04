@@ -1,3 +1,4 @@
+import { isDefined } from '../utils'
 import {
   LogicError,
   MaxLengthError,
@@ -115,26 +116,26 @@ export interface VOStringConstructor {
  * ```
  */
 export const VOString = (options: VOStringOptions = {}): VOStringConstructor => {
-  if (options.trim !== undefined) {
+  if (isDefined(options.trim)) {
     if (typeof options.trim !== 'boolean') throw new RawTypeError('boolean', typeof options.trim, 'options.trim')
   }
-  if (options.minLength !== undefined) {
+  if (isDefined(options.minLength)) {
     if (typeof options.minLength !== 'number')
       throw new RawTypeError('number', typeof options.minLength, 'options.minLength')
     if (!Number.isInteger(options.minLength)) throw new NotIntegerError(options.minLength, 'options.minLength')
     if (options.minLength < 0) throw new MinSizeError(options.minLength, 0)
   }
-  if (options.maxLength !== undefined) {
+  if (isDefined(options.maxLength)) {
     if (typeof options.maxLength !== 'number')
       throw new RawTypeError('number', typeof options.maxLength, 'options.maxLength')
     if (!Number.isInteger(options.maxLength)) throw new NotIntegerError(options.maxLength, 'options.maxLength')
     if (options.maxLength < 0) throw new MinSizeError(options.maxLength, 0)
   }
-  if (options.minLength !== undefined && options.maxLength !== undefined) {
+  if (isDefined(options.minLength) && isDefined(options.maxLength)) {
     if (options.minLength > options.maxLength)
       throw new LogicError('options.minLength should not be bigger than options.maxLength')
   }
-  if (options.pattern !== undefined) {
+  if (isDefined(options.pattern)) {
     if (!(options.pattern instanceof RegExp))
       throw new RawTypeError('RegExp', typeof options.pattern, 'options.pattern')
   }
@@ -147,11 +148,11 @@ export const VOString = (options: VOStringOptions = {}): VOStringConstructor => 
     constructor(raw: string) {
       if (typeof raw !== 'string') throw new RawTypeError('string', typeof raw, 'raw')
       if (trim) raw = raw.trim()
-      if (options.minLength !== undefined && raw.length < options.minLength)
+      if (isDefined(options.minLength) && raw.length < options.minLength)
         throw new MinLengthError(options.minLength, raw.length)
-      if (options.maxLength !== undefined && raw.length > options.maxLength)
+      if (isDefined(options.maxLength) && raw.length > options.maxLength)
         throw new MaxLengthError(options.maxLength, raw.length)
-      if (options.pattern !== undefined && !options.pattern.test(raw)) throw new PatternError()
+      if (isDefined(options.pattern) && !options.pattern.test(raw)) throw new PatternError()
       this._value = raw
     }
 
