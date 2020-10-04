@@ -5,9 +5,9 @@ name: Publish to NPM
 
 on:
   push:
-    branches: [master, dev]
+    branches: [master, dev, '*']
   create:
-    tags: ['v*.*.*']
+    tags: ['v*.*.*', '*']
 
 jobs:
   publish:
