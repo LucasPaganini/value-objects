@@ -15,7 +15,7 @@
     "format": "scripts/format",
     "docs": "typedoc",
     "calculate-bundles": "scripts/calculate-bundles",
-    "prepublishOnly": "npm run format && npm run lint && npm test && npm run build",
+    "prepublishOnly": "npm ci && npm run format && npm run lint && npm test && npm run build",
     "prepare": "npm run build"
   },
   "husky": {
