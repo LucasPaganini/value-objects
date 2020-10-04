@@ -27,7 +27,9 @@ jobs:
       - if: github.event.ref_type == 'tag'
         run: echo "NPM_TAG=${{ github.event.ref }}" >> $GITHUB_ENV
 
-      - run: echo "$NPM_TAG"
+      - if: env.NPM_TAG != ''
+        run: echo "checked $NPM_TAG"
+      - run: echo "unchecked $NPM_TAG"
 
       # - uses: JS-DevTools/npm-publish@v1
       #   with:
