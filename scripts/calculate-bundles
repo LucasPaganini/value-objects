@@ -1,25 +1,24 @@
 #!/usr/bin/env bash
 
-# Unpacked core js files (no `lib/`)
+# Unpacked files
 npm run --silent build &&
-copyfiles --up=1 "dist/**/*.js" tmp &&
-rimraf tmp/lib dist &&
+npx copyfiles --up=1 "dist/**/*.js" tmp &&
 unpacked_size=$(scripts/get-size tmp) &&
 
 # Minified bundle
-copyfiles --up=1 "tmp/**/*" tmp2 &&
-rimraf tmp &&
-parcel build tmp2/main.js --no-source-maps --no-cache --out-file="bundle.js" --out-dir="tmp" --bundle-node-modules --log-level="0" &&
-rimraf tmp2  &&
+npx copyfiles --up=1 "tmp/**/*" tmp2 &&
+npx rimraf tmp &&
+npx parcel build tmp2/main.js --no-source-maps --no-cache --out-file="bundle.js" --out-dir="tmp" --bundle-node-modules --log-level="0" &&
+npx rimraf tmp2  &&
 minified_bundle_size=$(scripts/get-size tmp) &&
 
-# Gzipped minified bundle 
-gziped_size=$(gzip-size tmp/bundle.js --level=9) &&
+# Gzipped minified bundle
+gziped_size=$(npx gzip-size tmp/bundle.js --level=9) &&
 
 # Display
 echo "Unpacked: $unpacked_size" &&
 echo "Minified bundle: $minified_bundle_size" &&
 echo "Gzipped minified bundle $gziped_size" &&
 
-# Clean 
-rimraf tmp
+# Clean
+npx rimraf tmp
