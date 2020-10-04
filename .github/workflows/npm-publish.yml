@@ -19,7 +19,8 @@ jobs:
         with:
           node-version: 12
       - run: npm run prepublishOnly
-      - run: echo github.event.release.tag_name
+      - run: echo "${{ toJson(${{ github.event) }}"
+      - run: echo "${{ github.event.release.tag_name }}"
       # - uses: JS-DevTools/npm-publish@v1
       #   with:
       #     token: ${{ secrets.NPM_TOKEN }}
