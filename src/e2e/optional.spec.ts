@@ -97,13 +97,11 @@ describe('VOOptional', () => {
       }
     }
 
-    // !WARNING: Removing `undefined` from some expected types due to https://github.com/mmkal/ts/issues/187
-    // TODO: Enable `undefined` once https://github.com/mmkal/ts/issues/187 is fixed
-    expectTypeOf(new (VOOptional(Test, [null, undefined]))(434).valueOf()).toEqualTypeOf<string | null>()
+    expectTypeOf(new (VOOptional(Test, [null, undefined]))(434).valueOf()).toEqualTypeOf<string | null | undefined>()
     expectTypeOf(new (VOOptional(Test, [null]))(123).valueOf()).toEqualTypeOf<string | null>()
-    expectTypeOf(new (VOOptional(Test, [undefined]))(434).valueOf()).toEqualTypeOf<string>()
+    expectTypeOf(new (VOOptional(Test, [undefined]))(434).valueOf()).toEqualTypeOf<string | undefined>()
     expectTypeOf(new (VOOptional(Test, []))(434).valueOf()).toEqualTypeOf<string>()
-    expectTypeOf(new (VOOptional(Test))(434).valueOf()).toEqualTypeOf<string>()
+    expectTypeOf(new (VOOptional(Test))(434).valueOf()).toEqualTypeOf<string | undefined>()
   })
 })
 
