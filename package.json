@@ -1,6 +1,6 @@
 {
   "name": "@lucaspaganini/playground",
-  "version": "0.0.0",
+  "version": "0.0.0-PLACEHOLDER",
   "description": "TypeScript first validation and class creation library",
   "main": "dist/main.js",
   "files": [
