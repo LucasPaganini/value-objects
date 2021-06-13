@@ -1,9 +1,9 @@
 import { Either, isError, left, right } from '../utils'
 import { ValueObjectContructor, VOCRawInit } from './value-object'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const makeIsValidRawInit =
   <VOC extends ValueObjectContructor>(VO: VOC) =>
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   (v: any): v is VOCRawInit<VOC> => {
     try {
       new VO(v)
