@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.0.0, 14.0.0]
 
     steps:
       - uses: actions/checkout@v2
@@ -18,5 +18,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      - name: Use NPM 7.15.0
+        run: npm i -g npm@7.15.0
+
+      - run: npm clean-install
+      - run: npm run lint
+      - run: npm run build
       - run: npm test
