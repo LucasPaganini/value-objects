@@ -15,8 +15,7 @@
     "format": "scripts/format",
     "docs": "typedoc",
     "calculate-bundles": "scripts/calculate-bundles",
-    "prepublishOnly": "npm ci && npm run format && npm run lint && npm test && npm run build",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm ci && npm run format && npm run lint && npm test && npm run build"
   },
   "keywords": [
     "value object",
