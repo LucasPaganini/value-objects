@@ -69,7 +69,8 @@ app.post('/api/users', (req, res) => {
     return res
       .status(400)
       .json({ error: "Password can't be longer than 256 characters" });
-  const PASSWORD_REGEX = /imagine-a-super-cool-regex-validating-the-password-here/;
+  const PASSWORD_REGEX =
+    /imagine-a-super-cool-regex-validating-the-password-here/;
   if (!PASSWORD_REGEX.test(data.password))
     return res.status(400).json({ error: 'Invalid password' });
 
@@ -127,7 +128,8 @@ class Password {
   constructor(rawInit: string) {
     if (rawInittrim() === '') throw Error("Can't be empty");
     if (rawInit.length > 256) throw Error('Too long');
-    const PASSWORD_REGEX = /imagine-a-super-cool-regex-validating-the-password-here/;
+    const PASSWORD_REGEX =
+      /imagine-a-super-cool-regex-validating-the-password-here/;
     if (!PASSWORD_REGEX.test(rawInit)) throw Error("Doesn't match the pattern");
     this.value = rawInit;
   }
